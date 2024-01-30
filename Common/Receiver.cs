@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    internal class Receiver
+    public class Receiver
     {
         private Socket socket;
         private NetworkStream stream;

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace View.Controller
 {
-    [Serializable]
-    public class PDV
+    public class OrderControler
     {
-        private int PDVID;
-        private int procenatPDV;
     }
 }

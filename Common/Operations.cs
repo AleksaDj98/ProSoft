@@ -8,5 +8,6 @@ namespace Common
 {
     public enum Operations
     {
+        Login
     }
 }

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Common
 {
     [Serializable]
-    public class PDV
+    public class Request
     {
-        private int PDVID;
-        private int procenatPDV;
+        public Operations Operations { get; set; }
+        public object requestObject { get; set; }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C30CB13-27E1-4C3A-A267-65D001BDC547}</ProjectGuid>
+    <ProjectGuid>{3F11EF3F-EE04-4005-9FE8-41EF48D31AFE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Broker</RootNamespace>
-    <AssemblyName>Broker</AssemblyName>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,12 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Broker.cs" />
+    <Compile Include="Database\GenericRepository.cs" />
+    <Compile Include="IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Broker\DatabaseBroker.csproj">
+      <Project>{4c30cb13-27e1-4c3a-a267-65d001bdc547}</Project>
+      <Name>DatabaseBroker</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{97D596B3-C40A-48EA-973F-DEA3CC8F0AA7}</Project>
+      <Project>{97d596b3-c40a-48ea-973f-dea3cc8f0aa7}</Project>
       <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>

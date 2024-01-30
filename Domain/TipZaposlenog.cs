@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    [Serializable]
     public class TipZaposlenog
     {
         private int tipID;

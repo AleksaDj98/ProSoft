@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,6 +31,10 @@ namespace Server
         private void btnStart_Click(object sender, EventArgs e)
         {
             s = new Server();
+            s.Start();
+            Thread thread = new Thread(s.Listen) ;
+            thread.IsBackground = true ;
+            thread.Start();
             btnStop.Enabled = true;
             btnStart.Enabled = false;
         }

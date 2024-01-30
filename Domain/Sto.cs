@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    [Serializable]
     public class Sto
     {
         private int stoID;
