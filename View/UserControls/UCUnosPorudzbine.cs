@@ -17,12 +17,13 @@ namespace View.UserControls
 
         public UCUnosPorudzbine()
         {
-            InitializeComponent();
+            
         }
 
         public UCUnosPorudzbine(OrderControler orderControler)
         {
             this.orderControler = orderControler;
+            InitializeComponent();
         }
 
         private void UCUnosPorudzbine_Load(object sender, EventArgs e)

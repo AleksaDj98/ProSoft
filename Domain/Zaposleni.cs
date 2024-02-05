@@ -36,7 +36,7 @@ namespace Domain
         [Browsable(false)]
         public string izmena => null;
         [Browsable(false)]
-        public string unos =>$"{ImeZaposlenog},{SifraLogovanja},{Tip.TipID}";
+        public string unos =>$"'{ImeZaposlenog}','{SifraLogovanja}',{Tip.TipID}";
         [Browsable(false)]
         public string selekcija => "*";
         [Browsable(false)]
@@ -50,6 +50,7 @@ namespace Domain
                 z.ImeZaposlenog = reader["ImeZaposlenog"].ToString();
                 z.SifraLogovanja = reader["sifraLogovanja"].ToString();
                 TipZaposlenog tip = new TipZaposlenog();
+                tip.TipID = Convert.ToInt32(reader["tipID"]);
                 z.Tip = tip;
                 result.Add(z);
             }

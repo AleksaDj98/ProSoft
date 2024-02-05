@@ -86,5 +86,13 @@ namespace View
                 loginController.Login(txtPass, this);
             }
         }
+
+        private void btnObrisiBr_Click(object sender, EventArgs e)
+        {
+            if(txtPass.Text.Length > 0)
+            {
+                txtPass.Text = txtPass.Text.Substring(0, txtPass.Text.Length - 1);
+            }
+        }
     }
 }

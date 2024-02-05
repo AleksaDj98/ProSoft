@@ -32,23 +32,25 @@
             this.btnStampanje = new System.Windows.Forms.Button();
             this.btnUnos = new System.Windows.Forms.Button();
             this.gpProizvodi = new System.Windows.Forms.GroupBox();
+            this.btnObrisiArtikal = new System.Windows.Forms.Button();
+            this.btnPonistiPorudzbinu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 209);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 185);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(317, 487);
+            this.dataGridView1.Size = new System.Drawing.Size(325, 374);
             this.dataGridView1.TabIndex = 9;
             // 
             // btnStampanje
             // 
-            this.btnStampanje.Location = new System.Drawing.Point(17, 117);
+            this.btnStampanje.Location = new System.Drawing.Point(17, 101);
             this.btnStampanje.Margin = new System.Windows.Forms.Padding(4);
             this.btnStampanje.Name = "btnStampanje";
             this.btnStampanje.Size = new System.Drawing.Size(327, 68);
@@ -58,7 +60,7 @@
             // 
             // btnUnos
             // 
-            this.btnUnos.Location = new System.Drawing.Point(17, 42);
+            this.btnUnos.Location = new System.Drawing.Point(17, 26);
             this.btnUnos.Margin = new System.Windows.Forms.Padding(4);
             this.btnUnos.Name = "btnUnos";
             this.btnUnos.Size = new System.Drawing.Size(327, 68);
@@ -70,15 +72,37 @@
             // 
             this.gpProizvodi.Location = new System.Drawing.Point(379, 22);
             this.gpProizvodi.Name = "gpProizvodi";
-            this.gpProizvodi.Size = new System.Drawing.Size(1159, 689);
+            this.gpProizvodi.Size = new System.Drawing.Size(1159, 694);
             this.gpProizvodi.TabIndex = 10;
             this.gpProizvodi.TabStop = false;
             this.gpProizvodi.Text = "Proizvodi";
+            // 
+            // btnObrisiArtikal
+            // 
+            this.btnObrisiArtikal.Location = new System.Drawing.Point(17, 575);
+            this.btnObrisiArtikal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnObrisiArtikal.Name = "btnObrisiArtikal";
+            this.btnObrisiArtikal.Size = new System.Drawing.Size(327, 68);
+            this.btnObrisiArtikal.TabIndex = 11;
+            this.btnObrisiArtikal.Text = "Obrisi artikal";
+            this.btnObrisiArtikal.UseVisualStyleBackColor = true;
+            // 
+            // btnPonistiPorudzbinu
+            // 
+            this.btnPonistiPorudzbinu.Location = new System.Drawing.Point(17, 648);
+            this.btnPonistiPorudzbinu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPonistiPorudzbinu.Name = "btnPonistiPorudzbinu";
+            this.btnPonistiPorudzbinu.Size = new System.Drawing.Size(327, 68);
+            this.btnPonistiPorudzbinu.TabIndex = 12;
+            this.btnPonistiPorudzbinu.Text = "Ponisti porudzbinu";
+            this.btnPonistiPorudzbinu.UseVisualStyleBackColor = true;
             // 
             // UCUnosPorudzbine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnPonistiPorudzbinu);
+            this.Controls.Add(this.btnObrisiArtikal);
             this.Controls.Add(this.gpProizvodi);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnStampanje);
@@ -98,5 +122,7 @@
         private System.Windows.Forms.Button btnStampanje;
         private System.Windows.Forms.Button btnUnos;
         private System.Windows.Forms.GroupBox gpProizvodi;
+        private System.Windows.Forms.Button btnObrisiArtikal;
+        private System.Windows.Forms.Button btnPonistiPorudzbinu;
     }
 }

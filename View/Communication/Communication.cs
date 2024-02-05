@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace View.Communication
 {
@@ -53,8 +56,36 @@ namespace View.Communication
                 requestObject = new Zaposleni { SifraLogovanja = text }
             };
             klijent.SendRequest(zahtev);
-            List<Zaposleni> x = (List<Zaposleni>)klijent.GetResponsResult();
-            return x.FirstOrDefault();
+            List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
+            return zaposleni.FirstOrDefault();
+        }
+
+        internal bool ProveriSifru(TextBox textSifra)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.ExistingEmploye,
+                requestObject = new Zaposleni { SifraLogovanja = textSifra.Text }
+            };
+            klijent.SendRequest(zahtev);
+            List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
+            if (zaposleni.Count > 0)
+            {
+                MessageBox.Show("Korisnik sa ovom sifrom vec postoji");
+                return true;
+            }
+            return  false;
+        }
+
+        internal void SaveEmploye(Zaposleni zap)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.SaveEmploye,
+                requestObject = zap
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
         }
     }
 }

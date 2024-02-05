@@ -51,8 +51,15 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\OrderControler.cs" />
+    <Compile Include="Controller\SaveEmployeController.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemOperationException.cs" />
+    <Compile Include="Forms\FrmUnosNovogZaposlenog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUnosNovogZaposlenog.Designer.cs">
+      <DependentUpon>FrmUnosNovogZaposlenog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,12 +75,20 @@
     <Compile Include="MainCoordinator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProSoftProjekatDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProSoftProjekatDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCUnosPorudzbine.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UCUnosPorudzbine.Designer.cs">
       <DependentUpon>UCUnosPorudzbine.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\FrmUnosNovogZaposlenog.resx">
+      <DependentUpon>FrmUnosNovogZaposlenog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +116,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ProSoftProjekatDataSet.xsc">
+      <DependentUpon>ProSoftProjekatDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProSoftProjekatDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProSoftProjekatDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProSoftProjekatDataSet.xss">
+      <DependentUpon>ProSoftProjekatDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

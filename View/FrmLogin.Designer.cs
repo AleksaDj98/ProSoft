@@ -41,6 +41,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.btnObrisiBr = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPass
@@ -51,7 +52,7 @@
             this.txtPass.MaxLength = 10;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(267, 56);
+            this.txtPass.Size = new System.Drawing.Size(208, 56);
             this.txtPass.TabIndex = 0;
             // 
             // button1
@@ -186,11 +187,23 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
+            // btnObrisiBr
+            // 
+            this.btnObrisiBr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnObrisiBr.Location = new System.Drawing.Point(236, 23);
+            this.btnObrisiBr.Name = "btnObrisiBr";
+            this.btnObrisiBr.Size = new System.Drawing.Size(42, 57);
+            this.btnObrisiBr.TabIndex = 12;
+            this.btnObrisiBr.Text = "C";
+            this.btnObrisiBr.UseVisualStyleBackColor = true;
+            this.btnObrisiBr.Click += new System.EventHandler(this.btnObrisiBr_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(305, 373);
+            this.Controls.Add(this.btnObrisiBr);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
@@ -226,6 +239,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnObrisiBr;
     }
 }
 

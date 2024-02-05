@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using View.Controller;
+
+namespace View.Forms
+{
+    public partial class FrmUnosNovogZaposlenog : Form
+    {
+        public SaveEmployeController sacuvajZaposlenog;
+        public TextBox TextIme { get => txtIme; }
+        public TextBox TextSifra { get => txtSifra; }
+        public CheckBox ChbAdmin { get=>chbAdmin; }
+
+        public FrmUnosNovogZaposlenog()
+        {
+            InitializeComponent();
+        }
+
+        private void btnSacuvaj_Click(object sender, EventArgs e)
+        {
+            sacuvajZaposlenog = new SaveEmployeController();
+            sacuvajZaposlenog.sacuvajZaposlenog(TextIme, TextSifra,ChbAdmin);
+        }
+    }
+}

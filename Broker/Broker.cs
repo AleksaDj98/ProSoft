@@ -48,7 +48,12 @@ namespace DatabaseBroker
 
         public void Save(IEntity entity)
         {
-            throw new NotImplementedException();
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"insert into {entity.nazivTabele} values ({entity.unos})";
+            if (command.ExecuteNonQuery() != 1)
+            {
+                throw new Exception("Database error!");
+            }
         }
 
         public List<IEntity> getAll(IEntity entity)

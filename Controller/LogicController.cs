@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemOperations.LoginSO;
+using SystemOperations.ZaposlenogSO;
 
 namespace Controller
 {
@@ -35,6 +36,19 @@ namespace Controller
             prijavaRadnika pr = new prijavaRadnika();
             pr.executeTemplate(requestObject);
             return pr.zap;
+        }
+
+        public object ExistingEmp(Zaposleni requestObject)
+        {
+            PronadjiZaposlenog pz = new PronadjiZaposlenog();
+            pz.executeTemplate(requestObject);
+            return pz.zap;
+        }
+
+        public void SaveEmploye(Zaposleni requestObject)
+        {
+            KreirajRadnika kr = new KreirajRadnika();
+            kr.executeTemplate(requestObject);
         }
     }
 }

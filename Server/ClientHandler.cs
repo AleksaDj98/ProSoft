@@ -65,6 +65,11 @@ namespace Server
             {
                 case Operations.Login:
                         response.Result = LogicController.Instance.Login((Zaposleni)request.requestObject); break;
+                case Operations.ExistingEmploye:
+                    response.Result = LogicController.Instance.ExistingEmp((Zaposleni)request.requestObject); break;
+                case Operations.SaveEmploye:
+                    LogicController.Instance.SaveEmploye((Zaposleni)request.requestObject);break;
+
             }
             return response;
         }

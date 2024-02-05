@@ -37,7 +37,7 @@ namespace View
 
         public void OpenMainForm()
         {
-            frmMain = new FrmMain(controller);
+            frmMain = new FrmMain(controller,instance);
             frmMain.Show();
         }
 

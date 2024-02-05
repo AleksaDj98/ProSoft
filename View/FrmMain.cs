@@ -15,12 +15,15 @@ namespace View
     public partial class FrmMain : Form
     {
         private readonly MainController controller;
-        UCUnosPorudzbine unosPorudzbine;
+        private MainCoordinator instance;
 
-        public FrmMain(MainController controller)
+        public FrmMain(MainController controller, MainCoordinator instance)
         {
             InitializeComponent();
             this.controller = controller;
+            this.instance = instance;
+            this.Text = $"Konobar: {instance.zaposleni.ImeZaposlenog}";
+            this.Load += FrmMain_Load;
            
         }
         public void SetPanel(UserControl userControl)
@@ -32,8 +35,13 @@ namespace View
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
+            controller.proveriKorisnika(cenovnikToolStripMenuItem,ZaposleniToolStripMenuItem,instance);
+            controller.otvoriUCUnosPorudzbine(this);
         }
 
+        private void unosNovogZaposlenogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.otvoriFormuUnosZaposlenog();
+        }
     }
 }

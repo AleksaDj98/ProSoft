@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginSO\prijavaRadnika.cs" />
+    <Compile Include="ZaposlenogSO\KreirajRadnika.cs" />
     <Compile Include="SystemOperationsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZaposlenogSO\PronadjiZaposlenog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

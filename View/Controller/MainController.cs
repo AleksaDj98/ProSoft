@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using View.Forms;
 using View.UserControls;
 
 namespace View.Controller
@@ -15,6 +17,24 @@ namespace View.Controller
             frmMain.SetPanel(new UCUnosPorudzbine(new OrderControler()));
         }
 
+        internal void otvoriFormuUnosZaposlenog()
+        {
+            FrmUnosNovogZaposlenog zaposleni = new FrmUnosNovogZaposlenog();
+            zaposleni.ShowDialog();
+        }
 
+        internal void proveriKorisnika(ToolStripMenuItem cenovnikToolStripMenuItem, ToolStripMenuItem zaposleniToolStripMenuItem, MainCoordinator instance)
+        {
+            if(instance.zaposleni.Tip.TipID != 1)
+            {
+                cenovnikToolStripMenuItem.Visible = false;
+                zaposleniToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                cenovnikToolStripMenuItem.Visible = true;
+                zaposleniToolStripMenuItem.Visible = true;
+            }
+        }
     }
 }
