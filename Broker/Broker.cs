@@ -44,6 +44,16 @@ namespace DatabaseBroker
         }
 
 
+
+        public void Delete(IEntity entity)
+        {
+            SqlCommand command = new SqlCommand("",connection,transaction);
+            command.CommandText = $"Delete * From {entity.nazivTabele} {entity.unos}";
+            if(command.ExecuteNonQuery() != 1)
+            {
+                throw new Exception("Database error");
+            }
+        }
         
 
         public void Save(IEntity entity)
@@ -60,7 +70,7 @@ namespace DatabaseBroker
         {
             List<IEntity> rezultat;
             SqlCommand command = new SqlCommand("", connection, transaction);
-            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele} where {entity.uslovPrimarni}{entity.uslovOstalo}";
+            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele}  {entity.uslovPrimarni}{entity.uslovOstalo}";
             SqlDataReader reader = command.ExecuteReader();
             rezultat = entity.GetEntites(reader);
             reader.Close();

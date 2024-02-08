@@ -19,5 +19,6 @@ namespace Library.Database
         public void openConnection() => broker.OpenConnection();
         public void rollbackTransation() => broker.Rollback();
         public void Save(IEntity entity) => broker.Save(entity);
+        public void Delete(IEntity entity) => broker.Delete(entity);
     }
 }

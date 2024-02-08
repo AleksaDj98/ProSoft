@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemOperations.LoginSO;
 using SystemOperations.ZaposlenogSO;
+using SystemOperations.ProizvodiSO;
 
 namespace Controller
 {
@@ -49,6 +50,26 @@ namespace Controller
         {
             KreirajRadnika kr = new KreirajRadnika();
             kr.executeTemplate(requestObject);
+        }
+
+        public object GetAllPDV()
+        {
+            VratiSvePDV vspdv = new VratiSvePDV();
+            vspdv.executeTemplate(new PDV());
+            return vspdv.pdv;
+        }
+
+        public object GetAllProductVersion()
+        {
+            VratiSveVrsteProizvoda vs = new VratiSveVrsteProizvoda();
+            vs.executeTemplate(new VrstaProizvoda());
+            return vs.vp;
+        }
+
+        public void SaveProduct(Proizvod requestObject)
+        {
+            SacuvajNoviProizvod np = new SacuvajNoviProizvod();
+            np.executeTemplate(requestObject);
         }
     }
 }

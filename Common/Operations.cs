@@ -10,6 +10,9 @@ namespace Common
     {
         Login,
         ExistingEmploye,
-        SaveEmploye
+        SaveEmploye,
+        GetAllPDV,
+        GetAllProductVersion,
+        SaveProduct
     }
 }

@@ -107,6 +107,7 @@
             this.Controls.Add(this.btnSacuvaj);
             this.Name = "FrmUnosNovogZaposlenog";
             this.Text = "UnosNovogZaposlenog";
+            this.Load += new System.EventHandler(this.FrmUnosNovogZaposlenog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

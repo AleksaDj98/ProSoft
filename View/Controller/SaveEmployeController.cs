@@ -26,12 +26,7 @@ namespace View.Controller
                 textSifra.Focus();
                 return;
             }
-            if (Communication.Communication.Instance.ProveriSifru(textSifra))
-            {
-                textSifra.BackColor = Color.Salmon;
-                textSifra.Focus();
-                return;
-            }
+
             try
             {
                 Zaposleni zap = new Zaposleni();

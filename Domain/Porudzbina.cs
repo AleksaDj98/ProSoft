@@ -10,15 +10,15 @@ namespace Domain
     public class Porudzbina
     {
         private int porudzbinaID;
-        private int proizvodID;
-        private int zaposleniID;
-        private int stoID;
+        private Proizvod proizvodID;
+        private Zaposleni zaposleniID;
+        private Sto stoID;
         private DateTime vremePorudzbine;
 
         public int PorudzbinaID { get => porudzbinaID; set => porudzbinaID = value; }
-        public int ProizvodID { get => proizvodID; set => proizvodID = value; }
-        public int ZaposleniID { get => zaposleniID; set => zaposleniID = value; }
-        public int StoID { get => stoID; set => stoID = value; }
+        public Proizvod ProizvodID { get => proizvodID; set => proizvodID = value; }
+        public Zaposleni ZaposleniID { get => zaposleniID; set => zaposleniID = value; }
+        public Sto StoID { get => stoID; set => stoID = value; }
         public DateTime VremePorudzbine { get => vremePorudzbine; set => vremePorudzbine = value; }
     }
 }

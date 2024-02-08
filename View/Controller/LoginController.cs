@@ -41,14 +41,18 @@ namespace View.Controller
 			{
 				Zaposleni z = Communication.Communication.Instance.Login(text.Text);
 				MainCoordinator.Instance.zaposleni = z;
+				if(z == null)
+				{
+					MessageBox.Show("korisnik sa ovim podacima nije pronadjen"); return;
+				}
 				MessageBox.Show($"{z.ImeZaposlenog} dobrodosao/la");
 				MainCoordinator.Instance.OpenMainForm();
 				frmLogin.Dispose();
 			}
 			catch (Exception)
 			{
-
-				throw;
+				MessageBox.Show("greska");
+				return;
 			}
         }
     }

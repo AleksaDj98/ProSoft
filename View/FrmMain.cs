@@ -43,5 +43,10 @@ namespace View
         {
             controller.otvoriFormuUnosZaposlenog();
         }
+
+        private void unosNovogArtiklaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.otvoriFormuUnosArtikla();
+        }
     }
 }

@@ -94,5 +94,10 @@ namespace View
                 txtPass.Text = txtPass.Text.Substring(0, txtPass.Text.Length - 1);
             }
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

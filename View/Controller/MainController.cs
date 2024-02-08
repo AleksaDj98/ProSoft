@@ -36,5 +36,11 @@ namespace View.Controller
                 zaposleniToolStripMenuItem.Visible = true;
             }
         }
+
+        internal void otvoriFormuUnosArtikla()
+        {
+            FrmUnosArtikla artikal = new FrmUnosArtikla(new ArticleController());
+            artikal.ShowDialog();
+        }
     }
 }

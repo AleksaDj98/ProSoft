@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginSO\prijavaRadnika.cs" />
+    <Compile Include="ProizvodiSO\SacuvajNoviProizvod.cs" />
+    <Compile Include="ProizvodiSO\VratiSvePDV.cs" />
+    <Compile Include="ProizvodiSO\VratiSveVrsteProizvoda.cs" />
     <Compile Include="ZaposlenogSO\KreirajRadnika.cs" />
     <Compile Include="SystemOperationsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

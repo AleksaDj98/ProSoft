@@ -48,17 +48,30 @@
   <ItemGroup>
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\CommunicationClient.cs" />
+    <Compile Include="Controller\ArticleController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\OrderControler.cs" />
     <Compile Include="Controller\SaveEmployeController.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemOperationException.cs" />
+    <Compile Include="Forms\FrmBrisanjeRadnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBrisanjeRadnika.Designer.cs">
+      <DependentUpon>FrmBrisanjeRadnika.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmUnosNovogZaposlenog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmUnosNovogZaposlenog.Designer.cs">
       <DependentUpon>FrmUnosNovogZaposlenog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUnosArtikla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUnosArtikla.Designer.cs">
+      <DependentUpon>FrmUnosArtikla.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -86,6 +99,12 @@
     <Compile Include="UserControls\UCUnosPorudzbine.Designer.cs">
       <DependentUpon>UCUnosPorudzbine.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\FrmBrisanjeRadnika.resx">
+      <DependentUpon>FrmBrisanjeRadnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUnosArtikla.resx">
+      <DependentUpon>FrmUnosArtikla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUnosNovogZaposlenog.resx">
       <DependentUpon>FrmUnosNovogZaposlenog.cs</DependentUpon>
     </EmbeddedResource>

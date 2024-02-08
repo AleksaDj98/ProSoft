@@ -28,5 +28,10 @@ namespace View.Forms
             sacuvajZaposlenog = new SaveEmployeController();
             sacuvajZaposlenog.sacuvajZaposlenog(TextIme, TextSifra,ChbAdmin);
         }
+
+        private void FrmUnosNovogZaposlenog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

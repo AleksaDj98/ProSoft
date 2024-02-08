@@ -69,6 +69,12 @@ namespace Server
                     response.Result = LogicController.Instance.ExistingEmp((Zaposleni)request.requestObject); break;
                 case Operations.SaveEmploye:
                     LogicController.Instance.SaveEmploye((Zaposleni)request.requestObject);break;
+                case Operations.GetAllPDV:
+                    response.Result = LogicController.Instance.GetAllPDV();break;
+                case Operations.GetAllProductVersion:
+                    response.Result = LogicController.Instance.GetAllProductVersion();break;
+                case Operations.SaveProduct:
+                    LogicController.Instance.SaveProduct((Proizvod)request.requestObject);break;
 
             }
             return response;

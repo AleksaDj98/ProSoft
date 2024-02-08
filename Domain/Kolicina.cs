@@ -9,12 +9,14 @@ namespace Domain
     [Serializable]
     public class Kolicina
     {
-        private int porudzbinaID;
-        private int proizvodID;
+        private Porudzbina porudzbinaID;
+        private Proizvod proizvodID;
         private int stanjeLagera;
 
-        public int PorudzbinaID { get => porudzbinaID; set => porudzbinaID = value; }
-        public int ProizvodID { get => proizvodID; set => proizvodID = value; }
+        public Porudzbina  PorudzbinaID { get => porudzbinaID; set => porudzbinaID = value; }
+        public Proizvod ProizvodID { get => proizvodID; set => proizvodID = value; }
         public int StanjeLagera { get => stanjeLagera; set => stanjeLagera = value; }
+
+
     }
 }

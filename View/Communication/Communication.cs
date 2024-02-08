@@ -87,5 +87,38 @@ namespace View.Communication
             klijent.SendRequest(zahtev);
             klijent.GetResponsResult();
         }
+
+        internal List<PDV> GetAllPDVVersion()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetAllPDV
+            };
+            klijent.SendRequest(zahtev);
+            List<PDV> pdv = (List<PDV>)klijent.GetResponsResult();
+            return pdv;
+        }
+
+        internal List<VrstaProizvoda> GetAllProductVersion()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetAllProductVersion
+            };
+            klijent.SendRequest(zahtev);
+            List<VrstaProizvoda> vp = (List<VrstaProizvoda>)klijent.GetResponsResult();
+            return vp;
+        }
+
+        internal void SaveProduct(Proizvod p)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.SaveProduct,
+                requestObject = p
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
+        }
     }
 }

@@ -57,7 +57,7 @@
             this.cenovnikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1573, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1573, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,7 +67,7 @@
             this.dnevniToolStripMenuItem,
             this.periodicniToolStripMenuItem});
             this.izvestajiToolStripMenuItem.Name = "izvestajiToolStripMenuItem";
-            this.izvestajiToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.izvestajiToolStripMenuItem.Size = new System.Drawing.Size(76, 26);
             this.izvestajiToolStripMenuItem.Text = "Izvestaji";
             // 
             // dnevniToolStripMenuItem
@@ -88,7 +88,7 @@
             this.unosNovogZaposlenogToolStripMenuItem,
             this.brisanjeZaposlenogToolStripMenuItem});
             this.ZaposleniToolStripMenuItem.Name = "ZaposleniToolStripMenuItem";
-            this.ZaposleniToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.ZaposleniToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.ZaposleniToolStripMenuItem.Text = "Zaposleni";
             // 
             // unosNovogZaposlenogToolStripMenuItem
@@ -110,7 +110,7 @@
             this.unosNovogArtiklaToolStripMenuItem,
             this.pregledArtiklaToolStripMenuItem});
             this.cenovnikToolStripMenuItem.Name = "cenovnikToolStripMenuItem";
-            this.cenovnikToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.cenovnikToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
             this.cenovnikToolStripMenuItem.Text = "Cenovnik";
             // 
             // unosNovogArtiklaToolStripMenuItem
@@ -118,6 +118,7 @@
             this.unosNovogArtiklaToolStripMenuItem.Name = "unosNovogArtiklaToolStripMenuItem";
             this.unosNovogArtiklaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.unosNovogArtiklaToolStripMenuItem.Text = "Unos novog artikla";
+            this.unosNovogArtiklaToolStripMenuItem.Click += new System.EventHandler(this.unosNovogArtiklaToolStripMenuItem_Click);
             // 
             // pregledArtiklaToolStripMenuItem
             // 

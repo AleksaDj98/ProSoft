@@ -25,12 +25,13 @@ namespace Domain
         {
             return ImeZaposlenog.ToString(); 
         }
+
         [Browsable(false)]
         public string nazivTabele => "Zaposleni";
         [Browsable(false)]
         public string primarniKljuc => "ZaposleniID";
         [Browsable(false)]
-        public string uslovPrimarni => $"SifraLogovanja = '{SifraLogovanja}'" ;
+        public string uslovPrimarni => $"where SifraLogovanja = '{SifraLogovanja}'" ;
         [Browsable(false)]
         public string uslovOstalo => null;
         [Browsable(false)]
