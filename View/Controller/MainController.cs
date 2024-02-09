@@ -42,5 +42,11 @@ namespace View.Controller
             FrmUnosArtikla artikal = new FrmUnosArtikla(new ArticleController());
             artikal.ShowDialog();
         }
+
+        internal void otvoriFormuBrisanjeRadnika()
+        {
+            FrmBrisanjeRadnika radnik = new FrmBrisanjeRadnika(new EmployeController());
+            radnik.ShowDialog();
+        }
     }
 }

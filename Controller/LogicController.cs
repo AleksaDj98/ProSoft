@@ -71,5 +71,18 @@ namespace Controller
             SacuvajNoviProizvod np = new SacuvajNoviProizvod();
             np.executeTemplate(requestObject);
         }
+
+        public void DeleteEmploye(Zaposleni requestObject)
+        {
+            obrisiRadnika or = new obrisiRadnika();
+            or.executeTemplate(requestObject);
+        }
+
+        public object ExistingArticle(Proizvod requestObject)
+        {
+            ProveriProizvod pp = new ProveriProizvod();
+            pp.executeTemplate(requestObject);
+            return pp.pro;
+        }
     }
 }

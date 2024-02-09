@@ -120,5 +120,41 @@ namespace View.Communication
             klijent.SendRequest(zahtev);
             klijent.GetResponsResult();
         }
+
+        internal Zaposleni PronadjiZaposlenog(string text)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.ExistingEmploye,
+                requestObject = new Zaposleni { SifraLogovanja = text}
+            };
+            klijent.SendRequest(zahtev);
+            List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
+            return zaposleni.FirstOrDefault();
+        }
+
+        internal void Delete(Zaposleni zap)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.DeleteEmploye,
+                requestObject = zap
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
+        }
+
+        internal bool CheckDevice(TextBox txtNaziv)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.ExistingArticle,
+                requestObject = new Proizvod { NazivProizvoda = txtNaziv.Text }
+            };
+            klijent.SendRequest(zahtev);
+            List<Proizvod> proizvod = (List<Proizvod>)klijent.GetResponsResult();
+            if (proizvod.Count > 0) return true;
+            return false;
+        }
     }
 }

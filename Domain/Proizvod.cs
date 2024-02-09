@@ -41,7 +41,7 @@ namespace Domain
         [Browsable(false)]
         public string primarniKljuc => "ProizvodID";
         [Browsable(false)]
-        public string uslovPrimarni => $"prizvodid = {ProizvodID}";
+        public string uslovPrimarni => $"where LOWER(nazivProizvoda) = LOWER('{NazivProizvoda}')";
         [Browsable(false)]
         public string uslovOstalo => null;
         [Browsable(false)]
@@ -67,7 +67,7 @@ namespace Domain
                 pdv.PDVID1 = Convert.ToInt32(reader["PDVID"]);
                 p.PDV = pdv;
                 VrstaProizvoda vp = new VrstaProizvoda();
-                vp.VrstaProizvodaID = Convert.ToInt32(reader["vrstaProizvodaID"]);
+                vp.VrstaProizvodaID = Convert.ToInt32(reader["vrstaProizvoda"]);
                 p.VrstaProizvoda = vp;
                 Cenovnik c = new Cenovnik();
                 c.CenovnikID = Convert.ToInt32(reader["CenovnikID"]);

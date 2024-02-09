@@ -48,5 +48,10 @@ namespace View
         {
             controller.otvoriFormuUnosArtikla();
         }
+
+        private void brisanjeZaposlenogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.otvoriFormuBrisanjeRadnika();
+        }
     }
 }

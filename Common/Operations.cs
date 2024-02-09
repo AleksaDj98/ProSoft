@@ -13,6 +13,8 @@ namespace Common
         SaveEmploye,
         GetAllPDV,
         GetAllProductVersion,
-        SaveProduct
+        SaveProduct,
+        DeleteEmploye,
+        ExistingArticle,
     }
 }

@@ -52,7 +52,7 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\OrderControler.cs" />
-    <Compile Include="Controller\SaveEmployeController.cs" />
+    <Compile Include="Controller\EmployeController.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemOperationException.cs" />
     <Compile Include="Forms\FrmBrisanjeRadnika.cs">

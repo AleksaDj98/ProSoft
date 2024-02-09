@@ -48,7 +48,7 @@ namespace DatabaseBroker
         public void Delete(IEntity entity)
         {
             SqlCommand command = new SqlCommand("",connection,transaction);
-            command.CommandText = $"Delete * From {entity.nazivTabele} {entity.unos}";
+            command.CommandText = $"DELETE FROM {entity.nazivTabele} {entity.uslovPrimarni}";
             if(command.ExecuteNonQuery() != 1)
             {
                 throw new Exception("Database error");

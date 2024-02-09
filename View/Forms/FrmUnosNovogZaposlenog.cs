@@ -13,7 +13,7 @@ namespace View.Forms
 {
     public partial class FrmUnosNovogZaposlenog : Form
     {
-        public SaveEmployeController sacuvajZaposlenog;
+        public EmployeController sacuvajZaposlenog;
         public TextBox TextIme { get => txtIme; }
         public TextBox TextSifra { get => txtSifra; }
         public CheckBox ChbAdmin { get=>chbAdmin; }
@@ -25,7 +25,7 @@ namespace View.Forms
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            sacuvajZaposlenog = new SaveEmployeController();
+            sacuvajZaposlenog = new EmployeController();
             sacuvajZaposlenog.sacuvajZaposlenog(TextIme, TextSifra,ChbAdmin);
         }
 

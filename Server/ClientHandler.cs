@@ -16,7 +16,6 @@ namespace Server
 {
     public class ClientHandler
     {
-        private Zaposleni ulogovanZaposleni;
         private Socket klijent;
 
         public ClientHandler(Socket klijent)
@@ -75,6 +74,10 @@ namespace Server
                     response.Result = LogicController.Instance.GetAllProductVersion();break;
                 case Operations.SaveProduct:
                     LogicController.Instance.SaveProduct((Proizvod)request.requestObject);break;
+                case Operations.DeleteEmploye:
+                    LogicController.Instance.DeleteEmploye((Zaposleni)request.requestObject); break;
+                case Operations.ExistingArticle:
+                    response.Result = LogicController.Instance.ExistingArticle((Proizvod)request.requestObject);break;
 
             }
             return response;

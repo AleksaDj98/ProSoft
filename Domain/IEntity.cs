@@ -11,7 +11,7 @@ namespace Domain
     {
         string nazivTabele{ get; }
         string primarniKljuc { get; }
-        string uslovPrimarni { get; }
+         string uslovPrimarni { get; }
         string uslovOstalo { get; }
         string izmena { get; }
         string unos { get; }

@@ -81,8 +81,12 @@ namespace View.Controller
             {
                 txtLager.BackColor = Color.White;
             }
-            
-           
+
+            if (Communication.Communication.Instance.CheckDevice(txtNaziv))
+            {
+                MessageBox.Show("Proizvod sa ovim imenom postoji");
+                return false;
+            }
             
             return true; 
         }

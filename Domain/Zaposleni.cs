@@ -30,7 +30,7 @@ namespace Domain
         public string nazivTabele => "Zaposleni";
         [Browsable(false)]
         public string primarniKljuc => "ZaposleniID";
-        [Browsable(false)]
+        [Browsable (false)]
         public string uslovPrimarni => $"where SifraLogovanja = '{SifraLogovanja}'" ;
         [Browsable(false)]
         public string uslovOstalo => null;
@@ -40,6 +40,8 @@ namespace Domain
         public string unos =>$"'{ImeZaposlenog}','{SifraLogovanja}',{Tip.TipID}";
         [Browsable(false)]
         public string selekcija => "*";
+
+
         [Browsable(false)]
         public List<IEntity> GetEntites(SqlDataReader reader)
         {

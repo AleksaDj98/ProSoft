@@ -15,7 +15,7 @@ namespace View
         private FrmLogin frmLogin;
         private FrmMain frmMain;
         
-        public Zaposleni zaposleni { get; set; }
+        public  Zaposleni zaposleni { get; set; }
 
         private static MainCoordinator instance;
         private MainCoordinator() { }
