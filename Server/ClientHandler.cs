@@ -96,7 +96,8 @@ namespace Server
                     response.Result = LogicController.Instance.GetAllOrders(); break;
                 case Operations.SaveInvoice:
                     LogicController.Instance.UpdateInvoice((Racun)request.requestObject);break;
-
+                case Operations.GetAllInvoices:
+                    response.Result = LogicController.Instance.GetAllInvoices(); break;
             }
             return response;
         }

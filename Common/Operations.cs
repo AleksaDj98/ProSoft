@@ -25,5 +25,6 @@ namespace Common
         DeleteArticle,
         GetAllOrders,
         SaveInvoice,
+        GetAllInvoices,
     }
 }

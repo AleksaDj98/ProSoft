@@ -49,6 +49,7 @@
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\CommunicationClient.cs" />
     <Compile Include="Controller\ArticleController.cs" />
+    <Compile Include="Controller\DailyReportController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\OrderControler.cs" />

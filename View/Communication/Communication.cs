@@ -256,5 +256,16 @@ namespace View.Communication
             klijent.SendRequest(zahtev);
             klijent.GetResponsResult();
         }
+
+        internal List<Racun> GetAllInvoices()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetAllInvoices
+            };
+            klijent.SendRequest(zahtev);
+            List<Racun> rac = (List<Racun>)klijent.GetResponsResult();
+            return rac;
+        }
     }
 }

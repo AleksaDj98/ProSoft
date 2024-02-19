@@ -10,6 +10,7 @@ using SystemOperations.LoginSO;
 using SystemOperations.ZaposlenogSO;
 using SystemOperations.ProizvodiSO;
 using SystemOperations.PorudzbinaSO;
+using SystemOperations.ReportsSO;
 
 namespace Controller
 {
@@ -142,6 +143,13 @@ namespace Controller
         {
             SacuvajRacun sr = new SacuvajRacun();
             sr.executeTemplate(requestObject);
+        }
+
+        public object GetAllInvoices()
+        {
+            VratiSveRacune sr = new VratiSveRacune();
+            sr.executeTemplate (new Porudzbina());
+            return sr.racun;
         }
     }
 }

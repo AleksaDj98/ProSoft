@@ -40,6 +40,7 @@
             this.btnIzvestaj.TabIndex = 0;
             this.btnIzvestaj.Text = "Dnevni izvestaj";
             this.btnIzvestaj.UseVisualStyleBackColor = true;
+            this.btnIzvestaj.Click += new System.EventHandler(this.btnIzvestaj_Click);
             // 
             // dtpDnevniIzvestaj
             // 
@@ -59,6 +60,7 @@
             this.Controls.Add(this.btnIzvestaj);
             this.Name = "FrmDnevniIzvestaj";
             this.Text = "FrmDnevniIzvestaj";
+            this.Load += new System.EventHandler(this.FrmDnevniIzvestaj_Load);
             this.ResumeLayout(false);
 
         }
