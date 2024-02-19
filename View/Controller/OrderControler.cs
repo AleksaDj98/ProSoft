@@ -13,15 +13,9 @@ namespace View.Controller
     public class OrderControler
     {
         BindingList<StavkaPorudzbine> porudzbina = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto1 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto2 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto3 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto4 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto5 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto6 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto7 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto8 = new BindingList<StavkaPorudzbine>();
-        BindingList<StavkaPorudzbine> sto9 = new BindingList<StavkaPorudzbine>();
+        BindingList<StavkaPorudzbine> PorudzbineNaStolu = new BindingList<StavkaPorudzbine>();
+        Racun LokalniRacun;
+
 
 
         BindingList<StavkaPorudzbine> proizvodi = new BindingList<StavkaPorudzbine>();
@@ -49,22 +43,6 @@ namespace View.Controller
                 }
             }
         }
-
-        private void KreirajPorudzbinu()
-        {
-            
-            //var porudzina = proizvodi.ToList();
-            //var stoId - ...
-            //Ides do baze i vidis da li postoji racun sa tim stoId i da je JeZaveden = false
-            //Ako postoji => dodas novi red u tabelu porudzina de je RacunId taj koji si ovukao iz baze
-            //Ako ne postoji => kreiraj novi Racun i isto sa porudzbinom
-        }
-
-        private void ZavediRacun()
-        {
-            //Uzmes sve porudzbine saberes im cenu i upises u racun i stavis JeZaveden = true i DatumZavodjenja Datetime.now
-        }
-
         private void DodajArtikal(StavkaPorudzbine sr, Label labelUkupnaCena)
         {
             var postojecaStavka = proizvodi.FirstOrDefault(c => c.Naziv == sr.Naziv);
@@ -186,7 +164,7 @@ namespace View.Controller
                 throw;
             }
         }
-        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj)
+        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Racun r)
         {
             if (sto.Count > 0)
             {
@@ -196,6 +174,8 @@ namespace View.Controller
             {
                 btnStampaj.Enabled = false;
             }
+            PorudzbineNaStolu = sto;
+            LokalniRacun = r;
             dgvPregledPorudzbina.DataSource = sto;
         }
 
@@ -203,13 +183,6 @@ namespace View.Controller
         {
             StavkaPorudzbine sp =  dgwPorudzbina.SelectedRows[0].DataBoundItem as StavkaPorudzbine;
             proizvodi.Remove(sp);
-            //for(int i = 0; i<proizvodi.Count;i++)
-            //{
-            //    if (proizvodi[i].Naziv == sp.Naziv)
-            //    {
-            //        proizvodi.Remove(sp);
-            //    }
-            //}
         }
 
         internal void stamampajRacun(DataGridView dgvPregledPorudzbina)
@@ -246,6 +219,8 @@ namespace View.Controller
             {
                 Communication.Communication.Instance.SaveInvoice(r);
                 MessageBox.Show($"Ukupan racun za naplatu je: {r.CenaRacuna}");
+                LokalniRacun = null;
+                PorudzbineNaStolu.Clear();
             }
             catch (Exception)
             {

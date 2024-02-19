@@ -32,7 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.izvestajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dnevniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.periodicniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ZaposleniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unosNovogZaposlenogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brisanjeZaposlenogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,8 +59,7 @@
             // izvestajiToolStripMenuItem
             // 
             this.izvestajiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dnevniToolStripMenuItem,
-            this.periodicniToolStripMenuItem});
+            this.dnevniToolStripMenuItem});
             this.izvestajiToolStripMenuItem.Name = "izvestajiToolStripMenuItem";
             this.izvestajiToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.izvestajiToolStripMenuItem.Text = "Izvestaji";
@@ -72,12 +70,6 @@
             this.dnevniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dnevniToolStripMenuItem.Text = "Dnevni";
             this.dnevniToolStripMenuItem.Click += new System.EventHandler(this.dnevniToolStripMenuItem_Click);
-            // 
-            // periodicniToolStripMenuItem
-            // 
-            this.periodicniToolStripMenuItem.Name = "periodicniToolStripMenuItem";
-            this.periodicniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.periodicniToolStripMenuItem.Text = "Periodicni";
             // 
             // ZaposleniToolStripMenuItem
             // 
@@ -114,14 +106,14 @@
             // unosNovogArtiklaToolStripMenuItem
             // 
             this.unosNovogArtiklaToolStripMenuItem.Name = "unosNovogArtiklaToolStripMenuItem";
-            this.unosNovogArtiklaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.unosNovogArtiklaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.unosNovogArtiklaToolStripMenuItem.Text = "Unos novog artikla";
             this.unosNovogArtiklaToolStripMenuItem.Click += new System.EventHandler(this.unosNovogArtiklaToolStripMenuItem_Click);
             // 
             // pregledArtiklaToolStripMenuItem
             // 
             this.pregledArtiklaToolStripMenuItem.Name = "pregledArtiklaToolStripMenuItem";
-            this.pregledArtiklaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.pregledArtiklaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pregledArtiklaToolStripMenuItem.Text = "Brisanje artikla";
             this.pregledArtiklaToolStripMenuItem.Click += new System.EventHandler(this.pregledArtiklaToolStripMenuItem_Click);
             // 
@@ -158,7 +150,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem izvestajiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dnevniToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem periodicniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ZaposleniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cenovnikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unosNovogArtiklaToolStripMenuItem;
