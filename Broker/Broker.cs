@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,8 +44,6 @@ namespace DatabaseBroker
             transaction.Rollback();
         }
 
-
-
         public void Delete(IEntity entity)
         {
             SqlCommand command = new SqlCommand("",connection,transaction);
@@ -53,8 +52,7 @@ namespace DatabaseBroker
             {
                 throw new Exception("Database error");
             }
-        }
-        
+        } 
 
         public void Save(IEntity entity)
         {
@@ -70,12 +68,37 @@ namespace DatabaseBroker
         {
             List<IEntity> rezultat;
             SqlCommand command = new SqlCommand("", connection, transaction);
-            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele}  {entity.uslovPrimarni}{entity.uslovOstalo}";
+            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele}  {entity.uslovOstalo}";
             SqlDataReader reader = command.ExecuteReader();
             rezultat = entity.GetEntites(reader);
             reader.Close();
             return rezultat;
         }
 
+
+        public int GetNewId(IEntity entity)
+        {
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"select max({entity.primarniKljuc}) from {entity.nazivTabele}";
+            object result = command.ExecuteScalar();
+            if (result is DBNull)
+            {
+                return 1;
+            }
+            else
+            {
+                return (int)result + 1;
+            }
+        }
+
+        public void Update(IEntity entity)
+        {
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"UPDATE {entity.nazivTabele}{entity.izmena}{entity.uslovPrimarni}";
+            if (command.ExecuteNonQuery() != 1)
+            {
+                throw new Exception("Database error!");
+            }
+        }
     }
 }

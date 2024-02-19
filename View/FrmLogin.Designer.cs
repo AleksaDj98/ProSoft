@@ -54,6 +54,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(208, 56);
             this.txtPass.TabIndex = 0;
+            this.txtPass.Text = "0208";
             // 
             // button1
             // 

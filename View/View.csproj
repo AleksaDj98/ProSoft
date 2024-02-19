@@ -55,11 +55,23 @@
     <Compile Include="Controller\EmployeController.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemOperationException.cs" />
+    <Compile Include="Forms\FrmBrisanjeArtikla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBrisanjeArtikla.Designer.cs">
+      <DependentUpon>FrmBrisanjeArtikla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmBrisanjeRadnika.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmBrisanjeRadnika.Designer.cs">
       <DependentUpon>FrmBrisanjeRadnika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDnevniIzvestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDnevniIzvestaj.Designer.cs">
+      <DependentUpon>FrmDnevniIzvestaj.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmUnosNovogZaposlenog.cs">
       <SubType>Form</SubType>
@@ -99,8 +111,20 @@
     <Compile Include="UserControls\UCUnosPorudzbine.Designer.cs">
       <DependentUpon>UCUnosPorudzbine.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\USRasporedStolova.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\USRasporedStolova.Designer.cs">
+      <DependentUpon>USRasporedStolova.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\FrmBrisanjeArtikla.resx">
+      <DependentUpon>FrmBrisanjeArtikla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBrisanjeRadnika.resx">
       <DependentUpon>FrmBrisanjeRadnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDnevniIzvestaj.resx">
+      <DependentUpon>FrmDnevniIzvestaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUnosArtikla.resx">
       <DependentUpon>FrmUnosArtikla.cs</DependentUpon>
@@ -125,6 +149,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UCUnosPorudzbine.resx">
       <DependentUpon>UCUnosPorudzbine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\USRasporedStolova.resx">
+      <DependentUpon>USRasporedStolova.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

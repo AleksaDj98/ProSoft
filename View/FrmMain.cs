@@ -35,7 +35,7 @@ namespace View
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            controller.proveriKorisnika(cenovnikToolStripMenuItem,ZaposleniToolStripMenuItem,instance);
+            controller.proveriKorisnika(cenovnikToolStripMenuItem,ZaposleniToolStripMenuItem,instance,this);
             controller.otvoriUCUnosPorudzbine(this);
         }
 
@@ -52,6 +52,31 @@ namespace View
         private void brisanjeZaposlenogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.otvoriFormuBrisanjeRadnika();
+        }
+
+        private void FrmMain_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        internal void RasporedStolova(OrderControler orderControler)
+        {
+            controller.otvoriUCRasporedStolova(this,orderControler);
+        }
+
+        internal void OtvoriUnosPorudzbine()
+        {
+            controller.otvoriUCUnosPorudzbine(this);
+        }
+
+        private void pregledArtiklaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.otvoriFrmBrisanjeArtikla();
+        }
+
+        private void dnevniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.otvoriDnevniIzvestaj();
         }
     }
 }

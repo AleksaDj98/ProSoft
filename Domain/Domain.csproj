@@ -43,10 +43,11 @@
   <ItemGroup>
     <Compile Include="Cenovnik.cs" />
     <Compile Include="IEntity.cs" />
-    <Compile Include="Kolicina.cs" />
     <Compile Include="PDV.cs" />
     <Compile Include="Porudzbina.cs" />
     <Compile Include="Proizvod.cs" />
+    <Compile Include="Racun.cs" />
+    <Compile Include="StavkaPorudzbine.cs" />
     <Compile Include="Sto.cs" />
     <Compile Include="TipZaposlenog.cs" />
     <Compile Include="VrstaProizvoda.cs" />

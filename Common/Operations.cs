@@ -16,5 +16,14 @@ namespace Common
         SaveProduct,
         DeleteEmploye,
         ExistingArticle,
+        GetAllArticls,
+        GetOrderID,
+        SaveOrderItem,
+        SaveOrder,
+        SaveInvoiceID,
+        GetInvoicID,
+        DeleteArticle,
+        GetAllOrders,
+        SaveInvoice,
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SystemOperations.LoginSO;
 using SystemOperations.ZaposlenogSO;
 using SystemOperations.ProizvodiSO;
+using SystemOperations.PorudzbinaSO;
 
 namespace Controller
 {
@@ -83,6 +84,64 @@ namespace Controller
             ProveriProizvod pp = new ProveriProizvod();
             pp.executeTemplate(requestObject);
             return pp.pro;
+        }
+
+        public object GetAllArticles()
+        {
+            ProveriProizvod pp = new ProveriProizvod();
+            pp.executeTemplate(new Proizvod());
+            return pp.pro;
+        }
+
+        public object GetOrderID()
+        {
+            VratiIDPorudzbine idp = new VratiIDPorudzbine();
+            idp.executeTemplate(new Porudzbina());
+            return idp.p.PorudzbinaID;
+        }
+
+        public void SaveOrderItem(StavkaPorudzbine requestObject)
+        {
+            SacuvajStavkuPorudzbine sp = new SacuvajStavkuPorudzbine();
+            sp.executeTemplate(requestObject);
+        }
+
+        public void SaveOrder(Porudzbina requestObject)
+        {
+            SacuvajPorudzbinu p = new SacuvajPorudzbinu();
+            p.executeTemplate(requestObject);   
+        }
+
+        public void SaveinvoiceID(Racun requestObject)
+        {
+            SacuvajRacunID rid = new  SacuvajRacunID();
+            rid.executeTemplate(requestObject);
+        }
+
+        public object GetInvoicID()
+        {
+            VratiIDRacuna idr = new VratiIDRacuna();
+            idr.executeTemplate(new Racun());
+            return idr.r.RacunID;
+        }
+
+        public void DeleteArticle(Proizvod requestObject)
+        {
+            ObrisiArtikal a = new ObrisiArtikal();
+            a.executeTemplate(requestObject);
+        }
+
+        public object GetAllOrders()
+        {
+            VratiSvePorudzbine sp = new VratiSvePorudzbine();
+            sp.executeTemplate(new Porudzbina());
+            return sp.poruzbina;
+        }
+
+        public void UpdateInvoice(Racun requestObject)
+        {
+            SacuvajRacun sr = new SacuvajRacun();
+            sr.executeTemplate(requestObject);
         }
     }
 }

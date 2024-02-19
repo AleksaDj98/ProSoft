@@ -1,6 +1,7 @@
 ﻿using Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace View.Controller
 {
     public class ArticleController
     {
+        static  List<Proizvod>PomocnaLista = Communication.Communication.Instance.GetAllAricles();
+        static BindingList<Proizvod> sviProizvodi = new BindingList<Proizvod>(PomocnaLista);
+        BindingList<Proizvod> istaLista = sviProizvodi;
         internal void CaluculateReadOnlyTexBox(ComboBox cbPDV, TextBox txtProdajnaCena, TextBox txtVrednostBezPDV, TextBox txtVrednostPDV)
         {
             if(!string.IsNullOrEmpty(txtProdajnaCena.Text) && cbPDV.SelectedItem != null)
@@ -82,11 +86,18 @@ namespace View.Controller
                 txtLager.BackColor = Color.White;
             }
 
-            if (Communication.Communication.Instance.CheckDevice(txtNaziv))
+            List<Proizvod> postojeciProizvodi = Communication.Communication.Instance.CheckArticle(txtNaziv);
+
+            foreach(Proizvod p in postojeciProizvodi)
             {
-                MessageBox.Show("Proizvod sa ovim imenom postoji");
-                return false;
+                if (p.NazivProizvoda.ToLower().Equals( txtNaziv.Text.ToLower()))
+                {
+                    MessageBox.Show("Proizvod sa ovim imenom postoji");
+                    return false;
+                }
             }
+
+           
             
             return true; 
         }
@@ -95,6 +106,52 @@ namespace View.Controller
         {
             cbVrsteProizvoda.DataSource = Communication.Communication.Instance.GetAllProductVersion();
             cbPDV.DataSource =  Communication.Communication.Instance.GetAllPDVVersion();
+        }
+
+        internal void proveriDaLiJeSelektovanoIObrisi(DataGridView dgvProizvodi)
+        {
+            if (dgvProizvodi.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Molim vas selektujte zeljeni artikal");
+                return;
+            }
+
+            Proizvod P = dgvProizvodi.SelectedRows[0].DataBoundItem as Proizvod;
+
+            try
+            {
+                if (MessageBox.Show($"Da li ste sigurni da zelide da izbrisete artikal : {P.NazivProizvoda}", "Potvrda o brisanju artikla", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Communication.Communication.Instance.DeleteArtile(P);
+                    MessageBox.Show("Artikal je uspesno obrisan");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ne mozemo da izbrisemo artikal");
+            }
+
+        }
+
+        internal void proveriPoiljeIPretrazi(TextBox txtNazivProizvoda, DataGridView dgvProizvodi)
+        {
+            if (string.IsNullOrEmpty(txtNazivProizvoda.Text))
+            {
+                dgvProizvodi.DataSource = sviProizvodi;
+                dgvProizvodi.ClearSelection();
+                return;
+            }
+            dgvProizvodi.DataSource = sviProizvodi;
+            BindingList<Proizvod> pomocnaLista = new BindingList<Proizvod>();
+            foreach (Proizvod p in sviProizvodi)
+            {
+                if(p.NazivProizvoda.ToLower() == txtNazivProizvoda.Text.ToLower())
+                {
+                    pomocnaLista.Add(p);
+                }
+            }
+            dgvProizvodi.DataSource = pomocnaLista;
+            dgvProizvodi.ClearSelection();
         }
 
         internal void Save(TextBox txtNaziv, TextBox txtLager, TextBox txtProdajnaCena, TextBox txtVrednostBezPDV, TextBox txtVrednostPDV, ComboBox cbPDV, ComboBox cbVrstaProizvoda)
@@ -123,6 +180,12 @@ namespace View.Controller
             {
                 MessageBox.Show("Nije uspelo cuvanje novog proizvoda");
             }
+        }
+
+        internal void setDGV(DataGridView dgvProizvodi)
+        {
+            dgvProizvodi.DataSource = sviProizvodi;
+            dgvProizvodi.ClearSelection();
         }
     }
 }

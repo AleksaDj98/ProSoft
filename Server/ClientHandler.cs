@@ -78,6 +78,24 @@ namespace Server
                     LogicController.Instance.DeleteEmploye((Zaposleni)request.requestObject); break;
                 case Operations.ExistingArticle:
                     response.Result = LogicController.Instance.ExistingArticle((Proizvod)request.requestObject);break;
+                case Operations.GetAllArticls:
+                    response.Result = LogicController.Instance.GetAllArticles(); break;
+                case Operations.GetOrderID:
+                    response.Result = LogicController.Instance.GetOrderID();break;
+                case Operations.SaveOrderItem:
+                    LogicController.Instance.SaveOrderItem((StavkaPorudzbine)request.requestObject); break;
+                case Operations.SaveOrder:
+                    LogicController.Instance.SaveOrder((Porudzbina)request.requestObject); break;
+                case Operations.SaveInvoiceID:
+                    LogicController.Instance.SaveinvoiceID((Racun)request.requestObject); break;
+                case Operations.GetInvoicID:
+                    response.Result = LogicController.Instance.GetInvoicID(); break;
+                case Operations.DeleteArticle:
+                    LogicController.Instance.DeleteArticle((Proizvod)request.requestObject); break;
+                case Operations.GetAllOrders:
+                    response.Result = LogicController.Instance.GetAllOrders(); break;
+                case Operations.SaveInvoice:
+                    LogicController.Instance.UpdateInvoice((Racun)request.requestObject);break;
 
             }
             return response;

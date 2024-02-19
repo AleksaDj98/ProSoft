@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Library.Database
 {
+
     public class GenericRepository : IGenericRepository
     {
         private Broker broker = new Broker();
@@ -20,5 +21,7 @@ namespace Library.Database
         public void rollbackTransation() => broker.Rollback();
         public void Save(IEntity entity) => broker.Save(entity);
         public void Delete(IEntity entity) => broker.Delete(entity);
+        public int GetNewID(IEntity entity) => broker.GetNewId(entity);
+        public void Update(IEntity entity) => broker.Update(entity);
     }
 }

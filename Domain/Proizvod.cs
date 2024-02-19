@@ -26,14 +26,21 @@ namespace Domain
             return NazivProizvoda;
         }
 
+        [Browsable(false)]
         public int ProizvodID { get => proizvodID; set => proizvodID = value; }
         public string NazivProizvoda { get => nazivProizvoda; set => nazivProizvoda = value; }
         public int ProdajnaCena { get => prodajnaCena; set => prodajnaCena = value; }
+        [Browsable(false)]
         public float CenaBezPDV { get => cenaBezPDV; set => cenaBezPDV = value; }
+        [Browsable(false)]
         public float VrednostPDV { get => vrednostPDV; set => vrednostPDV = value; }
+        [Browsable(false)]
         public int StanjeLagera { get => stanjeLagera; set => stanjeLagera = value; }
+        [Browsable(false)]
         public PDV pdv { get => PDV; set => PDV = value; }
+        [Browsable(false)]
         public VrstaProizvoda VrstaProizvoda { get => vrstaProizvoda; set => vrstaProizvoda = value; }
+        [Browsable(false)]
         public Cenovnik CenovnikID { get => cenovnik; set => cenovnik = value; }
 
         [Browsable(false)]

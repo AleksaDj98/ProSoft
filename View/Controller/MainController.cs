@@ -11,10 +11,21 @@ namespace View.Controller
 {
     public class MainController
     {
+        UCUnosPorudzbine UnosPorudzbine;
+        USRasporedStolova RasporedStolova;
+
 
         internal void otvoriUCUnosPorudzbine(FrmMain frmMain)
         {
-            frmMain.SetPanel(new UCUnosPorudzbine(new OrderControler()));
+            if(UnosPorudzbine == null)
+            {
+                UnosPorudzbine = new UCUnosPorudzbine(new OrderControler(frmMain));
+                frmMain.SetPanel(UnosPorudzbine);
+            }
+            else
+            {
+                frmMain.SetPanel(UnosPorudzbine);
+            }
         }
 
         internal void otvoriFormuUnosZaposlenog()
@@ -23,15 +34,17 @@ namespace View.Controller
             zaposleni.ShowDialog();
         }
 
-        internal void proveriKorisnika(ToolStripMenuItem cenovnikToolStripMenuItem, ToolStripMenuItem zaposleniToolStripMenuItem, MainCoordinator instance)
+        internal void proveriKorisnika(ToolStripMenuItem cenovnikToolStripMenuItem, ToolStripMenuItem zaposleniToolStripMenuItem, MainCoordinator instance, FrmMain frmMain)
         {
             if(instance.zaposleni.Tip.TipID != 1)
             {
+                frmMain.Text = $"Radnik: {MainCoordinator.Instance.zaposleni.ImeZaposlenog}";
                 cenovnikToolStripMenuItem.Visible = false;
                 zaposleniToolStripMenuItem.Visible = false;
             }
             else
             {
+                frmMain.Text = $"Admin: {MainCoordinator.Instance.zaposleni.ImeZaposlenog}";
                 cenovnikToolStripMenuItem.Visible = true;
                 zaposleniToolStripMenuItem.Visible = true;
             }
@@ -47,6 +60,31 @@ namespace View.Controller
         {
             FrmBrisanjeRadnika radnik = new FrmBrisanjeRadnika(new EmployeController());
             radnik.ShowDialog();
+        }
+
+        internal void otvoriUCRasporedStolova(FrmMain frmMain,OrderControler orderController)
+        {
+            if(RasporedStolova == null)
+            {
+                RasporedStolova = new USRasporedStolova(orderController);
+                frmMain.SetPanel(RasporedStolova);
+            }
+            else
+            {
+                frmMain.SetPanel(RasporedStolova);
+            }
+        }
+
+        internal void otvoriFrmBrisanjeArtikla()
+        {
+            FrmBrisanjeArtikla ba = new FrmBrisanjeArtikla();
+            ba.ShowDialog();
+        }
+
+        internal void otvoriDnevniIzvestaj()
+        {
+            FrmDnevniIzvestaj di = new FrmDnevniIzvestaj();
+            di.ShowDialog();
         }
     }
 }

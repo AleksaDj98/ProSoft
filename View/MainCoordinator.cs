@@ -13,7 +13,7 @@ namespace View
         private MainController controller = new MainController();
         private LoginController loginController = new LoginController();
         private FrmLogin frmLogin;
-        private FrmMain frmMain;
+        private static FrmMain frmMain;
         
         public  Zaposleni zaposleni { get; set; }
 

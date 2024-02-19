@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SystemOperations
 {
+
     public abstract class SystemOperationsBase
     {
         protected GenericRepository repository;

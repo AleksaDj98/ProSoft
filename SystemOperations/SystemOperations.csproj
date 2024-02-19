@@ -42,6 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginSO\prijavaRadnika.cs" />
+    <Compile Include="PorudzbinaSO\SacuvajPorudzbinu.cs" />
+    <Compile Include="PorudzbinaSO\SacuvajRacun.cs" />
+    <Compile Include="PorudzbinaSO\SacuvajRacunID.cs" />
+    <Compile Include="PorudzbinaSO\SacuvajStavkuPorudzbine.cs" />
+    <Compile Include="PorudzbinaSO\VratiIDPorudzbine.cs" />
+    <Compile Include="PorudzbinaSO\VratiIDRacuna.cs" />
+    <Compile Include="PorudzbinaSO\VratiSvePorudzbine.cs" />
+    <Compile Include="ProizvodiSO\ObrisiArtikal.cs" />
     <Compile Include="ProizvodiSO\ProveriProizvod.cs" />
     <Compile Include="ProizvodiSO\SacuvajNoviProizvod.cs" />
     <Compile Include="ProizvodiSO\VratiSvePDV.cs" />

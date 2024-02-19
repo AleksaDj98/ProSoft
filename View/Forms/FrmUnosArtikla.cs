@@ -48,8 +48,8 @@ namespace View.Forms
         private void FrmUnosArtikla_Load(object sender, EventArgs e)
         {
             controller.PopuniComboBox(this,cbPDV,cbVrstaProizvoda);
-            cbVrstaProizvoda.SelectedIndex = -1;
-            cbPDV.SelectedIndex = -1;
+            cbVrstaProizvoda.SelectedItem = null;
+            cbPDV.SelectedItem = null ;
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)

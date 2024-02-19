@@ -11,6 +11,7 @@ namespace View.Controller
 {
     public class EmployeController
     {
+        public List<Zaposleni> sviZaposleni = new List<Zaposleni>();
         public Zaposleni zap;
 
         internal void Obrisi(TextBox txtSifra)
@@ -28,7 +29,7 @@ namespace View.Controller
             {
                 if (MessageBox.Show($"Da li ste sigurni da zelide da izbrisete zaposlenog : {this.zap.ImeZaposlenog}", "Potvrda o brisanju radnika", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Communication.Communication.Instance.Delete(zap);
+                    Communication.Communication.Instance.DeleteEmploye(zap);
                     MessageBox.Show("Radnik je uspesno obrisan");
                 }
             }
@@ -54,9 +55,20 @@ namespace View.Controller
                 return;
             }
 
-            zap = Communication.Communication.Instance.PronadjiZaposlenog(txtSifra.Text);
+            sviZaposleni = Communication.Communication.Instance.PronadjiZaposlenog(txtSifra.Text);
 
-            if(zap == null)
+      
+
+            foreach (Zaposleni z in sviZaposleni)
+            {
+                if (z.SifraLogovanja.Equals(txtSifra.Text))
+                {
+                    zap = z;
+                    break;
+                }
+            }
+
+            if (zap ==  null)
             {
                 MessageBox.Show("Zaposleni za ovom sifrom ne postoji!");
                 return;

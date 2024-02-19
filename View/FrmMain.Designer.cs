@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.izvestajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,16 +39,13 @@
             this.cenovnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unosNovogArtiklaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledArtiklaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.ucUnosPorudzbine1 = new View.UserControls.UCUnosPorudzbine();
             this.menuStrip1.SuspendLayout();
-            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.izvestajiToolStripMenuItem,
@@ -57,7 +53,7 @@
             this.cenovnikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1573, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1726, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,13 +69,14 @@
             // dnevniToolStripMenuItem
             // 
             this.dnevniToolStripMenuItem.Name = "dnevniToolStripMenuItem";
-            this.dnevniToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.dnevniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dnevniToolStripMenuItem.Text = "Dnevni";
+            this.dnevniToolStripMenuItem.Click += new System.EventHandler(this.dnevniToolStripMenuItem_Click);
             // 
             // periodicniToolStripMenuItem
             // 
             this.periodicniToolStripMenuItem.Name = "periodicniToolStripMenuItem";
-            this.periodicniToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.periodicniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.periodicniToolStripMenuItem.Text = "Periodicni";
             // 
             // ZaposleniToolStripMenuItem
@@ -125,42 +122,22 @@
             // 
             this.pregledArtiklaToolStripMenuItem.Name = "pregledArtiklaToolStripMenuItem";
             this.pregledArtiklaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.pregledArtiklaToolStripMenuItem.Text = "Pregled artikla";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            this.pregledArtiklaToolStripMenuItem.Text = "Brisanje artikla";
+            this.pregledArtiklaToolStripMenuItem.Click += new System.EventHandler(this.pregledArtiklaToolStripMenuItem_Click);
             // 
             // pnlMain
             // 
-            this.pnlMain.Controls.Add(this.ucUnosPorudzbine1);
             this.pnlMain.Location = new System.Drawing.Point(0, 33);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1573, 730);
+            this.pnlMain.Size = new System.Drawing.Size(1726, 744);
             this.pnlMain.TabIndex = 4;
-            // 
-            // ucUnosPorudzbine1
-            // 
-            this.ucUnosPorudzbine1.Location = new System.Drawing.Point(0, 4);
-            this.ucUnosPorudzbine1.Margin = new System.Windows.Forms.Padding(4);
-            this.ucUnosPorudzbine1.Name = "ucUnosPorudzbine1";
-            this.ucUnosPorudzbine1.Size = new System.Drawing.Size(1573, 730);
-            this.ucUnosPorudzbine1.TabIndex = 0;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 761);
+            this.ClientSize = new System.Drawing.Size(1726, 777);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -168,9 +145,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.Text = "Kasa, konobar:";
+            this.Load += new System.EventHandler(this.FrmMain_Load_1);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,11 +163,8 @@
         private System.Windows.Forms.ToolStripMenuItem cenovnikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unosNovogArtiklaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledArtiklaToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.ToolStripMenuItem unosNovogZaposlenogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem brisanjeZaposlenogToolStripMenuItem;
-        private UserControls.UCUnosPorudzbine ucUnosPorudzbine1;
     }
 }

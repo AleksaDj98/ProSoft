@@ -2,6 +2,7 @@
 using Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -121,7 +122,7 @@ namespace View.Communication
             klijent.GetResponsResult();
         }
 
-        internal Zaposleni PronadjiZaposlenog(string text)
+        internal List<Zaposleni> PronadjiZaposlenog(string text)
         {
             Request zahtev = new Request()
             {
@@ -130,10 +131,10 @@ namespace View.Communication
             };
             klijent.SendRequest(zahtev);
             List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
-            return zaposleni.FirstOrDefault();
+            return zaposleni;
         }
 
-        internal void Delete(Zaposleni zap)
+        internal void DeleteEmploye(Zaposleni zap)
         {
             Request zahtev = new Request()
             {
@@ -144,7 +145,7 @@ namespace View.Communication
             klijent.GetResponsResult();
         }
 
-        internal bool CheckDevice(TextBox txtNaziv)
+        internal List<Proizvod> CheckArticle(TextBox txtNaziv)
         {
             Request zahtev = new Request()
             {
@@ -153,8 +154,107 @@ namespace View.Communication
             };
             klijent.SendRequest(zahtev);
             List<Proizvod> proizvod = (List<Proizvod>)klijent.GetResponsResult();
-            if (proizvod.Count > 0) return true;
-            return false;
+            //if (proizvod.Count > 0) return true;
+            return proizvod;
+        }
+
+        internal List<Proizvod> GetAllAricles()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetAllArticls
+            };
+            klijent.SendRequest(zahtev);
+            List<Proizvod> vp = (List<Proizvod>)klijent.GetResponsResult();
+            return vp;
+        }
+
+        internal int GetOrderID()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetOrderID
+            };
+            klijent.SendRequest(zahtev);
+            int ID = (int)klijent.GetResponsResult();
+            return ID;
+        }
+
+        internal void SaveOrderItem(StavkaPorudzbine sp)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.SaveOrderItem,
+                requestObject = sp
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
+        }
+
+        internal void SaveOrder(Porudzbina p)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.SaveOrder,
+                requestObject = p
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
+        }
+
+        internal void SaveInvoiceID(Racun r)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.SaveInvoiceID,
+                requestObject = r
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
+        }
+
+        internal int GetInvoiceID()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetInvoicID
+            };
+            klijent.SendRequest(zahtev);
+            int ID = (int)klijent.GetResponsResult();
+            return ID;
+        }
+
+        internal void DeleteArtile(Proizvod p)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.DeleteArticle,
+                requestObject = p
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
+        }
+
+        internal List<Porudzbina> GetAllOrders()
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.GetAllOrders
+            };
+            klijent.SendRequest(zahtev);
+            List<Porudzbina> por = (List<Porudzbina>)klijent.GetResponsResult();
+            return por;
+        }
+
+        internal void SaveInvoice(Racun r)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.SaveInvoice,
+                requestObject = r
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
         }
     }
 }
