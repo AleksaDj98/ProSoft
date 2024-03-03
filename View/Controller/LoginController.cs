@@ -39,21 +39,37 @@ namespace View.Controller
 
 			try
 			{
-				Zaposleni z = Communication.Communication.Instance.Login(text.Text);
-				MainCoordinator.Instance.zaposleni = z;
-				if(z == null)
+				List<Zaposleni> z = Communication.Communication.Instance.Login(text.Text);
+
+
+				for (int i = 0; i < z.Count; i++)
 				{
-					MessageBox.Show("korisnik sa ovim podacima nije pronadjen"); return;
-				}
-				MessageBox.Show($"{z.ImeZaposlenog} dobrodosao/la");
-				MainCoordinator.Instance.OpenMainForm();
-				frmLogin.Dispose();
-			}
+					if (z[i].SifraLogovanja == text.Text)
+					{
+                        MainCoordinator.Instance.zaposleni = z[i];
+                        MessageBox.Show($"{z[i].ImeZaposlenog} dobrodosao/la");
+						MainCoordinator.Instance.OpenMainForm();
+						frmLogin.Dispose();
+						return;
+					}
+                }
+                MessageBox.Show("Korisnik sa ovom sifrom nije pronadjen"); return;
+
+                //if(z == null)
+                //{
+                //	MessageBox.Show("korisnik sa ovim podacima nije pronadjen"); return;
+                //}
+                //MessageBox.Show($"{z.ImeZaposlenog} dobrodosao/la");
+                //MainCoordinator.Instance.OpenMainForm();
+                //frmLogin.Dispose();
+            }
 			catch (Exception)
 			{
 				MessageBox.Show("greska");
 				return;
 			}
+
+
         }
     }
 }

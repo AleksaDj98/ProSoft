@@ -38,6 +38,7 @@ namespace View.Controller
             tekstZaDnevni += $"---------------------------------------------------------------------------------------------------------------------------------------\nPazar: {pazar} ";
 
             StampajUNotepade(tekstZaDnevni);
+            System.Windows.Forms.MessageBox.Show("Dnevni izvestaj je uspesno istampan");
         }
 
         private void StampajUNotepade(string tekstZaDnevni)

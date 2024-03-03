@@ -13,8 +13,8 @@ namespace View.Controller
 {
     public class ArticleController
     {
-        static  List<Proizvod>PomocnaLista = Communication.Communication.Instance.GetAllAricles();
-        static BindingList<Proizvod> sviProizvodi = new BindingList<Proizvod>(PomocnaLista);
+        static List<Proizvod> PomocnaLista;
+        static BindingList<Proizvod> sviProizvodi;
         BindingList<Proizvod> istaLista = sviProizvodi;
         internal void CaluculateReadOnlyTexBox(ComboBox cbPDV, TextBox txtProdajnaCena, TextBox txtVrednostBezPDV, TextBox txtVrednostPDV)
         {
@@ -124,6 +124,7 @@ namespace View.Controller
                 {
                     Communication.Communication.Instance.DeleteArtile(P);
                     MessageBox.Show("Artikal je uspesno obrisan");
+                    setDGV(dgvProizvodi);
                 }
             }
             catch (Exception)
@@ -184,6 +185,8 @@ namespace View.Controller
 
         internal void setDGV(DataGridView dgvProizvodi)
         {
+            PomocnaLista = Communication.Communication.Instance.GetAllAricles();
+            sviProizvodi = new BindingList<Proizvod>(PomocnaLista);
             dgvProizvodi.DataSource = sviProizvodi;
             dgvProizvodi.ClearSelection();
         }

@@ -49,7 +49,7 @@ namespace View.Communication
             soket=null;
         }
 
-        public Zaposleni Login(string text)
+        public List<Zaposleni> Login(string text)
         {
             Request zahtev = new Request()
             {
@@ -58,7 +58,7 @@ namespace View.Communication
             };
             klijent.SendRequest(zahtev);
             List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
-            return zaposleni.FirstOrDefault();
+            return zaposleni;
         }
 
         internal bool ProveriSifru(TextBox textSifra)
@@ -70,11 +70,15 @@ namespace View.Communication
             };
             klijent.SendRequest(zahtev);
             List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
-            if (zaposleni.Count > 0)
+            for (int i = 0; i < zaposleni.Count; i++)
             {
-                MessageBox.Show("Korisnik sa ovom sifrom vec postoji");
-                return true;
+                if (zaposleni[i].SifraLogovanja == textSifra.Text) return true;
             }
+            //if (zaposleni.Count > 0)
+            //{
+            //    MessageBox.Show("Korisnik sa ovom sifrom vec postoji");
+            //    return true;
+            //}
             return  false;
         }
 

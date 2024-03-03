@@ -83,6 +83,7 @@ namespace View.Controller
             {
                 txtPrivilegije.Text = "Zaposleni";
             }
+            MessageBox.Show("Zaposleni je uspesno pronadjen.");
         }
 
         internal void sacuvajZaposlenog(TextBox textIme, TextBox textSifra, CheckBox chbAdmin)
@@ -96,6 +97,7 @@ namespace View.Controller
 
             if (string.IsNullOrEmpty(textSifra.Text) || Communication.Communication.Instance.ProveriSifru(textSifra))
             {
+                MessageBox.Show("Zaposleni sa ovom sifrom vec postoji");
                 textSifra.BackColor = Color.Salmon;
                 textSifra.Focus();
                 return;
@@ -121,7 +123,7 @@ namespace View.Controller
             }
             catch (Exception)
             {
-                MessageBox.Show("Trenutno nije moguce kreirati novog zaposlenog");
+                MessageBox.Show("Sistem ne moze da sacuva podatke o radniku");
             }
         }
 
