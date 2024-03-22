@@ -23,5 +23,6 @@ namespace Library.Database
         public void Delete(IEntity entity) => broker.Delete(entity);
         public int GetNewID(IEntity entity) => broker.GetNewId(entity);
         public void Update(IEntity entity) => broker.Update(entity);
+        public IEntity GetOne(IEntity entity) => broker.getOne(entity);
     }
 }

@@ -16,7 +16,7 @@ namespace Domain
         string izmena { get; }
         string unos { get; }
         string selekcija { get; }
-            
+        IEntity GetEntity(SqlDataReader reader); 
         List<IEntity> GetEntites(SqlDataReader reader);
     }
 }

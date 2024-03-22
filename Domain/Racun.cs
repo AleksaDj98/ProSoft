@@ -48,5 +48,17 @@ namespace Domain
             }
             return result;
         }
+
+        public IEntity GetEntity(SqlDataReader reader)
+        {
+            Racun r = new Racun();
+            while (reader.Read())
+            {
+                r.racunID = Convert.ToInt32(reader["RacunID"]);
+                r.VremeIzdavanja = Convert.ToDateTime(reader["VremeIzdavanja"]);
+                r.cenaRacuna = Convert.ToInt32(reader["Cena"]);
+            }
+            return r;
+        }
     }
 }

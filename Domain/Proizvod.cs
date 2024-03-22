@@ -19,7 +19,6 @@ namespace Domain
         private int stanjeLagera;
         private PDV PDV;
         private VrstaProizvoda vrstaProizvoda;
-        private Cenovnik cenovnik;
 
         public override string ToString()
         {
@@ -41,9 +40,6 @@ namespace Domain
         [Browsable(false)]
         public VrstaProizvoda VrstaProizvoda { get => vrstaProizvoda; set => vrstaProizvoda = value; }
         [Browsable(false)]
-        public Cenovnik CenovnikID { get => cenovnik; set => cenovnik = value; }
-
-        [Browsable(false)]
         public string nazivTabele => "Proizvod";
         [Browsable(false)]
         public string primarniKljuc => "ProizvodID";
@@ -54,7 +50,7 @@ namespace Domain
         [Browsable(false)]
         public string izmena => null;
         [Browsable(false)]
-        public string unos => $"'{NazivProizvoda}',{ProdajnaCena},{CenaBezPDV},{VrednostPDV},{StanjeLagera},{pdv.PDVID1},{VrstaProizvoda.VrstaProizvodaID},{CenovnikID.CenovnikID}"; 
+        public string unos => $"'{NazivProizvoda}',{ProdajnaCena},{CenaBezPDV},{VrednostPDV},{StanjeLagera},{pdv.PDVID1},{VrstaProizvoda.VrstaProizvodaID}"; 
         [Browsable(false)]
         public string selekcija => "*";
         
@@ -76,11 +72,31 @@ namespace Domain
                 VrstaProizvoda vp = new VrstaProizvoda();
                 vp.VrstaProizvodaID = Convert.ToInt32(reader["vrstaProizvoda"]);
                 p.VrstaProizvoda = vp;
-                Cenovnik c = new Cenovnik();
-                c.CenovnikID = Convert.ToInt32(reader["CenovnikID"]);
                 result.Add(p);
             }
             return result;
+        }
+
+        public IEntity GetEntity(SqlDataReader reader)
+        {
+            Proizvod p = new Proizvod();
+            while (reader.Read())
+            {
+                //Proizvod p = new Proizvod();
+                p.ProizvodID = Convert.ToInt32(reader["ProizvodID"]);
+                p.NazivProizvoda = reader["nazivProizvoda"].ToString();
+                p.prodajnaCena = Convert.ToInt32(reader["prodajnaCena"]);
+                p.cenaBezPDV = Convert.ToInt32(reader["cenaBezPDV"]);
+                p.VrednostPDV = Convert.ToInt32(reader["vrednostPDV"]);
+                p.StanjeLagera = Convert.ToInt32(reader["stanjeLagera"]);
+                PDV pdv = new PDV();
+                pdv.PDVID1 = Convert.ToInt32(reader["PDVID"]);
+                p.PDV = pdv;
+                VrstaProizvoda vp = new VrstaProizvoda();
+                vp.VrstaProizvodaID = Convert.ToInt32(reader["vrstaProizvoda"]);
+                p.VrstaProizvoda = vp;
+            }
+            return p;
         }
     }
  }

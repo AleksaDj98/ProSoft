@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -152,7 +153,6 @@ namespace View.Controller
                 {
                     Communication.Communication.Instance.SaveOrderItem(sp);
                 }
-
                 MessageBox.Show($"Porudzbina je uspesno postavljena na sto {Sto.StoID}");
                 proizvodi.Clear();
                 OtvoriUCUnosPorudzbine();

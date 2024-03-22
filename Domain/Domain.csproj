@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cenovnik.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="PDV.cs" />
     <Compile Include="Porudzbina.cs" />

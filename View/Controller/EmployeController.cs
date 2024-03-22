@@ -11,7 +11,7 @@ namespace View.Controller
 {
     public class EmployeController
     {
-        public List<Zaposleni> sviZaposleni = new List<Zaposleni>();
+        
         public Zaposleni zap;
 
         internal void Obrisi(TextBox txtSifra)
@@ -55,27 +55,16 @@ namespace View.Controller
                 return;
             }
 
-            sviZaposleni = Communication.Communication.Instance.PronadjiZaposlenog(txtSifra.Text);
+            Zaposleni z = Communication.Communication.Instance.PronadjiZaposlenog(txtSifra.Text);
 
-      
-
-            foreach (Zaposleni z in sviZaposleni)
-            {
-                if (z.SifraLogovanja.Equals(txtSifra.Text))
-                {
-                    zap = z;
-                    break;
-                }
-            }
-
-            if (zap ==  null)
+            if (z ==  null)
             {
                 MessageBox.Show("Zaposleni za ovom sifrom ne postoji!");
                 return;
             }
 
-            txtIme.Text = zap.ImeZaposlenog;
-            if (zap.Tip.Ovlascenje)
+            txtIme.Text = z.ImeZaposlenog;
+            if (z.Tip.Ovlascenje)
             {
                 txtPrivilegije.Text = "Admin";
             }

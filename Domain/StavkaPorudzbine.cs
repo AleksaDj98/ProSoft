@@ -63,5 +63,22 @@ namespace Domain
             }
             return result;
         }
+
+        public IEntity GetEntity(SqlDataReader reader)
+        {;
+            StavkaPorudzbine sp = new StavkaPorudzbine();
+            while (reader.Read())
+            {
+                Porudzbina p = new Porudzbina();
+                p.PorudzbinaID = Convert.ToInt32(reader["PorudzbinaID"]);
+                sp.Porudzbina = p;
+                Proizvod pr = new Proizvod();
+                pr.ProizvodID = Convert.ToInt32(reader["ProizvodID"]);
+                sp.Proizvod = pr;
+                kolicina = Convert.ToInt32(reader["Kolicina"]);
+                cena = (int)Convert.ToDouble(reader["Cena"]);
+            }
+            return sp;
+        }
     }
 }

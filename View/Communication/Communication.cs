@@ -49,7 +49,7 @@ namespace View.Communication
             soket=null;
         }
 
-        public List<Zaposleni> Login(string text)
+        public Zaposleni Login(string text)
         {
             Request zahtev = new Request()
             {
@@ -57,7 +57,7 @@ namespace View.Communication
                 requestObject = new Zaposleni { SifraLogovanja = text }
             };
             klijent.SendRequest(zahtev);
-            List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
+            Zaposleni zaposleni = (Zaposleni)klijent.GetResponsResult();
             return zaposleni;
         }
 
@@ -69,16 +69,8 @@ namespace View.Communication
                 requestObject = new Zaposleni { SifraLogovanja = textSifra.Text }
             };
             klijent.SendRequest(zahtev);
-            List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
-            for (int i = 0; i < zaposleni.Count; i++)
-            {
-                if (zaposleni[i].SifraLogovanja == textSifra.Text) return true;
-            }
-            //if (zaposleni.Count > 0)
-            //{
-            //    MessageBox.Show("Korisnik sa ovom sifrom vec postoji");
-            //    return true;
-            //}
+            Zaposleni zaposleni = (Zaposleni)klijent.GetResponsResult();
+            if (zaposleni == null) return true;
             return  false;
         }
 
@@ -126,7 +118,7 @@ namespace View.Communication
             klijent.GetResponsResult();
         }
 
-        internal List<Zaposleni> PronadjiZaposlenog(string text)
+        internal Zaposleni PronadjiZaposlenog(string text)
         {
             Request zahtev = new Request()
             {
@@ -134,7 +126,7 @@ namespace View.Communication
                 requestObject = new Zaposleni { SifraLogovanja = text}
             };
             klijent.SendRequest(zahtev);
-            List<Zaposleni> zaposleni = (List<Zaposleni>)klijent.GetResponsResult();
+            Zaposleni zaposleni = (Zaposleni)klijent.GetResponsResult();
             return zaposleni;
         }
 

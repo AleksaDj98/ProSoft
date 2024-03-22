@@ -39,30 +39,31 @@ namespace View.Controller
 
 			try
 			{
-				List<Zaposleni> z = Communication.Communication.Instance.Login(text.Text);
+				Zaposleni z = Communication.Communication.Instance.Login(text.Text);
 
 
-				for (int i = 0; i < z.Count; i++)
+				//for (int i = 0; i < z.Count; i++)
+				//{
+				//	if (z[i].SifraLogovanja == text.Text)
+				//	{
+				//                    MainCoordinator.Instance.zaposleni = z[i];
+				//                    MessageBox.Show($"{z[i].ImeZaposlenog} dobrodosao/la");
+				//		MainCoordinator.Instance.OpenMainForm();
+				//		frmLogin.Dispose();
+				//		return;
+				//	}
+				//}
+				//MessageBox.Show("Korisnik sa ovom sifrom nije pronadjen"); return;
+
+				if (z == null)
 				{
-					if (z[i].SifraLogovanja == text.Text)
-					{
-                        MainCoordinator.Instance.zaposleni = z[i];
-                        MessageBox.Show($"{z[i].ImeZaposlenog} dobrodosao/la");
-						MainCoordinator.Instance.OpenMainForm();
-						frmLogin.Dispose();
-						return;
-					}
-                }
-                MessageBox.Show("Korisnik sa ovom sifrom nije pronadjen"); return;
-
-                //if(z == null)
-                //{
-                //	MessageBox.Show("korisnik sa ovim podacima nije pronadjen"); return;
-                //}
-                //MessageBox.Show($"{z.ImeZaposlenog} dobrodosao/la");
-                //MainCoordinator.Instance.OpenMainForm();
-                //frmLogin.Dispose();
-            }
+					MessageBox.Show("korisnik sa ovim podacima nije pronadjen"); return;
+				}
+				MessageBox.Show($"{z.ImeZaposlenog} dobrodosao/la");
+				MainCoordinator.Instance.zaposleni = z;
+				MainCoordinator.Instance.OpenMainForm();
+				frmLogin.Dispose();
+			}
 			catch (Exception)
 			{
 				MessageBox.Show("greska");

@@ -9,11 +9,11 @@ namespace SystemOperations.ZaposlenogSO
 {
     public class PronadjiZaposlenog:SystemOperationsBase
     {
-        public List<Zaposleni> zap;
+        public Zaposleni zap;
 
         protected override void executeOperation(IEntity entity)
         {
-            zap = repository.GetAll(entity).Cast<Zaposleni>().ToList();
+            zap = repository.GetOne(entity) as Zaposleni;
         }
     }
  }

@@ -170,9 +170,7 @@ namespace View.Controller
                 VrstaProizvoda vp = new VrstaProizvoda();
                 vp = cbVrstaProizvoda.SelectedItem as VrstaProizvoda;
                 p.VrstaProizvoda = vp;
-                Cenovnik c = new Cenovnik();
-                c.CenovnikID = 1;
-                p.CenovnikID = c;
+
 
                 Communication.Communication.Instance.SaveProduct(p);
                 MessageBox.Show("Proizvod je uspesno sacuvan!");

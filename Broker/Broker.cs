@@ -64,6 +64,17 @@ namespace DatabaseBroker
             }
         }
 
+        public IEntity getOne(IEntity entity)
+        {
+            IEntity rezultat;
+            SqlCommand command = new SqlCommand("", connection, transaction);
+            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele} {entity.uslovPrimarni} {entity.uslovOstalo}";
+            SqlDataReader reader = command.ExecuteReader();
+            rezultat = entity.GetEntity(reader);
+            reader.Close();
+            return rezultat;
+        }
+
         public List<IEntity> getAll(IEntity entity)
         {
             List<IEntity> rezultat;

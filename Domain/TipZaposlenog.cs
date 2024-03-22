@@ -52,5 +52,10 @@ namespace Domain
             }
             return result;
         }
+
+        public IEntity GetEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
