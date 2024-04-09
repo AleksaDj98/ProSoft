@@ -12,10 +12,10 @@ using View.Controller;
 
 namespace View.Forms
 {
-    public partial class FrmBrisanjeRadnika : Form
+    public partial class FrmPromenaStatusaRadnika : Form
     {
         EmployeController controller;
-        public FrmBrisanjeRadnika(EmployeController controller)
+        public FrmPromenaStatusaRadnika(EmployeController controller)
         {
             InitializeComponent();
             this.controller = controller;

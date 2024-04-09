@@ -120,16 +120,16 @@ namespace View.Controller
 
             try
             {
-                if (MessageBox.Show($"Da li ste sigurni da zelide da izbrisete artikal : {P.NazivProizvoda}", "Potvrda o brisanju artikla", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Da li ste sigurni da zelide da promenite status proizvoda : {P.NazivProizvoda}", "Potvrda o proeni statusa porizvoda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Communication.Communication.Instance.DeleteArtile(P);
-                    MessageBox.Show("Artikal je uspesno obrisan");
+                    MessageBox.Show($"Proizvodu {P.NazivProizvoda} je uspesno proenjen status");
                     setDGV(dgvProizvodi);
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Ne mozemo da izbrisemo artikal");
+                MessageBox.Show("Ne mozemo da promenimo status ovog proizvoda");
             }
 
         }

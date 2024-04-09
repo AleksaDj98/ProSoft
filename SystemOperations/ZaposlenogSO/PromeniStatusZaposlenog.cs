@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SystemOperations.ProizvodiSO
+namespace SystemOperations.ZaposlenogSO
 {
-    public class ObrisiArtikal : SystemOperationsBase
+    public class PromeniStatusZaposlenog : SystemOperationsBase
     {
         protected override void executeOperation(IEntity entity)
         {
-           repository.Delete(entity);
+            repository.Update(entity);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Server
             btnStop.Enabled = false;
         }
 
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             s = new Server();
@@ -44,6 +45,11 @@ namespace Server
             s.Stop();
             btnStart.Enabled = true;
             btnStop.Enabled = false;
+        }
+
+        private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

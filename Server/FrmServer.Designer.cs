@@ -36,7 +36,7 @@
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(9, 50);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(149, 44);
             this.btnStart.TabIndex = 0;
@@ -47,7 +47,7 @@
             // btnStop
             // 
             this.btnStop.Location = new System.Drawing.Point(163, 50);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(2);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(149, 44);
             this.btnStop.TabIndex = 1;
@@ -63,9 +63,10 @@
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmServer";
             this.Text = "Server";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmServer_FormClosed);
             this.Load += new System.EventHandler(this.FrmServer_Load);
             this.ResumeLayout(false);
 

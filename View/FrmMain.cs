@@ -16,6 +16,7 @@ namespace View
     {
         private readonly MainController controller;
         private MainCoordinator instance;
+        private UserControl uc;
 
         public FrmMain(MainController controller, MainCoordinator instance)
         {
@@ -28,9 +29,11 @@ namespace View
         }
         public void SetPanel(UserControl userControl)
         {
+            uc = userControl;
             pnlMain.Controls.Clear();
             userControl.Parent = pnlMain;
             userControl.Dock= DockStyle.Fill;
+            //userControl.Dispose();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -77,6 +80,11 @@ namespace View
         private void dnevniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.otvoriDnevniIzvestaj();
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        { 
+            MainController.CloseMainForm();
         }
     }
 }

@@ -1,8 +1,17 @@
 ﻿using Domain;
+using Org.BouncyCastle.Asn1.Pkcs;
+using PdfSharp.Charting;
+using PdfSharp.Drawing;
+using PdfSharp.Internal;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.Annotations;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +24,9 @@ namespace View.Controller
     {
         BindingList<StavkaPorudzbine> porudzbina = new BindingList<StavkaPorudzbine>();
         BindingList<StavkaPorudzbine> PorudzbineNaStolu = new BindingList<StavkaPorudzbine>();
+        private List<StavkaPorudzbine> proizvodiZaRacun = new List<StavkaPorudzbine>();
         Racun LokalniRacun;
+        int ukupnoNaStolu = 0;
 
 
 
@@ -79,13 +90,22 @@ namespace View.Controller
                 btn.Visible = false;
             }
 
-           proizvodiLista = Communication.Communication.Instance.GetAllAricles();
-            
+            proizvodiLista = Communication.Communication.Instance.GetAllAricles();
 
-            for (int i = 0; i < Math.Min(proizvodiLista.Count,gpProizvodi.Controls.Count); i++)
+            List<Proizvod> aktivni = new List<Proizvod>();
+
+            for (int i = 0; i < proizvodiLista.Count; i++)
             {
-                gpProizvodi.Controls[i].Text = proizvodiLista[i].NazivProizvoda;
-                gpProizvodi.Controls[i].Visible = true;
+                if (proizvodiLista[i].Aktivan == true)
+                {
+                    aktivni.Add(proizvodiLista[i]);
+                }
+            }
+
+            for (int i = 0; i < Math.Min(aktivni.Count,gpProizvodi.Controls.Count); i++)
+            { 
+                    gpProizvodi.Controls[i].Text = aktivni[i].NazivProizvoda;
+                    gpProizvodi.Controls[i].Visible = true;
             }
         }
 
@@ -138,6 +158,7 @@ namespace View.Controller
                     Communication.Communication.Instance.SaveInvoiceID(r);
                 }
                 p.R = r;
+                LokalniRacun = r;
 
                 foreach (StavkaPorudzbine stavkaPorudzbine in proizvodi)
                 {
@@ -146,6 +167,8 @@ namespace View.Controller
                     stavkaPorudzbine.Porudzbina = p;
                     sto.Add(stavkaPorudzbine);
                 }
+
+                ukupnoNaStolu += p.Cena;
 
                 Communication.Communication.Instance.SaveOrder(p);
 
@@ -164,7 +187,7 @@ namespace View.Controller
                 throw;
             }
         }
-        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Racun r)
+        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Racun r, Label label1)
         {
             if (sto.Count > 0)
             {
@@ -176,23 +199,26 @@ namespace View.Controller
             }
             PorudzbineNaStolu = sto;
             LokalniRacun = r;
+            label1.Text = $"Ukupno: {ukupnoNaStolu}";
             dgvPregledPorudzbina.DataSource = sto;
         }
 
         internal void obrisiArtikalIzPorudzbine(DataGridView dgwPorudzbina)
         {
-            StavkaPorudzbine sp =  dgwPorudzbina.SelectedRows[0].DataBoundItem as StavkaPorudzbine;
-            proizvodi.Remove(sp);
+
+                StavkaPorudzbine sp = dgwPorudzbina.SelectedRows[0].DataBoundItem as StavkaPorudzbine;
+                proizvodi.Remove(sp);
         }
 
-        internal void stamampajRacun(DataGridView dgvPregledPorudzbina)
+        internal void stamampajRacun(DataGridView dgvPregledPorudzbina, Label label1)
         {
-            List<StavkaPorudzbine> proizvodiZaRacun = new List<StavkaPorudzbine>();
+
 
             foreach (DataGridViewRow dgv in dgvPregledPorudzbina.Rows)
             {
                 StavkaPorudzbine s = dgv.DataBoundItem as StavkaPorudzbine;
-                proizvodiZaRacun.Add(s);
+                dodajUlistu(s,proizvodiZaRacun);
+                //proizvodiZaRacun.Add(s);
             }
             Porudzbina por = new Porudzbina();
             por.PorudzbinaID = proizvodiZaRacun[0].Porudzbina.PorudzbinaID;
@@ -218,8 +244,12 @@ namespace View.Controller
             try
             {
                 Communication.Communication.Instance.SaveInvoice(r);
+                stampanjeRacuna(r,proizvodiZaRacun);
                 MessageBox.Show($"Ukupan racun za naplatu je: {r.CenaRacuna}");
+                label1.Text = "Ukupno: ";
                 LokalniRacun = null;
+                ukupnoNaStolu = 0;
+                proizvodiZaRacun.Clear();
                 PorudzbineNaStolu.Clear();
             }
             catch (Exception)
@@ -227,9 +257,76 @@ namespace View.Controller
                 MessageBox.Show("Greska prilikom stampanja racuna");
                 throw;
             }
+        }
+
+        private void dodajUlistu(StavkaPorudzbine s, List<StavkaPorudzbine> proizvodiZaRacun)
+        {
+            if (proizvodiZaRacun.Count == 0) 
+            {
+                proizvodiZaRacun.Add(s);
+                return;
+            } 
+
+            bool postojiProizvod = false;
+            for(int i = 0; i <proizvodiZaRacun.Count;i++ )
+            {
+                if (proizvodiZaRacun[i].Proizvod == s.Proizvod )
+                {
+                    proizvodiZaRacun[i].Kolicina += s.Kolicina;
+                    proizvodiZaRacun[i].Cena += s.Cena;
+                    postojiProizvod = true;
+                    break;
+                }
+            }
+            if (!postojiProizvod)
+            {
+                proizvodiZaRacun.Add(s);
+            }
+        }
+
+        private void stampanjeRacuna(Racun r, List<StavkaPorudzbine> pzr)
+        {
+            string[] podaciZaDnevni;
+
+            string tekstZaRacun = $"Racun br. {r.RacunID}\n";
+            tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\n" +
+                $"Naziv proizvoda                 Jedinicna cena                       Kolicina                     Cena\n";
+
+            for (int i = 0; i < pzr.Count; i++)
+            {
+                for (int y = 0; y < proizvodiLista.Count; y++)
+                {
+                    if (pzr[i].Proizvod.ProizvodID == proizvodiLista[y].ProizvodID)
+                    {
+                        tekstZaRacun += $"{proizvodiLista[y].NazivProizvoda}                            {proizvodiLista[y].ProdajnaCena}                                   {pzr[i].Kolicina}                                     {pzr[i].Cena} \n"; break;
+                    }
+                }
+            }
+
+            tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\nUkupno za naplatu: {r.CenaRacuna} ";
+            stampajUPDF(tekstZaRacun, r);
+            System.Windows.Forms.MessageBox.Show($"Racun br. {r.RacunID} je uspesno istampan");
+        }
 
 
-
+        private void stampajUPDF(string tekstZaRacun, Racun r)
+        {
+            PdfDocument stampaRacuna = new PdfDocument();
+            PdfPage page = stampaRacuna.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            XFont font = new XFont("Arial", 12);
+            string[] linije = tekstZaRacun.Split('\n');
+            int y = 50;
+            foreach (string linija in linije)
+            {
+                gfx.DrawString(linija, font, XBrushes.Black, new XPoint(50, y));
+                y += 20;
+            }
+            string solutionFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string putanja = Path.Combine(solutionFolder, "Racuni", $"Racun_br.{r.RacunID}.pdf");
+            stampaRacuna.Save(putanja);
+            stampaRacuna.Close();
+            Process.Start(putanja);
         }
     }
 }

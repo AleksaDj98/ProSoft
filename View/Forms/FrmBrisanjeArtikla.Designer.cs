@@ -38,11 +38,12 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(499, 555);
+            this.btnObrisi.Location = new System.Drawing.Point(374, 451);
+            this.btnObrisi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(196, 58);
+            this.btnObrisi.Size = new System.Drawing.Size(147, 47);
             this.btnObrisi.TabIndex = 0;
-            this.btnObrisi.Text = "Obrisi artikal";
+            this.btnObrisi.Text = "Promeni status";
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
@@ -52,37 +53,41 @@
             this.dgvProizvodi.AllowUserToDeleteRows = false;
             this.dgvProizvodi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProizvodi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProizvodi.Location = new System.Drawing.Point(23, 66);
+            this.dgvProizvodi.Location = new System.Drawing.Point(17, 54);
+            this.dgvProizvodi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvProizvodi.MultiSelect = false;
             this.dgvProizvodi.Name = "dgvProizvodi";
             this.dgvProizvodi.ReadOnly = true;
             this.dgvProizvodi.RowHeadersWidth = 51;
             this.dgvProizvodi.RowTemplate.Height = 24;
             this.dgvProizvodi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProizvodi.Size = new System.Drawing.Size(672, 468);
+            this.dgvProizvodi.Size = new System.Drawing.Size(504, 380);
             this.dgvProizvodi.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 17);
+            this.label1.Location = new System.Drawing.Point(22, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 20);
+            this.label1.Size = new System.Drawing.Size(136, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Unesite naziv proizvoda";
             // 
             // txtNazivProizvoda
             // 
-            this.txtNazivProizvoda.Location = new System.Drawing.Point(194, 15);
+            this.txtNazivProizvoda.Location = new System.Drawing.Point(146, 12);
+            this.txtNazivProizvoda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNazivProizvoda.Name = "txtNazivProizvoda";
-            this.txtNazivProizvoda.Size = new System.Drawing.Size(280, 22);
+            this.txtNazivProizvoda.Size = new System.Drawing.Size(211, 20);
             this.txtNazivProizvoda.TabIndex = 3;
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(499, 11);
+            this.btnPretrazi.Location = new System.Drawing.Point(374, 9);
+            this.btnPretrazi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(180, 28);
+            this.btnPretrazi.Size = new System.Drawing.Size(135, 23);
             this.btnPretrazi.TabIndex = 4;
             this.btnPretrazi.Text = "Pretrazi";
             this.btnPretrazi.UseVisualStyleBackColor = true;
@@ -90,14 +95,15 @@
             // 
             // FrmBrisanjeArtikla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 641);
+            this.ClientSize = new System.Drawing.Size(532, 521);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.txtNazivProizvoda);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProizvodi);
             this.Controls.Add(this.btnObrisi);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmBrisanjeArtikla";
             this.Text = "Brisanje Artikla";
             this.Load += new System.EventHandler(this.FrmBrisanjeArtikla_Load);

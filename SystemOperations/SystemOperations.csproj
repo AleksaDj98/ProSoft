@@ -49,7 +49,7 @@
     <Compile Include="PorudzbinaSO\VratiIDPorudzbine.cs" />
     <Compile Include="PorudzbinaSO\VratiIDRacuna.cs" />
     <Compile Include="PorudzbinaSO\VratiSvePorudzbine.cs" />
-    <Compile Include="ProizvodiSO\ObrisiArtikal.cs" />
+    <Compile Include="ProizvodiSO\PromeniStatusProizvoda.cs" />
     <Compile Include="ProizvodiSO\ProveriProizvod.cs" />
     <Compile Include="ProizvodiSO\SacuvajNoviProizvod.cs" />
     <Compile Include="ProizvodiSO\VratiSvePDV.cs" />
@@ -58,7 +58,7 @@
     <Compile Include="ZaposlenogSO\KreirajRadnika.cs" />
     <Compile Include="SystemOperationsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZaposlenogSO\obrisiRadnika.cs" />
+    <Compile Include="ZaposlenogSO\PromeniStatusZaposlenog.cs" />
     <Compile Include="ZaposlenogSO\PronadjiZaposlenog.cs" />
   </ItemGroup>
   <ItemGroup>

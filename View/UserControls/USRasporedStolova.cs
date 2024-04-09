@@ -67,7 +67,7 @@ namespace View.UserControls
                 }
                 else
                 {
-                    controller.setDGVInRasporedStolova(sto3, dgvPregledPorudzbina, btnStampaj,r3);
+                    controller.setDGVInRasporedStolova(sto3, dgvPregledPorudzbina, btnStampaj,r3, label1);
                 }
         }
 
@@ -87,7 +87,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto1, dgvPregledPorudzbina, btnStampaj,r1);
+                controller.setDGVInRasporedStolova(sto1, dgvPregledPorudzbina, btnStampaj,r1, label1);
             }
         }
 
@@ -107,7 +107,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto2, dgvPregledPorudzbina, btnStampaj,r2);
+                controller.setDGVInRasporedStolova(sto2, dgvPregledPorudzbina, btnStampaj,r2, label1);
             }
         }
 
@@ -127,7 +127,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto4, dgvPregledPorudzbina, btnStampaj,r4);
+                controller.setDGVInRasporedStolova(sto4, dgvPregledPorudzbina, btnStampaj,r4, label1);
             }
         }
 
@@ -147,7 +147,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto5, dgvPregledPorudzbina, btnStampaj,r5);
+                controller.setDGVInRasporedStolova(sto5, dgvPregledPorudzbina, btnStampaj,r5, label1);
             }
         }
 
@@ -167,7 +167,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto6, dgvPregledPorudzbina, btnStampaj,r6);
+                controller.setDGVInRasporedStolova(sto6, dgvPregledPorudzbina, btnStampaj,r6, label1);
             }
         }
 
@@ -187,7 +187,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto7, dgvPregledPorudzbina, btnStampaj,r7);
+                controller.setDGVInRasporedStolova(sto7, dgvPregledPorudzbina, btnStampaj,r7,label1);
             }
         }
 
@@ -207,7 +207,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto8, dgvPregledPorudzbina, btnStampaj,r8);
+                controller.setDGVInRasporedStolova(sto8, dgvPregledPorudzbina, btnStampaj,r8,label1);
             }
         }
 
@@ -227,7 +227,7 @@ namespace View.UserControls
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto9, dgvPregledPorudzbina, btnStampaj,r9);
+                controller.setDGVInRasporedStolova(sto9, dgvPregledPorudzbina, btnStampaj,r9,label1);
             }
         }
 
@@ -243,7 +243,7 @@ namespace View.UserControls
 
         private void btnStampaj_Click(object sender, EventArgs e)
         {
-            controller.stamampajRacun(dgvPregledPorudzbina);
+            controller.stamampajRacun(dgvPregledPorudzbina,label1);
         }
     }
 }

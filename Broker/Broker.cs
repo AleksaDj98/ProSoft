@@ -68,7 +68,7 @@ namespace DatabaseBroker
         {
             IEntity rezultat;
             SqlCommand command = new SqlCommand("", connection, transaction);
-            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele} {entity.uslovPrimarni} {entity.uslovOstalo}";
+            command.CommandText = $"SELECT {entity.selekcija} from {entity.nazivTabele} {entity.uslovPrimarni}";
             SqlDataReader reader = command.ExecuteReader();
             rezultat = entity.GetEntity(reader);
             reader.Close();
@@ -105,7 +105,7 @@ namespace DatabaseBroker
         public void Update(IEntity entity)
         {
             SqlCommand command = new SqlCommand("", connection, transaction);
-            command.CommandText = $"UPDATE {entity.nazivTabele}{entity.izmena}{entity.uslovPrimarni}";
+            command.CommandText = $"UPDATE {entity.nazivTabele} {entity.izmena} {entity.uslovPrimarni}";
             if (command.ExecuteNonQuery() != 1)
             {
                 throw new Exception("Database error!");

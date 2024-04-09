@@ -52,7 +52,8 @@
             this.cenovnikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1726, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1294, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,7 +68,7 @@
             // dnevniToolStripMenuItem
             // 
             this.dnevniToolStripMenuItem.Name = "dnevniToolStripMenuItem";
-            this.dnevniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dnevniToolStripMenuItem.Size = new System.Drawing.Size(138, 26);
             this.dnevniToolStripMenuItem.Text = "Dnevni";
             this.dnevniToolStripMenuItem.Click += new System.EventHandler(this.dnevniToolStripMenuItem_Click);
             // 
@@ -106,37 +107,36 @@
             // unosNovogArtiklaToolStripMenuItem
             // 
             this.unosNovogArtiklaToolStripMenuItem.Name = "unosNovogArtiklaToolStripMenuItem";
-            this.unosNovogArtiklaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.unosNovogArtiklaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.unosNovogArtiklaToolStripMenuItem.Text = "Unos novog artikla";
             this.unosNovogArtiklaToolStripMenuItem.Click += new System.EventHandler(this.unosNovogArtiklaToolStripMenuItem_Click);
             // 
             // pregledArtiklaToolStripMenuItem
             // 
             this.pregledArtiklaToolStripMenuItem.Name = "pregledArtiklaToolStripMenuItem";
-            this.pregledArtiklaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pregledArtiklaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.pregledArtiklaToolStripMenuItem.Text = "Brisanje artikla";
             this.pregledArtiklaToolStripMenuItem.Click += new System.EventHandler(this.pregledArtiklaToolStripMenuItem_Click);
             // 
             // pnlMain
             // 
-            this.pnlMain.Location = new System.Drawing.Point(0, 33);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlMain.Location = new System.Drawing.Point(0, 27);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1726, 744);
+            this.pnlMain.Size = new System.Drawing.Size(1294, 604);
             this.pnlMain.TabIndex = 4;
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1726, 777);
+            this.ClientSize = new System.Drawing.Size(1294, 631);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.Text = "Kasa, konobar:";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load_1);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

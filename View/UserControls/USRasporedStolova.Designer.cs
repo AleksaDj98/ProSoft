@@ -42,6 +42,7 @@
             this.dgvPregledPorudzbina = new System.Windows.Forms.DataGridView();
             this.btnStampaj = new System.Windows.Forms.Button();
             this.btnNazad = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregledPorudzbina)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Location = new System.Drawing.Point(96, 37);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 138);
             this.button1.TabIndex = 0;
@@ -62,7 +63,7 @@
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.Location = new System.Drawing.Point(253, 37);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 138);
             this.button2.TabIndex = 1;
@@ -74,7 +75,7 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.Location = new System.Drawing.Point(410, 37);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(132, 138);
             this.button3.TabIndex = 2;
@@ -86,7 +87,7 @@
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button4.Location = new System.Drawing.Point(571, 37);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(268, 138);
             this.button4.TabIndex = 3;
@@ -98,7 +99,7 @@
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button5.Location = new System.Drawing.Point(706, 213);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 141);
             this.button5.TabIndex = 4;
@@ -110,7 +111,7 @@
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button6.Location = new System.Drawing.Point(706, 400);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(132, 141);
             this.button6.TabIndex = 5;
@@ -122,7 +123,7 @@
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button7.Location = new System.Drawing.Point(356, 400);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(292, 141);
             this.button7.TabIndex = 6;
@@ -134,7 +135,7 @@
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button8.Location = new System.Drawing.Point(206, 400);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(132, 141);
             this.button8.TabIndex = 7;
@@ -146,7 +147,7 @@
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button9.Location = new System.Drawing.Point(56, 400);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(132, 141);
             this.button9.TabIndex = 8;
@@ -167,9 +168,9 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(392, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(891, 567);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
@@ -184,7 +185,7 @@
             this.dgvPregledPorudzbina.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPregledPorudzbina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPregledPorudzbina.Location = new System.Drawing.Point(28, 52);
-            this.dgvPregledPorudzbina.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvPregledPorudzbina.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPregledPorudzbina.Name = "dgvPregledPorudzbina";
             this.dgvPregledPorudzbina.ReadOnly = true;
             this.dgvPregledPorudzbina.RowHeadersVisible = false;
@@ -197,7 +198,7 @@
             // 
             this.btnStampaj.Enabled = false;
             this.btnStampaj.Location = new System.Drawing.Point(28, 513);
-            this.btnStampaj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStampaj.Margin = new System.Windows.Forms.Padding(2);
             this.btnStampaj.Name = "btnStampaj";
             this.btnStampaj.Size = new System.Drawing.Size(320, 67);
             this.btnStampaj.TabIndex = 11;
@@ -217,22 +218,33 @@
             this.btnNazad.UseVisualStyleBackColor = false;
             this.btnNazad.Click += new System.EventHandler(this.btnNazad_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(256, 494);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 19);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Ukupno: ";
+            // 
             // USRasporedStolova
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNazad);
             this.Controls.Add(this.btnStampaj);
             this.Controls.Add(this.dgvPregledPorudzbina);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "USRasporedStolova";
             this.Size = new System.Drawing.Size(1295, 604);
             this.Load += new System.EventHandler(this.USRasporedStolova_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregledPorudzbina)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -252,5 +264,6 @@
         private System.Windows.Forms.DataGridView dgvPregledPorudzbina;
         private System.Windows.Forms.Button btnStampaj;
         private System.Windows.Forms.Button btnNazad;
+        private System.Windows.Forms.Label label1;
     }
 }

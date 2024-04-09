@@ -27,15 +27,15 @@ namespace View.Controller
 
             try
             {
-                if (MessageBox.Show($"Da li ste sigurni da zelide da izbrisete zaposlenog : {this.zap.ImeZaposlenog}", "Potvrda o brisanju radnika", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Da li ste sigurni da zelide da promenite status zaposlenog : {this.zap.ImeZaposlenog}", "Potvrda o promeni status zaposlenog", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Communication.Communication.Instance.DeleteEmploye(zap);
-                    MessageBox.Show("Radnik je uspesno obrisan");
+                    MessageBox.Show("Status radnika je uspesno promenjen");
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Ne mozemo da izbrisemo radnika");
+                MessageBox.Show("Ne mozemo da promenimo status aktinosti radnika!");
             }
         }
 
@@ -55,16 +55,15 @@ namespace View.Controller
                 return;
             }
 
-            Zaposleni z = Communication.Communication.Instance.PronadjiZaposlenog(txtSifra.Text);
+            zap = Communication.Communication.Instance.PronadjiZaposlenog(txtSifra.Text);
 
-            if (z ==  null)
+            if (zap ==  null)
             {
                 MessageBox.Show("Zaposleni za ovom sifrom ne postoji!");
                 return;
             }
-
-            txtIme.Text = z.ImeZaposlenog;
-            if (z.Tip.Ovlascenje)
+            txtIme.Text = zap.ImeZaposlenog;
+            if (zap.Tip.Ovlascenje)
             {
                 txtPrivilegije.Text = "Admin";
             }

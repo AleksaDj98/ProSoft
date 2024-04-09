@@ -11,7 +11,7 @@ namespace View.Controller
 {
     public class MainController
     {
-        UCUnosPorudzbine UnosPorudzbine;
+        static UCUnosPorudzbine UnosPorudzbine;
         USRasporedStolova RasporedStolova;
 
 
@@ -58,7 +58,7 @@ namespace View.Controller
 
         internal void otvoriFormuBrisanjeRadnika()
         {
-            FrmBrisanjeRadnika radnik = new FrmBrisanjeRadnika(new EmployeController());
+            FrmPromenaStatusaRadnika radnik = new FrmPromenaStatusaRadnika(new EmployeController());
             radnik.ShowDialog();
         }
 
@@ -85,6 +85,13 @@ namespace View.Controller
         {
             FrmDnevniIzvestaj di = new FrmDnevniIzvestaj();
             di.ShowDialog();
+        }
+
+        internal static void CloseMainForm()
+        {
+            UnosPorudzbine = null;
+            Communication.Communication.Instance.Disconnect();
+            MainCoordinator.Instance.OpenLoginForm();
         }
     }
 }

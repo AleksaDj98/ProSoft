@@ -19,6 +19,7 @@ namespace Domain
         private int stanjeLagera;
         private PDV PDV;
         private VrstaProizvoda vrstaProizvoda;
+        private bool aktivan;
 
         public override string ToString()
         {
@@ -39,6 +40,7 @@ namespace Domain
         public PDV pdv { get => PDV; set => PDV = value; }
         [Browsable(false)]
         public VrstaProizvoda VrstaProizvoda { get => vrstaProizvoda; set => vrstaProizvoda = value; }
+        public bool Aktivan { get => aktivan; set => aktivan = value; }
         [Browsable(false)]
         public string nazivTabele => "Proizvod";
         [Browsable(false)]
@@ -48,12 +50,14 @@ namespace Domain
         [Browsable(false)]
         public string uslovOstalo => null;
         [Browsable(false)]
-        public string izmena => null;
+        public string izmena => $"set Aktivan = CASE WHEN Aktivan = 1 THEN 0 WHEN Aktivan = 0 THEN 1 END";
         [Browsable(false)]
         public string unos => $"'{NazivProizvoda}',{ProdajnaCena},{CenaBezPDV},{VrednostPDV},{StanjeLagera},{pdv.PDVID1},{VrstaProizvoda.VrstaProizvodaID}"; 
         [Browsable(false)]
         public string selekcija => "*";
-        
+
+   
+
         public List<IEntity> GetEntites(SqlDataReader reader)
         {
             List<IEntity> result = new List<IEntity>();
@@ -72,6 +76,7 @@ namespace Domain
                 VrstaProizvoda vp = new VrstaProizvoda();
                 vp.VrstaProizvodaID = Convert.ToInt32(reader["vrstaProizvoda"]);
                 p.VrstaProizvoda = vp;
+                p.Aktivan = Convert.ToBoolean(reader["Aktivan"]);
                 result.Add(p);
             }
             return result;
@@ -95,6 +100,7 @@ namespace Domain
                 VrstaProizvoda vp = new VrstaProizvoda();
                 vp.VrstaProizvodaID = Convert.ToInt32(reader["vrstaProizvoda"]);
                 p.VrstaProizvoda = vp;
+                p.Aktivan = Convert.ToBoolean(reader["Aktivan"]);
             }
             return p;
         }

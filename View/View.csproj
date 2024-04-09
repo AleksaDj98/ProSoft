@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +59,7 @@
     <Compile Include="Communication\CommunicationClient.cs" />
     <Compile Include="Controller\ArticleController.cs" />
     <Compile Include="Controller\DailyReportController.cs" />
+    <Compile Include="Controller\List.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\OrderControler.cs" />
@@ -62,11 +72,11 @@
     <Compile Include="Forms\FrmBrisanjeArtikla.Designer.cs">
       <DependentUpon>FrmBrisanjeArtikla.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmBrisanjeRadnika.cs">
+    <Compile Include="Forms\FrmPromenaStatusaRadnika.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBrisanjeRadnika.Designer.cs">
-      <DependentUpon>FrmBrisanjeRadnika.cs</DependentUpon>
+    <Compile Include="Forms\FrmPromenaStatusaRadnika.Designer.cs">
+      <DependentUpon>FrmPromenaStatusaRadnika.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmDnevniIzvestaj.cs">
       <SubType>Form</SubType>
@@ -121,8 +131,8 @@
     <EmbeddedResource Include="Forms\FrmBrisanjeArtikla.resx">
       <DependentUpon>FrmBrisanjeArtikla.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmBrisanjeRadnika.resx">
-      <DependentUpon>FrmBrisanjeRadnika.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmPromenaStatusaRadnika.resx">
+      <DependentUpon>FrmPromenaStatusaRadnika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDnevniIzvestaj.resx">
       <DependentUpon>FrmDnevniIzvestaj.cs</DependentUpon>
@@ -154,6 +164,7 @@
     <EmbeddedResource Include="UserControls\USRasporedStolova.resx">
       <DependentUpon>USRasporedStolova.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

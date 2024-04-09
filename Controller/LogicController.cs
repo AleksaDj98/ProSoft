@@ -76,7 +76,7 @@ namespace Controller
 
         public void DeleteEmploye(Zaposleni requestObject)
         {
-            obrisiRadnika or = new obrisiRadnika();
+            PromeniStatusZaposlenog or = new PromeniStatusZaposlenog();
             or.executeTemplate(requestObject);
         }
 
@@ -128,7 +128,7 @@ namespace Controller
 
         public void DeleteArticle(Proizvod requestObject)
         {
-            ObrisiArtikal a = new ObrisiArtikal();
+            PromeniStatusProizvoda a = new PromeniStatusProizvoda();
             a.executeTemplate(requestObject);
         }
 
