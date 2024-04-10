@@ -39,7 +39,7 @@ namespace Domain
         [Browsable(false)]
         public string izmena => "set Aktivan = CASE WHEN Aktivan = 1 THEN 0 WHEN Aktivan = 0 THEN 1 END";
         [Browsable(false)]
-        public string unos =>$"'{ImeZaposlenog}','{SifraLogovanja}',{Tip.TipID}";
+        public string unos =>$"'{ImeZaposlenog}','{SifraLogovanja}',{Tip.TipID},'{Aktivan}'";
         [Browsable(false)]
         public string selekcija => "*";
 

@@ -15,35 +15,42 @@ namespace View.Controller
     {
         internal void CheckDateAndGenerateDailyReport(System.Windows.Forms.DateTimePicker dtpDnevniIzvestaj)
         {
-            DateTime now = DateTime.Now;
-
-            if (dtpDnevniIzvestaj.Value.Date > now.Date)
+            try
             {
-                System.Windows.Forms.MessageBox.Show("Ne mozete da izvucete dnevni izvestaj za datum u buducnosti!");
-                return;
-            }
-            string[] podaciZaDnevni;
-            List<Racun> r = Communication.Communication.Instance.GetAllInvoices();
-            List<Racun> racuniZaDnevni = new List<Racun>();
-            int pazar = 0;
+                DateTime now = DateTime.Now;
 
-            string tekstZaDnevni = $"Dnevni izvestaj na dan {dtpDnevniIzvestaj.Value.ToString("dd.MM.yyyy.")}\n\n\n";
-            
-            for (int i = 0; i < r.Count; i++)
-            {
-                if (r[i].VremeIzdavanja.Date == dtpDnevniIzvestaj.Value.Date && r[i].CenaRacuna > 0)
+                if (dtpDnevniIzvestaj.Value.Date > now.Date)
                 {
-                    racuniZaDnevni.Add(r[i]);
-                    tekstZaDnevni += $"Racun: {r[i].RacunID}, Vreme izdavanja racuna: {r[i].VremeIzdavanja}, Iznos racuna: {r[i].CenaRacuna}\n";
-                    pazar = pazar + r[i].CenaRacuna;
+                    System.Windows.Forms.MessageBox.Show("Ne mozete da izvucete dnevni izvestaj za datum u buducnosti!");
+                    return;
                 }
+                string[] podaciZaDnevni;
+                List<Racun> r = Communication.Communication.Instance.GetAllInvoices();
+                List<Racun> racuniZaDnevni = new List<Racun>();
+                int pazar = 0;
+
+                string tekstZaDnevni = $"Dnevni izvestaj na dan {dtpDnevniIzvestaj.Value.ToString("dd.MM.yyyy.")}\n\n\n";
+
+                for (int i = 0; i < r.Count; i++)
+                {
+                    if (r[i].VremeIzdavanja.Date == dtpDnevniIzvestaj.Value.Date && r[i].CenaRacuna > 0)
+                    {
+                        racuniZaDnevni.Add(r[i]);
+                        tekstZaDnevni += $"Racun: {r[i].RacunID}, Vreme izdavanja racuna: {r[i].VremeIzdavanja}, Iznos racuna: {r[i].CenaRacuna}\n";
+                        pazar = pazar + r[i].CenaRacuna;
+                    }
+                }
+
+                tekstZaDnevni += $"---------------------------------------------------------------------------------------------------------------------------------------\nPazar: {pazar} ";
+
+                //StampajUNotepade(tekstZaDnevni);
+                stampajUPDF(tekstZaDnevni);
+                System.Windows.Forms.MessageBox.Show("Dnevni izvestaj je uspesno istampan");
             }
-
-            tekstZaDnevni += $"---------------------------------------------------------------------------------------------------------------------------------------\nPazar: {pazar} ";
-
-            //StampajUNotepade(tekstZaDnevni);
-            stampajUPDF(tekstZaDnevni);
-            System.Windows.Forms.MessageBox.Show("Dnevni izvestaj je uspesno istampan");
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da istampa dnevni izvestaj, proverite da li imate dovoljno trake u kasi");
+            }
         }
 
         private void stampajUPDF(string tekstZaDnevni)

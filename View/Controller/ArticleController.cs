@@ -123,7 +123,7 @@ namespace View.Controller
                 if (MessageBox.Show($"Da li ste sigurni da zelide da promenite status proizvoda : {P.NazivProizvoda}", "Potvrda o proeni statusa porizvoda", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Communication.Communication.Instance.DeleteArtile(P);
-                    MessageBox.Show($"Proizvodu {P.NazivProizvoda} je uspesno proenjen status");
+                    MessageBox.Show($"Proizvodu {P.NazivProizvoda} je uspesno promenjen status");
                     setDGV(dgvProizvodi);
                 }
             }
@@ -170,6 +170,7 @@ namespace View.Controller
                 VrstaProizvoda vp = new VrstaProizvoda();
                 vp = cbVrstaProizvoda.SelectedItem as VrstaProizvoda;
                 p.VrstaProizvoda = vp;
+                p.Aktivan = true;
 
 
                 Communication.Communication.Instance.SaveProduct(p);

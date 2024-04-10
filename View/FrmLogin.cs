@@ -97,7 +97,7 @@ namespace View
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Sistem ne moze da zapamti proudzbinu");
         }
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)

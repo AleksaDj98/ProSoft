@@ -52,7 +52,7 @@ namespace Domain
         [Browsable(false)]
         public string izmena => $"set Aktivan = CASE WHEN Aktivan = 1 THEN 0 WHEN Aktivan = 0 THEN 1 END";
         [Browsable(false)]
-        public string unos => $"'{NazivProizvoda}',{ProdajnaCena},{CenaBezPDV},{VrednostPDV},{StanjeLagera},{pdv.PDVID1},{VrstaProizvoda.VrstaProizvodaID}"; 
+        public string unos => $"'{NazivProizvoda}',{ProdajnaCena},{CenaBezPDV},{VrednostPDV},{StanjeLagera},{pdv.PDVID1},{VrstaProizvoda.VrstaProizvodaID},'{Aktivan}'"; 
         [Browsable(false)]
         public string selekcija => "*";
 

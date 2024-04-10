@@ -83,7 +83,7 @@ namespace View.Controller
                 return;
             }
 
-            if (string.IsNullOrEmpty(textSifra.Text) || Communication.Communication.Instance.ProveriSifru(textSifra))
+            if (string.IsNullOrEmpty(textSifra.Text) || !Communication.Communication.Instance.ProveriSifru(textSifra))
             {
                 MessageBox.Show("Zaposleni sa ovom sifrom vec postoji");
                 textSifra.BackColor = Color.Salmon;
@@ -97,6 +97,7 @@ namespace View.Controller
                 zap.ImeZaposlenog = textIme.Text;
                 zap.SifraLogovanja = textSifra.Text;
                 zap.Tip = new TipZaposlenog();
+                zap.Aktivan = true;
                 if(chbAdmin.Checked)
                 {
                     zap.Tip.TipID = 1;
