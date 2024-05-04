@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Controller;
 
@@ -26,34 +19,8 @@ namespace View.UserControls
         {
             this.orderControler = orderControler;
             InitializeComponent();
-            orderControler.SetButtonsInGroupBox(gpProizvodi);
-            DodajEventHendlerZaDugmice();
-            DugmeKliknuto += UC_DugmeKliknuto;
+            orderControler.postaviTabove(flp1,flp2,flp3,flp4,flp4,flp5,flp6,labelUkupnaCena);
             orderControler.setDGV(dgwPorudzbina);
-        }
-
-        private void UC_DugmeKliknuto(object sender, EventArgs e)
-        {
-            if(sender is Button b)
-            {
-                orderControler.addArticle(b,labelUkupnaCena);
-            }
-        }
-
-        private void DodajEventHendlerZaDugmice()
-        {
-            foreach(Control control in gpProizvodi.Controls)
-            {
-                if(control is Button button)
-                {
-                    button.Click += DugmeUnutarGroupBoxa_Click;
-                }
-            }
-        }
-
-        private void DugmeUnutarGroupBoxa_Click(object sender, EventArgs e)
-        {
-            if(DugmeKliknuto != null) DugmeKliknuto(sender, e);
         }
 
         private void UCUnosPorudzbine_Load(object sender, EventArgs e)
@@ -62,12 +29,18 @@ namespace View.UserControls
         }
         private void btnPonistiPorudzbinu_Click(object sender, EventArgs e)
         {
-            orderControler.ponistiPorudzbin();
+            if (dgwPorudzbina.Rows.Count != 0)
+            {
+                orderControler.ponistiPorudzbin();
+            }
         }
 
         private void btnObrisiArtikal_Click(object sender, EventArgs e)
         {
-            orderControler.obrisiArtikalIzPorudzbine(dgwPorudzbina);
+            if(dgwPorudzbina.Rows.Count != 0)
+            {
+                orderControler.obrisiArtikalIzPorudzbine(dgwPorudzbina);
+            }
         }
 
         private void btnUnos_Click(object sender, EventArgs e)

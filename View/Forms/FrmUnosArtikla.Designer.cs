@@ -95,6 +95,7 @@
             this.cbPDV.Name = "cbPDV";
             this.cbPDV.Size = new System.Drawing.Size(104, 24);
             this.cbPDV.TabIndex = 8;
+            this.cbPDV.SelectedValueChanged += new System.EventHandler(this.cbPDV_SelectedValueChanged);
             // 
             // txtLager
             // 

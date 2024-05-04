@@ -15,23 +15,13 @@ namespace View.Forms
     public partial class FrmUnosArtikla : Form
     {
         ArticleController controller;
-        Timer timer;
         public FrmUnosArtikla(ArticleController controller)
         {
             InitializeComponent();
             this.controller = controller;
-            timer = new Timer();
-            timer.Interval = 1000;
-            timer.Start();
-            timer.Tick += Timer_Tick;
-            txtLager.KeyPress += TextBox_KeyPress;
-            txtProdajnaCena.KeyPress += TextBox_KeyPress;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            controller.CaluculateReadOnlyTexBox(cbPDV, txtProdajnaCena, txtVrednostBezPDV, txtVrednostPDV);
-        }
+
 
         private void txtProdajnaCena_TextChanged(object sender, EventArgs e)
         {
@@ -59,6 +49,11 @@ namespace View.Forms
                 controller.Save(txtNaziv, txtLager, txtProdajnaCena, txtVrednostBezPDV, txtVrednostPDV, cbPDV, cbVrstaProizvoda);
             }
             
+        }
+
+        private void cbPDV_SelectedValueChanged(object sender, EventArgs e)
+        {
+            controller.CaluculateReadOnlyTexBox(cbPDV, txtProdajnaCena, txtVrednostBezPDV, txtVrednostPDV);
         }
     }
 }

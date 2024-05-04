@@ -5,17 +5,21 @@ using PdfSharp.Drawing;
 using PdfSharp.Internal;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Annotations;
+using QRCoder;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
+using View.ButtonGenerator;
 using View.UserControls;
 
 namespace View.Controller
@@ -27,33 +31,17 @@ namespace View.Controller
         private List<StavkaPorudzbine> proizvodiZaRacun = new List<StavkaPorudzbine>();
         Racun LokalniRacun;
         int ukupnoNaStolu = 0;
+        Label lokalnilabel;
 
 
 
         BindingList<StavkaPorudzbine> proizvodi = new BindingList<StavkaPorudzbine>();
-        List<Proizvod> proizvodiLista;
+        List<Proizvod> proizvodiLista = Communication.Communication.Instance.GetAllAricles();
         private FrmMain frmMain;
 
         public OrderControler(FrmMain frmMain)
         {
             this.frmMain = frmMain;
-        }
-
-        internal void addArticle(Button button, Label labelUkupnaCena)
-        {
-            foreach (Proizvod  pro in proizvodiLista) 
-            { 
-                if(pro.NazivProizvoda == button.Text)
-                {
-                    Proizvod p = pro;
-                    StavkaPorudzbine sr = new StavkaPorudzbine();
-                    sr.Naziv = button.Text;
-                    sr.Proizvod = p;
-                    sr.Cena = p.ProdajnaCena;
-                    sr.Kolicina = 1;
-                    DodajArtikal(sr,labelUkupnaCena);
-                }
-            }
         }
         private void DodajArtikal(StavkaPorudzbine sr, Label labelUkupnaCena)
         {
@@ -83,32 +71,6 @@ namespace View.Controller
             proizvodi.Clear();
         }
 
-        internal void SetButtonsInGroupBox(GroupBox gpProizvodi)
-        {
-            foreach (Button btn in gpProizvodi.Controls)
-            {
-                btn.Visible = false;
-            }
-
-            proizvodiLista = Communication.Communication.Instance.GetAllAricles();
-
-            List<Proizvod> aktivni = new List<Proizvod>();
-
-            for (int i = 0; i < proizvodiLista.Count; i++)
-            {
-                if (proizvodiLista[i].Aktivan == true)
-                {
-                    aktivni.Add(proizvodiLista[i]);
-                }
-            }
-
-            for (int i = 0; i < Math.Min(aktivni.Count,gpProizvodi.Controls.Count); i++)
-            { 
-                    gpProizvodi.Controls[i].Text = aktivni[i].NazivProizvoda;
-                    gpProizvodi.Controls[i].Visible = true;
-            }
-        }
-
         internal void setDGV(DataGridView dataGridView1)
         {
             dataGridView1.DataSource = proizvodi;
@@ -116,7 +78,7 @@ namespace View.Controller
 
         internal void OtvoriUCRasporedStolova()
         {
-            if(proizvodi.Count == 0)
+            if (proizvodi.Count == 0)
             {
                 MessageBox.Show("Unesite proizvod kako biste mogli da kreirate poruzbinu ");
                 return;
@@ -132,14 +94,14 @@ namespace View.Controller
 
         internal bool proveriListu()
         {
-            if(proizvodi.Count > 0)
+            if (proizvodi.Count > 0)
             {
                 return true;
             }
             return false;
         }
 
-        internal BindingList<StavkaPorudzbine> postaviPorudzbinu(BindingList<StavkaPorudzbine> sto, Sto Sto,Racun r)
+        internal BindingList<StavkaPorudzbine> postaviPorudzbinu(BindingList<StavkaPorudzbine> sto, Sto Sto, Racun r)
         {
             try
             {
@@ -206,8 +168,8 @@ namespace View.Controller
         internal void obrisiArtikalIzPorudzbine(DataGridView dgwPorudzbina)
         {
 
-                StavkaPorudzbine sp = dgwPorudzbina.SelectedRows[0].DataBoundItem as StavkaPorudzbine;
-                proizvodi.Remove(sp);
+            StavkaPorudzbine sp = dgwPorudzbina.SelectedRows[0].DataBoundItem as StavkaPorudzbine;
+            proizvodi.Remove(sp);
         }
 
         internal void stamampajRacun(DataGridView dgvPregledPorudzbina, Label label1)
@@ -217,7 +179,7 @@ namespace View.Controller
             foreach (DataGridViewRow dgv in dgvPregledPorudzbina.Rows)
             {
                 StavkaPorudzbine s = dgv.DataBoundItem as StavkaPorudzbine;
-                dodajUlistu(s,proizvodiZaRacun);
+                dodajUlistu(s, proizvodiZaRacun);
                 //proizvodiZaRacun.Add(s);
             }
             Porudzbina por = new Porudzbina();
@@ -226,7 +188,7 @@ namespace View.Controller
 
             for (int i = 0; i < p.Count; i++)
             {
-                if(por.PorudzbinaID == p[i].PorudzbinaID)
+                if (por.PorudzbinaID == p[i].PorudzbinaID)
                 {
                     por = p[i];
                     break;
@@ -244,7 +206,7 @@ namespace View.Controller
             try
             {
                 Communication.Communication.Instance.SaveInvoice(r);
-                stampanjeRacuna(r,proizvodiZaRacun);
+                stampanjeRacuna(r, proizvodiZaRacun);
                 MessageBox.Show($"Ukupan racun za naplatu je: {r.CenaRacuna}");
                 label1.Text = "Ukupno: ";
                 LokalniRacun = null;
@@ -261,16 +223,16 @@ namespace View.Controller
 
         private void dodajUlistu(StavkaPorudzbine s, List<StavkaPorudzbine> proizvodiZaRacun)
         {
-            if (proizvodiZaRacun.Count == 0) 
+            if (proizvodiZaRacun.Count == 0)
             {
                 proizvodiZaRacun.Add(s);
                 return;
-            } 
+            }
 
             bool postojiProizvod = false;
-            for(int i = 0; i <proizvodiZaRacun.Count;i++ )
+            for (int i = 0; i < proizvodiZaRacun.Count; i++)
             {
-                if (proizvodiZaRacun[i].Proizvod == s.Proizvod )
+                if (proizvodiZaRacun[i].Proizvod == s.Proizvod)
                 {
                     proizvodiZaRacun[i].Kolicina += s.Kolicina;
                     proizvodiZaRacun[i].Cena += s.Cena;
@@ -298,35 +260,111 @@ namespace View.Controller
                 {
                     if (pzr[i].Proizvod.ProizvodID == proizvodiLista[y].ProizvodID)
                     {
-                        tekstZaRacun += $"{proizvodiLista[y].NazivProizvoda}                            {proizvodiLista[y].ProdajnaCena}                                   {pzr[i].Kolicina}                                     {pzr[i].Cena} \n"; break;
+                        //tekstZaRacun += $"{proizvodiLista[y].NazivProizvoda}                            {proizvodiLista[y].ProdajnaCena}                                   {pzr[i].Kolicina}                                     {pzr[i].Cena} \n"; break;
+
+
+                        tekstZaRacun += string.Format("{0,25}{1,25}{2,25}{3,25}\n", proizvodiLista[y].NazivProizvoda, proizvodiLista[y].ProdajnaCena, pzr[i].Kolicina, pzr[i].Cena); break;
+                        //tekstZaRacun += $"{proizvodiLista[y].NazivProizvoda}                            {proizvodiLista[y].ProdajnaCena}                                   {pzr[i].Kolicina}                                     {pzr[i].Cena} \n"; break;
                     }
                 }
             }
 
-            tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\nUkupno za naplatu: {r.CenaRacuna} ";
-            stampajUPDF(tekstZaRacun, r);
+            tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\nUkupno za naplatu: {r.CenaRacuna} \n";
+            Bitmap QRKodSlika = generisiQRCode(tekstZaRacun);
+            stampajUPDF(tekstZaRacun, r, QRKodSlika);
             System.Windows.Forms.MessageBox.Show($"Racun br. {r.RacunID} je uspesno istampan");
         }
 
+        private Bitmap generisiQRCode(string tekstZaRacun)
+        {
+            string textZaQRkod = "Fiskalni racun je validan i prosao je kroz proces fiskalizacije.\n Platili ste sledece stavke:\n\n" + tekstZaRacun;
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(textZaQRkod, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrcodeimage = qrCode.GetGraphic(20);
+            Bitmap QRCodeResize = new Bitmap(qrcodeimage, new Size(400, 400));
+            return QRCodeResize;
+        }
 
-        private void stampajUPDF(string tekstZaRacun, Racun r)
+        private void stampajUPDF(string tekstZaRacun, Racun r, Bitmap qRKodSlika)
         {
             PdfDocument stampaRacuna = new PdfDocument();
             PdfPage page = stampaRacuna.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
             XFont font = new XFont("Arial", 12);
+
+
+
             string[] linije = tekstZaRacun.Split('\n');
             int y = 50;
+
             foreach (string linija in linije)
             {
                 gfx.DrawString(linija, font, XBrushes.Black, new XPoint(50, y));
                 y += 20;
             }
+            using (MemoryStream ms = new MemoryStream())
+            {
+                qRKodSlika.Save(ms, ImageFormat.Png);
+                ms.Seek(0, SeekOrigin.Begin);
+
+                XImage qrImage = XImage.FromStream(ms);
+                gfx.DrawImage(qrImage, new XRect(50, y + 20, qRKodSlika.Width, qRKodSlika.Height));
+            }
+
+
+
             string solutionFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             string putanja = Path.Combine(solutionFolder, "Racuni", $"Racun_br.{r.RacunID}.pdf");
             stampaRacuna.Save(putanja);
             stampaRacuna.Close();
             Process.Start(putanja);
+        }
+
+        internal void postaviTabove(FlowLayoutPanel flp1, FlowLayoutPanel flp2, FlowLayoutPanel flp3, FlowLayoutPanel flp4, FlowLayoutPanel flp41, FlowLayoutPanel flp5, FlowLayoutPanel flp6, Label lblUC)
+        {
+            lokalnilabel = lblUC;
+            foreach (Proizvod p in proizvodiLista)
+            {
+                if (p.Aktivan == true)
+                {
+                    switch (p.VrstaProizvoda.VrstaProizvodaID)
+                    {
+                        case 1: generisiDugmeZaProizvod(p, flp1); break;
+                        case 2: generisiDugmeZaProizvod(p, flp2); break;
+                        case 3: generisiDugmeZaProizvod(p, flp3); break;
+                        case 4: generisiDugmeZaProizvod(p, flp4); break;
+                        case 5: generisiDugmeZaProizvod(p, flp5); break;
+                        case 6: generisiDugmeZaProizvod(p, flp6); break;
+                        default: break;
+                    }
+                }
+            }
+        }
+
+        private void generisiDugmeZaProizvod(Proizvod p, FlowLayoutPanel flp)
+        {
+            var button = new CustomButton();
+            button.Width = 230;
+            button.Height = 52;
+            button.Tag = p;
+            button.p = p;
+            button.Click += Button_Click;
+            button.Text = p.NazivProizvoda;
+
+            flp.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            var button = sender as CustomButton;
+            Proizvod p = button.p;
+            StavkaPorudzbine sr = new StavkaPorudzbine();
+            sr.Naziv = button.Text;
+            sr.Proizvod = p;
+            sr.Cena = p.ProdajnaCena;
+            sr.Kolicina = 1;
+            DodajArtikal(sr, lokalnilabel);
         }
     }
 }
