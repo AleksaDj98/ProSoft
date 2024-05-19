@@ -11,7 +11,21 @@ namespace SystemOperations.PorudzbinaSO
     {
         protected override void executeOperation(IEntity entity)
         {
-            repository.Update(entity);
+            repository.Save(entity);
+            Racun r = entity as Racun;
+            List<Porudzbina> por = r.Stavke;
+            foreach  (Porudzbina p in por)
+            {
+                List<StavkaPorudzbine> sp = p.StavkaPorudzbine;
+                foreach (StavkaPorudzbine stavkaP in sp)
+                {
+                    Proizvod proizvod = stavkaP.Proizvod;
+                    proizvod.Uslov = $"SET stanjeLagera = stanjeLagera - {stavkaP.Kolicina}";
+                    repository.Update(proizvod);
+                }
+                p.R.RacunID = r.RacunID;
+                repository.Update(p);
+            }
         }
     }
 }

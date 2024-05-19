@@ -11,7 +11,9 @@ namespace SystemOperations.ProizvodiSO
     {
         protected override void executeOperation(IEntity entity)
         {
-           repository.Update(entity);
+            Proizvod p = entity as Proizvod;
+            p.Uslov = $"set Aktivan = CASE WHEN Aktivan = 1 THEN 0 WHEN Aktivan = 0 THEN 1 END";
+            repository.Update(entity);
         }
     }
 }

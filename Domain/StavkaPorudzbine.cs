@@ -11,14 +11,12 @@ namespace Domain
     [Serializable]
     public class StavkaPorudzbine:IEntity
     {
-        private int porudzbinaID;
         private string naziv;
         private int kolicina;
         private int cena;
         private Proizvod proizvod;
         private Porudzbina porudzbina;
 
-        public int PorudzbinaID { get => porudzbinaID; set => porudzbinaID = value; }
         public string Naziv { get => naziv; set => naziv = value; }
         public int Kolicina { get => kolicina; set => kolicina = value; }
         public int Cena { get => cena; set => cena = value; }

@@ -26,5 +26,6 @@ namespace Common
         GetAllOrders,
         SaveInvoice,
         GetAllInvoices,
+        UpdateStorage,
     }
 }

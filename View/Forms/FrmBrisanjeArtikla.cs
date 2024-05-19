@@ -18,20 +18,18 @@ namespace View.Forms
         {
             InitializeComponent();
         }
-
         private void FrmBrisanjeArtikla_Load(object sender, EventArgs e)
         {
             controller.setDGV(dgvProizvodi);
         }
-
-        private void btnPretrazi_Click(object sender, EventArgs e)
-        {
-            controller.proveriPoiljeIPretrazi(txtNazivProizvoda,dgvProizvodi);
-        }
-
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            controller.proveriDaLiJeSelektovanoIObrisi(dgvProizvodi);
+            controller.proveriDaLiJeSelektovanoIObrisi(dgvProizvodi,txtNazivProizvoda);
+        }
+
+        private void txtNazivProizvoda_TextChanged(object sender, EventArgs e)
+        {
+            controller.proveriPoiljeIPretrazi(txtNazivProizvoda,dgvProizvodi);
         }
     }
 }

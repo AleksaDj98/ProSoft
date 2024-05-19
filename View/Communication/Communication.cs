@@ -176,7 +176,7 @@ namespace View.Communication
             return ID;
         }
 
-        internal void SaveOrderItem(StavkaPorudzbine sp)
+        internal void SaveOrderItem(List<StavkaPorudzbine> sp)
         {
             Request zahtev = new Request()
             {
@@ -257,11 +257,22 @@ namespace View.Communication
         {
             Request zahtev = new Request()
             {
-                Operations = Operations.GetAllInvoices
+                Operations = Operations.GetAllInvoices,
             };
             klijent.SendRequest(zahtev);
-            List<Racun> rac = (List<Racun>)klijent.GetResponsResult();
-            return rac;
+            List<Racun> racuni = (List<Racun>)klijent.GetResponsResult();
+            return racuni;
+        }
+
+        internal void ChangeLager(Proizvod p)
+        {
+            Request zahtev = new Request()
+            {
+                Operations = Operations.UpdateStorage,
+                requestObject = p
+            };
+            klijent.SendRequest(zahtev);
+            klijent.GetResponsResult();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Domain
         public float CenaBezPDV { get => cenaBezPDV; set => cenaBezPDV = value; }
         [Browsable(false)]
         public float VrednostPDV { get => vrednostPDV; set => vrednostPDV = value; }
-        [Browsable(false)]
+        //[Browsable(false)]
         public int StanjeLagera { get => stanjeLagera; set => stanjeLagera = value; }
         [Browsable(false)]
         public PDV pdv { get => PDV; set => PDV = value; }
@@ -46,11 +46,14 @@ namespace Domain
         [Browsable(false)]
         public string primarniKljuc => "ProizvodID";
         [Browsable(false)]
+  
         public string uslovPrimarni => $"where LOWER(nazivProizvoda) = LOWER('{NazivProizvoda}')";
         [Browsable(false)]
         public string uslovOstalo => null;
+
+        public string Uslov;
         [Browsable(false)]
-        public string izmena => $"set Aktivan = CASE WHEN Aktivan = 1 THEN 0 WHEN Aktivan = 0 THEN 1 END";
+        public string izmena => Uslov;
         [Browsable(false)]
         public string unos => $"'{NazivProizvoda}',{ProdajnaCena},{CenaBezPDV},{VrednostPDV},{StanjeLagera},{pdv.PDVID1},{VrstaProizvoda.VrstaProizvodaID},'{Aktivan}'"; 
         [Browsable(false)]
@@ -69,7 +72,7 @@ namespace Domain
                 p.prodajnaCena = Convert.ToInt32(reader["prodajnaCena"]);
                 p.cenaBezPDV = Convert.ToInt32(reader["cenaBezPDV"]);
                 p.VrednostPDV = Convert.ToInt32(reader["vrednostPDV"]);
-                p.StanjeLagera = Convert.ToInt32(reader["stanjeLagera"]);
+                p.StanjeLagera = Convert.ToInt32(reader["StanjeLagera"]);
                 PDV pdv = new PDV();
                 pdv.PDVID1 = Convert.ToInt32(reader["PDVID"]);
                 p.PDV = pdv;
@@ -93,7 +96,7 @@ namespace Domain
                 p.prodajnaCena = Convert.ToInt32(reader["prodajnaCena"]);
                 p.cenaBezPDV = Convert.ToInt32(reader["cenaBezPDV"]);
                 p.VrednostPDV = Convert.ToInt32(reader["vrednostPDV"]);
-                p.StanjeLagera = Convert.ToInt32(reader["stanjeLagera"]);
+                p.StanjeLagera = Convert.ToInt32(reader["StanjeLagera"]);
                 PDV pdv = new PDV();
                 pdv.PDVID1 = Convert.ToInt32(reader["PDVID"]);
                 p.PDV = pdv;

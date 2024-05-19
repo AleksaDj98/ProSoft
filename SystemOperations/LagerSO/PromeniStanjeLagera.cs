@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SystemOperations.PorudzbinaSO
+namespace SystemOperations.LagerSO
 {
-    public class SacuvajStavkuPorudzbine : SystemOperationsBase
+    public class PromeniStanjeLagera : SystemOperationsBase
     {
         protected override void executeOperation(IEntity entity)
         {
-            repository.Save(entity);
+            repository.Update(entity);
         }
     }
 }

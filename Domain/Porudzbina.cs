@@ -15,9 +15,9 @@ namespace Domain
         private Zaposleni zaposleniID;
         private Sto stoID;
         private DateTime vremePorudzbine;
-        private int cena;
-        private List<StavkaPorudzbine> stavkaPorudzbine;
-        private Racun r;
+        private int cena = 0;
+        private List<StavkaPorudzbine> stavkaPorudzbine = new List<StavkaPorudzbine>();
+        private Racun r = new Racun();
 
 
 
@@ -35,13 +35,13 @@ namespace Domain
 
         public string primarniKljuc => "PorudzbinaID";
 
-        public string uslovPrimarni => null;
+        public string uslovPrimarni => $"where porudzbinaID ={PorudzbinaID}";
 
         public string uslovOstalo => null;
 
-        public string izmena => null;
+        public string izmena => $"SET RacunID = {R.RacunID}";
 
-        public string unos => $"{PorudzbinaID},{zaposleniID.ZaposleniID},{StoID.StoID},'{vremePorudzbine.ToString("yyyy-MM-dd HH:mm:ss")}',{Cena},{R.RacunID}";
+        public string unos => $"{PorudzbinaID},{zaposleniID.ZaposleniID},{StoID.StoID},'{vremePorudzbine.ToString("yyyy-MM-dd HH:mm:ss")}',{Cena},null";
 
         public string selekcija => "*";
         public List<IEntity> GetEntites(SqlDataReader reader)

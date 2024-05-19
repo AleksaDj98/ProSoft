@@ -34,15 +34,7 @@ namespace View.UserControls
         Sto Sto7;
         Sto Sto8;
         Sto Sto9;
-        Racun r1;
-        Racun r2;
-        Racun r3;
-        Racun r4;
-        Racun r5;
-        Racun r6;
-        Racun r7;
-        Racun r8;
-        Racun r9;
+
 
         public USRasporedStolova(Controller.OrderControler orderControler)
         {
@@ -63,11 +55,11 @@ namespace View.UserControls
             }
                 if (controller.proveriListu())
                 {
-                    sto3 = controller.postaviPorudzbinu(sto3,Sto3,r3);
+                    sto3 = controller.postaviPorudzbinu(sto3,Sto3);
                 }
                 else
                 {
-                    controller.setDGVInRasporedStolova(sto3, dgvPregledPorudzbina, btnStampaj,r3, label1);
+                    controller.setDGVInRasporedStolova(sto3, dgvPregledPorudzbina, btnStampaj, label1);
                 }
         }
 
@@ -83,11 +75,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto1 = controller.postaviPorudzbinu(sto1, Sto1,r1);
+                sto1 = controller.postaviPorudzbinu(sto1, Sto1);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto1, dgvPregledPorudzbina, btnStampaj,r1, label1);
+                controller.setDGVInRasporedStolova(sto1, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -103,11 +95,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto2 = controller.postaviPorudzbinu(sto2, Sto2,r2);
+                sto2 = controller.postaviPorudzbinu(sto2, Sto2);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto2, dgvPregledPorudzbina, btnStampaj,r2, label1);
+                controller.setDGVInRasporedStolova(sto2, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -123,11 +115,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto4 = controller.postaviPorudzbinu(sto4, Sto4,r4);
+                sto4 = controller.postaviPorudzbinu(sto4, Sto4);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto4, dgvPregledPorudzbina, btnStampaj,r4, label1);
+                controller.setDGVInRasporedStolova(sto4, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -143,11 +135,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto5 = controller.postaviPorudzbinu(sto5, Sto5,r5);
+                sto5 = controller.postaviPorudzbinu(sto5, Sto5);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto5, dgvPregledPorudzbina, btnStampaj,r5, label1);
+                controller.setDGVInRasporedStolova(sto5, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -163,11 +155,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto6 = controller.postaviPorudzbinu(sto6, Sto6,r6);
+                sto6 = controller.postaviPorudzbinu(sto6, Sto6);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto6, dgvPregledPorudzbina, btnStampaj,r6, label1);
+                controller.setDGVInRasporedStolova(sto6, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -183,11 +175,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto7 = controller.postaviPorudzbinu(sto7, Sto7,r7);
+                sto7 = controller.postaviPorudzbinu(sto7, Sto7);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto7, dgvPregledPorudzbina, btnStampaj,r7,label1);
+                controller.setDGVInRasporedStolova(sto7, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -203,11 +195,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto8 = controller.postaviPorudzbinu(sto8, Sto8,r8);
+                sto8 = controller.postaviPorudzbinu(sto8, Sto8);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto8, dgvPregledPorudzbina, btnStampaj,r8,label1);
+                controller.setDGVInRasporedStolova(sto8, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -223,11 +215,11 @@ namespace View.UserControls
             }
             if (controller.proveriListu())
             {
-                sto9 = controller.postaviPorudzbinu(sto9, Sto9,r9);
+                sto9 = controller.postaviPorudzbinu(sto9, Sto9);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto9, dgvPregledPorudzbina, btnStampaj,r9,label1);
+                controller.setDGVInRasporedStolova(sto9, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 

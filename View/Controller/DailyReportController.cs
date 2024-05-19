@@ -24,7 +24,6 @@ namespace View.Controller
                     System.Windows.Forms.MessageBox.Show("Ne mozete da izvucete dnevni izvestaj za datum u buducnosti!");
                     return;
                 }
-                string[] podaciZaDnevni;
                 List<Racun> r = Communication.Communication.Instance.GetAllInvoices();
                 List<Racun> racuniZaDnevni = new List<Racun>();
                 int pazar = 0;
@@ -43,7 +42,6 @@ namespace View.Controller
 
                 tekstZaDnevni += $"---------------------------------------------------------------------------------------------------------------------------------------\nPazar: {pazar} ";
 
-                //StampajUNotepade(tekstZaDnevni);
                 stampajUPDF(tekstZaDnevni);
                 System.Windows.Forms.MessageBox.Show("Dnevni izvestaj je uspesno istampan");
             }
@@ -70,19 +68,6 @@ namespace View.Controller
             string putanja = Path.Combine(solutionFolder, "Dnevni izvestaji", $"Dnevni_izestaj_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.pdf");
             dnevniIZvestaj.Save(putanja);
             dnevniIZvestaj.Close();
-        }
-
-        private void StampajUNotepade(string tekstZaDnevni)
-        {
-            Process notepadProcess = new Process();
-            notepadProcess.StartInfo.FileName = "notepad.exe";
-            string nazivFajla = $"Dnevni_izvestaj_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
-         
-
-            notepadProcess.Start();
-            System.IO.File.WriteAllText(nazivFajla, tekstZaDnevni);
-            Process.Start("notepad.exe", nazivFajla);
-            notepadProcess.WaitForExit();
         }
     }
 }

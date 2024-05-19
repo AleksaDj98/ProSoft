@@ -93,5 +93,11 @@ namespace View.Controller
             Communication.Communication.Instance.Disconnect();
             MainCoordinator.Instance.OpenLoginForm();
         }
+
+        internal static void otvoriFrmLager()
+        {
+            FrmLager fl = new FrmLager();
+            fl.ShowDialog();
+        }
     }
 }

@@ -8,8 +8,6 @@ namespace View.UserControls
     public partial class UCUnosPorudzbine : UserControl
     {
         private OrderControler orderControler;
-        public event DugmeKliknutoHandler DugmeKliknuto;
-
         public UCUnosPorudzbine()
         {
             
@@ -31,7 +29,7 @@ namespace View.UserControls
         {
             if (dgwPorudzbina.Rows.Count != 0)
             {
-                orderControler.ponistiPorudzbin();
+                orderControler.ponistiPorudzbin(labelUkupnaCena);
             }
         }
 
@@ -39,13 +37,14 @@ namespace View.UserControls
         {
             if(dgwPorudzbina.Rows.Count != 0)
             {
-                orderControler.obrisiArtikalIzPorudzbine(dgwPorudzbina);
+                orderControler.obrisiArtikalIzPorudzbine(dgwPorudzbina,labelUkupnaCena);
             }
         }
 
         private void btnUnos_Click(object sender, EventArgs e)
         {
             orderControler.OtvoriUCRasporedStolovaZaStampuRacuna();
+            labelUkupnaCena.Text = "0";
         }
 
         private void btnStampanje_Click(object sender, EventArgs e)

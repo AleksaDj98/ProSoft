@@ -12,7 +12,7 @@ namespace Domain
     {
         private int racunID;
         private DateTime vremeIzdavanja;
-        private int cenaRacuna;
+        private int cenaRacuna=0;
         private List<Porudzbina> porudzbina;
 
         public int RacunID { get => racunID; set => racunID = value; }

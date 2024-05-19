@@ -108,7 +108,7 @@ namespace View.Controller
             cbPDV.DataSource =  Communication.Communication.Instance.GetAllPDVVersion();
         }
 
-        internal void proveriDaLiJeSelektovanoIObrisi(DataGridView dgvProizvodi)
+        internal void proveriDaLiJeSelektovanoIObrisi(DataGridView dgvProizvodi, TextBox txtNazivProizvoda)
         {
             if (dgvProizvodi.SelectedRows.Count == 0)
             {
@@ -124,6 +124,7 @@ namespace View.Controller
                 {
                     Communication.Communication.Instance.DeleteArtile(P);
                     MessageBox.Show($"Proizvodu {P.NazivProizvoda} je uspesno promenjen status");
+                    txtNazivProizvoda.Text = "";
                     setDGV(dgvProizvodi);
                 }
             }
@@ -143,16 +144,14 @@ namespace View.Controller
                 return;
             }
             dgvProizvodi.DataSource = sviProizvodi;
-            BindingList<Proizvod> pomocnaLista = new BindingList<Proizvod>();
-            foreach (Proizvod p in sviProizvodi)
-            {
-                if(p.NazivProizvoda.ToLower() == txtNazivProizvoda.Text.ToLower())
-                {
-                    pomocnaLista.Add(p);
-                }
-            }
+            List<Proizvod> pomocnaLista = PretraziProizvode(sviProizvodi,txtNazivProizvoda);
             dgvProizvodi.DataSource = pomocnaLista;
             dgvProizvodi.ClearSelection();
+        }
+
+        private List<Proizvod> PretraziProizvode(BindingList<Proizvod> sviProizvodi, TextBox txtNazivProizvoda)
+        {
+            return sviProizvodi.Where(p => p.NazivProizvoda.IndexOf(txtNazivProizvoda.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
         }
 
         internal void Save(TextBox txtNaziv, TextBox txtLager, TextBox txtProdajnaCena, TextBox txtVrednostBezPDV, TextBox txtVrednostPDV, ComboBox cbPDV, ComboBox cbVrstaProizvoda)
@@ -184,10 +183,35 @@ namespace View.Controller
 
         internal void setDGV(DataGridView dgvProizvodi)
         {
-            PomocnaLista = Communication.Communication.Instance.GetAllAricles();
-            sviProizvodi = new BindingList<Proizvod>(PomocnaLista);
-            dgvProizvodi.DataSource = sviProizvodi;
-            dgvProizvodi.ClearSelection();
+            if(dgvProizvodi.ColumnCount == 0)
+            {
+                dgvProizvodi.AutoGenerateColumns = false;
+
+                DataGridViewTextBoxColumn nazivProizvodaColumn = new DataGridViewTextBoxColumn();
+                nazivProizvodaColumn.DataPropertyName = "NazivProizvoda";
+                nazivProizvodaColumn.HeaderText = "Naziv proizvoda";
+                dgvProizvodi.Columns.Add(nazivProizvodaColumn);
+
+                DataGridViewTextBoxColumn ProdajnaCenaColumn = new DataGridViewTextBoxColumn();
+                ProdajnaCenaColumn.DataPropertyName = "ProdajnaCena";
+                ProdajnaCenaColumn.HeaderText = "Cena";
+                dgvProizvodi.Columns.Add(ProdajnaCenaColumn);
+
+                DataGridViewCheckBoxColumn aktivanColumn = new DataGridViewCheckBoxColumn();
+                aktivanColumn.DataPropertyName = "Aktivan";
+                aktivanColumn.HeaderText = "Akrivan";
+                dgvProizvodi.Columns.Add(aktivanColumn);
+
+                PomocnaLista = Communication.Communication.Instance.GetAllAricles();
+                sviProizvodi = new BindingList<Proizvod>(PomocnaLista);
+                dgvProizvodi.DataSource = sviProizvodi;
+                dgvProizvodi.ClearSelection();
+            }
+            else
+            {
+                dgvProizvodi.DataSource = Communication.Communication.Instance.GetAllAricles();
+                dgvProizvodi.ClearSelection();
+            }
         }
     }
 }

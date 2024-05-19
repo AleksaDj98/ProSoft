@@ -86,5 +86,10 @@ namespace View
         { 
             MainController.CloseMainForm();
         }
+
+        private void lagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainController.otvoriFrmLager();
+        }
     }
 }

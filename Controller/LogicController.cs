@@ -11,6 +11,7 @@ using SystemOperations.ZaposlenogSO;
 using SystemOperations.ProizvodiSO;
 using SystemOperations.PorudzbinaSO;
 using SystemOperations.ReportsSO;
+using SystemOperations.LagerSO;
 
 namespace Controller
 {
@@ -100,25 +101,11 @@ namespace Controller
             idp.executeTemplate(new Porudzbina());
             return idp.p.PorudzbinaID;
         }
-
-        public void SaveOrderItem(StavkaPorudzbine requestObject)
-        {
-            SacuvajStavkuPorudzbine sp = new SacuvajStavkuPorudzbine();
-            sp.executeTemplate(requestObject);
-        }
-
         public void SaveOrder(Porudzbina requestObject)
         {
             SacuvajPorudzbinu p = new SacuvajPorudzbinu();
             p.executeTemplate(requestObject);   
         }
-
-        public void SaveinvoiceID(Racun requestObject)
-        {
-            SacuvajRacunID rid = new  SacuvajRacunID();
-            rid.executeTemplate(requestObject);
-        }
-
         public object GetInvoicID()
         {
             VratiIDRacuna idr = new VratiIDRacuna();
@@ -148,8 +135,14 @@ namespace Controller
         public object GetAllInvoices()
         {
             VratiSveRacune sr = new VratiSveRacune();
-            sr.executeTemplate (new Porudzbina());
+            sr.executeTemplate(new Racun());
             return sr.racun;
+        }
+
+        public void UpdateStorage(Proizvod requestObject)
+        {
+            PromeniStanjeLagera psl = new PromeniStanjeLagera();
+            psl.executeTemplate(requestObject);
         }
     }
 }

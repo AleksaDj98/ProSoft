@@ -32,16 +32,15 @@
             this.dgvProizvodi = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNazivProizvoda = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProizvodi)).BeginInit();
             this.SuspendLayout();
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(374, 451);
-            this.btnObrisi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnObrisi.Location = new System.Drawing.Point(499, 555);
+            this.btnObrisi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(147, 47);
+            this.btnObrisi.Size = new System.Drawing.Size(196, 58);
             this.btnObrisi.TabIndex = 0;
             this.btnObrisi.Text = "Promeni status";
             this.btnObrisi.UseVisualStyleBackColor = true;
@@ -53,57 +52,47 @@
             this.dgvProizvodi.AllowUserToDeleteRows = false;
             this.dgvProizvodi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProizvodi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProizvodi.Location = new System.Drawing.Point(17, 54);
-            this.dgvProizvodi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvProizvodi.Location = new System.Drawing.Point(23, 66);
+            this.dgvProizvodi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvProizvodi.MultiSelect = false;
             this.dgvProizvodi.Name = "dgvProizvodi";
             this.dgvProizvodi.ReadOnly = true;
             this.dgvProizvodi.RowHeadersWidth = 51;
             this.dgvProizvodi.RowTemplate.Height = 24;
             this.dgvProizvodi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProizvodi.Size = new System.Drawing.Size(504, 380);
+            this.dgvProizvodi.Size = new System.Drawing.Size(672, 468);
             this.dgvProizvodi.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(29, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 15);
+            this.label1.Size = new System.Drawing.Size(206, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Unesite naziv proizvoda";
             // 
             // txtNazivProizvoda
             // 
-            this.txtNazivProizvoda.Location = new System.Drawing.Point(146, 12);
-            this.txtNazivProizvoda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNazivProizvoda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtNazivProizvoda.Location = new System.Drawing.Point(195, 15);
+            this.txtNazivProizvoda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNazivProizvoda.Name = "txtNazivProizvoda";
-            this.txtNazivProizvoda.Size = new System.Drawing.Size(211, 20);
+            this.txtNazivProizvoda.Size = new System.Drawing.Size(500, 24);
             this.txtNazivProizvoda.TabIndex = 3;
-            // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.Location = new System.Drawing.Point(374, 9);
-            this.btnPretrazi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(135, 23);
-            this.btnPretrazi.TabIndex = 4;
-            this.btnPretrazi.Text = "Pretrazi";
-            this.btnPretrazi.UseVisualStyleBackColor = true;
-            this.btnPretrazi.Click += new System.EventHandler(this.btnPretrazi_Click);
+            this.txtNazivProizvoda.TextChanged += new System.EventHandler(this.txtNazivProizvoda_TextChanged);
             // 
             // FrmBrisanjeArtikla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 521);
-            this.Controls.Add(this.btnPretrazi);
+            this.ClientSize = new System.Drawing.Size(709, 641);
             this.Controls.Add(this.txtNazivProizvoda);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProizvodi);
             this.Controls.Add(this.btnObrisi);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmBrisanjeArtikla";
             this.Text = "Brisanje Artikla";
             this.Load += new System.EventHandler(this.FrmBrisanjeArtikla_Load);
@@ -119,6 +108,5 @@
         private System.Windows.Forms.DataGridView dgvProizvodi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNazivProizvoda;
-        private System.Windows.Forms.Button btnPretrazi;
     }
 }

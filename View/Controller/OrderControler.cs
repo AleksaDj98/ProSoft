@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using System.Windows.Markup.Localizer;
 using View.ButtonGenerator;
 using View.UserControls;
 
@@ -29,12 +30,8 @@ namespace View.Controller
         BindingList<StavkaPorudzbine> porudzbina = new BindingList<StavkaPorudzbine>();
         BindingList<StavkaPorudzbine> PorudzbineNaStolu = new BindingList<StavkaPorudzbine>();
         private List<StavkaPorudzbine> proizvodiZaRacun = new List<StavkaPorudzbine>();
-        Racun LokalniRacun;
         int ukupnoNaStolu = 0;
         Label lokalnilabel;
-
-
-
         BindingList<StavkaPorudzbine> proizvodi = new BindingList<StavkaPorudzbine>();
         List<Proizvod> proizvodiLista = Communication.Communication.Instance.GetAllAricles();
         private FrmMain frmMain;
@@ -42,6 +39,50 @@ namespace View.Controller
         public OrderControler(FrmMain frmMain)
         {
             this.frmMain = frmMain;
+        }
+        internal void postaviTabove(FlowLayoutPanel flp1, FlowLayoutPanel flp2, FlowLayoutPanel flp3, FlowLayoutPanel flp4, FlowLayoutPanel flp41, FlowLayoutPanel flp5, FlowLayoutPanel flp6, Label lblUC)
+        {
+            lokalnilabel = lblUC;
+            foreach (Proizvod p in proizvodiLista)
+            {
+                if (p.Aktivan == true)
+                {
+                    switch (p.VrstaProizvoda.VrstaProizvodaID)
+                    {
+                        case 1: generisiDugmeZaProizvod(p, flp1); break;
+                        case 2: generisiDugmeZaProizvod(p, flp2); break;
+                        case 3: generisiDugmeZaProizvod(p, flp3); break;
+                        case 4: generisiDugmeZaProizvod(p, flp4); break;
+                        case 5: generisiDugmeZaProizvod(p, flp5); break;
+                        case 6: generisiDugmeZaProizvod(p, flp6); break;
+                        default: break;
+                    }
+                }
+            }
+        }
+
+        private void generisiDugmeZaProizvod(Proizvod p, FlowLayoutPanel flp)
+        {
+            var button = new CustomButton();
+            button.Width = 230;
+            button.Height = 52;
+            button.Tag = p;
+            button.p = p;
+            button.Click += Button_Click;
+            button.Text = p.NazivProizvoda;
+
+            flp.Controls.Add(button);
+        }
+        private void Button_Click(object sender, EventArgs e)
+        {
+            var button = sender as CustomButton;
+            Proizvod p = button.p;
+            StavkaPorudzbine sr = new StavkaPorudzbine();
+            sr.Naziv = button.Text;
+            sr.Proizvod = p;
+            sr.Cena = p.ProdajnaCena;
+            sr.Kolicina = 1;
+            DodajArtikal(sr, lokalnilabel);
         }
         private void DodajArtikal(StavkaPorudzbine sr, Label labelUkupnaCena)
         {
@@ -66,9 +107,10 @@ namespace View.Controller
             labelUkupnaCena.Text = ukupnaCena.ToString();
         }
 
-        internal void ponistiPorudzbin()
+        internal void ponistiPorudzbin(Label labelUkupnaCena)
         {
             proizvodi.Clear();
+            labelUkupnaCena.Text = "0";
         }
 
         internal void setDGV(DataGridView dataGridView1)
@@ -100,8 +142,7 @@ namespace View.Controller
             }
             return false;
         }
-
-        internal BindingList<StavkaPorudzbine> postaviPorudzbinu(BindingList<StavkaPorudzbine> sto, Sto Sto, Racun r)
+        internal BindingList<StavkaPorudzbine> postaviPorudzbinu(BindingList<StavkaPorudzbine> sto, Sto Sto)
         {
             try
             {
@@ -110,21 +151,10 @@ namespace View.Controller
                 p.ZaposleniID = MainCoordinator.Instance.zaposleni;
                 p.StoID = Sto;
                 p.VremePorudzbine = DateTime.Now;
-                p.StavkaPorudzbine = sto.ToList();
-                p.Cena = 0;
-                if (r == null)
-                {
-                    r = new Racun();
-                    r.RacunID = Communication.Communication.Instance.GetInvoiceID();
-                    r.VremeIzdavanja = DateTime.Now;
-                    Communication.Communication.Instance.SaveInvoiceID(r);
-                }
-                p.R = r;
-                LokalniRacun = r;
+                p.StavkaPorudzbine = proizvodi.ToList();
 
                 foreach (StavkaPorudzbine stavkaPorudzbine in proizvodi)
                 {
-                    stavkaPorudzbine.PorudzbinaID = p.PorudzbinaID;
                     p.Cena = p.Cena + stavkaPorudzbine.Cena;
                     stavkaPorudzbine.Porudzbina = p;
                     sto.Add(stavkaPorudzbine);
@@ -134,10 +164,6 @@ namespace View.Controller
 
                 Communication.Communication.Instance.SaveOrder(p);
 
-                foreach (StavkaPorudzbine sp in sto)
-                {
-                    Communication.Communication.Instance.SaveOrderItem(sp);
-                }
                 MessageBox.Show($"Porudzbina je uspesno postavljena na sto {Sto.StoID}");
                 proizvodi.Clear();
                 OtvoriUCUnosPorudzbine();
@@ -149,7 +175,7 @@ namespace View.Controller
                 throw;
             }
         }
-        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Racun r, Label label1)
+        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Label label1)
         {
             if (sto.Count > 0)
             {
@@ -160,43 +186,42 @@ namespace View.Controller
                 btnStampaj.Enabled = false;
             }
             PorudzbineNaStolu = sto;
-            LokalniRacun = r;
+            ukupnoNaStolu = 0;
+            foreach (StavkaPorudzbine sp in sto)
+            {
+                ukupnoNaStolu = ukupnoNaStolu + sp.Cena;
+            }
+
+
             label1.Text = $"Ukupno: {ukupnoNaStolu}";
             dgvPregledPorudzbina.DataSource = sto;
         }
-
-        internal void obrisiArtikalIzPorudzbine(DataGridView dgwPorudzbina)
+        internal void obrisiArtikalIzPorudzbine(DataGridView dgwPorudzbina, Label labelUkupnaCena)
         {
-
+            //int smanjenaCena;
+            int cenaNaLabelu;
+            int.TryParse(labelUkupnaCena.Text, out cenaNaLabelu);
             StavkaPorudzbine sp = dgwPorudzbina.SelectedRows[0].DataBoundItem as StavkaPorudzbine;
+            cenaNaLabelu = cenaNaLabelu - sp.Cena;
+            labelUkupnaCena.Text = cenaNaLabelu.ToString();
+            
             proizvodi.Remove(sp);
         }
-
         internal void stamampajRacun(DataGridView dgvPregledPorudzbina, Label label1)
         {
-
-
+            List<Porudzbina> zaIzmenu = new List<Porudzbina>();
             foreach (DataGridViewRow dgv in dgvPregledPorudzbina.Rows)
             {
                 StavkaPorudzbine s = dgv.DataBoundItem as StavkaPorudzbine;
                 dodajUlistu(s, proizvodiZaRacun);
-                //proizvodiZaRacun.Add(s);
+                listaPorudzbina(s, zaIzmenu);
             }
-            Porudzbina por = new Porudzbina();
-            por.PorudzbinaID = proizvodiZaRacun[0].Porudzbina.PorudzbinaID;
-            List<Porudzbina> p = Communication.Communication.Instance.GetAllOrders();
 
-            for (int i = 0; i < p.Count; i++)
-            {
-                if (por.PorudzbinaID == p[i].PorudzbinaID)
-                {
-                    por = p[i];
-                    break;
-                }
-            }
-            Racun r = por.R;
+            Racun r  = new Racun();
+            r.RacunID = Communication.Communication.Instance.GetInvoiceID();
+            r.Stavke = zaIzmenu;
             r.VremeIzdavanja = DateTime.Now;
-            r.CenaRacuna = 0;
+
 
             for (int i = 0; i < proizvodiZaRacun.Count; i++)
             {
@@ -209,7 +234,6 @@ namespace View.Controller
                 stampanjeRacuna(r, proizvodiZaRacun);
                 MessageBox.Show($"Ukupan racun za naplatu je: {r.CenaRacuna}");
                 label1.Text = "Ukupno: ";
-                LokalniRacun = null;
                 ukupnoNaStolu = 0;
                 proizvodiZaRacun.Clear();
                 PorudzbineNaStolu.Clear();
@@ -221,8 +245,38 @@ namespace View.Controller
             }
         }
 
+        private void listaPorudzbina(StavkaPorudzbine s, List<Porudzbina> zaIzmenu)
+        {
+            if (zaIzmenu.Count == 0)
+            {
+                Porudzbina po = new Porudzbina();
+                po.PorudzbinaID = s.Porudzbina.PorudzbinaID;
+                po.StavkaPorudzbine.Add(s);
+                zaIzmenu.Add(po);
+                return;
+            }
+            bool postoji = false;
+            foreach (Porudzbina porudzbina in zaIzmenu)
+            {
+                if(porudzbina.PorudzbinaID == s.Porudzbina.PorudzbinaID)
+                {
+                    porudzbina.StavkaPorudzbine.Add(s);
+                    postoji = true;
+                    break;
+                }
+            }
+            if(!postoji)
+            {
+                Porudzbina p = new Porudzbina();
+                p.PorudzbinaID = s.Porudzbina.PorudzbinaID;
+                //p.StavkaPorudzbine.Add(s);
+                zaIzmenu.Add(p);
+            }
+        }
+
         private void dodajUlistu(StavkaPorudzbine s, List<StavkaPorudzbine> proizvodiZaRacun)
         {
+
             if (proizvodiZaRacun.Count == 0)
             {
                 proizvodiZaRacun.Add(s);
@@ -248,7 +302,7 @@ namespace View.Controller
 
         private void stampanjeRacuna(Racun r, List<StavkaPorudzbine> pzr)
         {
-            string[] podaciZaDnevni;
+            //string[] podaciZaDnevni;
 
             string tekstZaRacun = $"Racun br. {r.RacunID}\n";
             tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\n" +
@@ -321,50 +375,6 @@ namespace View.Controller
             Process.Start(putanja);
         }
 
-        internal void postaviTabove(FlowLayoutPanel flp1, FlowLayoutPanel flp2, FlowLayoutPanel flp3, FlowLayoutPanel flp4, FlowLayoutPanel flp41, FlowLayoutPanel flp5, FlowLayoutPanel flp6, Label lblUC)
-        {
-            lokalnilabel = lblUC;
-            foreach (Proizvod p in proizvodiLista)
-            {
-                if (p.Aktivan == true)
-                {
-                    switch (p.VrstaProizvoda.VrstaProizvodaID)
-                    {
-                        case 1: generisiDugmeZaProizvod(p, flp1); break;
-                        case 2: generisiDugmeZaProizvod(p, flp2); break;
-                        case 3: generisiDugmeZaProizvod(p, flp3); break;
-                        case 4: generisiDugmeZaProizvod(p, flp4); break;
-                        case 5: generisiDugmeZaProizvod(p, flp5); break;
-                        case 6: generisiDugmeZaProizvod(p, flp6); break;
-                        default: break;
-                    }
-                }
-            }
-        }
-
-        private void generisiDugmeZaProizvod(Proizvod p, FlowLayoutPanel flp)
-        {
-            var button = new CustomButton();
-            button.Width = 230;
-            button.Height = 52;
-            button.Tag = p;
-            button.p = p;
-            button.Click += Button_Click;
-            button.Text = p.NazivProizvoda;
-
-            flp.Controls.Add(button);
-        }
-
-        private void Button_Click(object sender, EventArgs e)
-        {
-            var button = sender as CustomButton;
-            Proizvod p = button.p;
-            StavkaPorudzbine sr = new StavkaPorudzbine();
-            sr.Naziv = button.Text;
-            sr.Proizvod = p;
-            sr.Cena = p.ProdajnaCena;
-            sr.Kolicina = 1;
-            DodajArtikal(sr, lokalnilabel);
-        }
+        
     }
 }
