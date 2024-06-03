@@ -73,6 +73,7 @@
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\OrderControler.cs" />
     <Compile Include="Controller\EmployeController.cs" />
+    <Compile Include="DPoint.cs" />
     <Compile Include="Exceptions\ServerException.cs" />
     <Compile Include="Exceptions\SystemOperationException.cs" />
     <Compile Include="Forms\FrmBrisanjeArtikla.cs">
@@ -124,6 +125,7 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="MainCoordinator.cs" />
+    <Compile Include="PDFGenerator\GeneratePDF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProSoftProjekatDataSet.Designer.cs">
@@ -217,5 +219,6 @@
       <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

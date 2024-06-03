@@ -34,7 +34,6 @@ namespace Domain
         public float CenaBezPDV { get => cenaBezPDV; set => cenaBezPDV = value; }
         [Browsable(false)]
         public float VrednostPDV { get => vrednostPDV; set => vrednostPDV = value; }
-        //[Browsable(false)]
         public int StanjeLagera { get => stanjeLagera; set => stanjeLagera = value; }
         [Browsable(false)]
         public PDV pdv { get => PDV; set => PDV = value; }

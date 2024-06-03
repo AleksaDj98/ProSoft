@@ -93,6 +93,7 @@
             this.txtSifra.Name = "txtSifra";
             this.txtSifra.Size = new System.Drawing.Size(390, 27);
             this.txtSifra.TabIndex = 5;
+            this.txtSifra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSifra_KeyPress);
             // 
             // FrmUnosNovogZaposlenog
             // 

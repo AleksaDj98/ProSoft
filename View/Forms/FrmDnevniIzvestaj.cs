@@ -27,7 +27,7 @@ namespace View.Forms
 
         private void btnIzvestaj_Click(object sender, EventArgs e)
         {
-            controller.CheckDateAndGenerateDailyReport(dtpDnevniIzvestaj);
+            controller.CheckDateAndGenerateDailyReport2(dtpDnevniIzvestaj);
         }
     }
 }

@@ -1,13 +1,8 @@
 ﻿using Domain;
-using Org.BouncyCastle.Asn1.Pkcs;
-using PdfSharp.Charting;
 using PdfSharp.Drawing;
-using PdfSharp.Internal;
 using PdfSharp.Pdf;
-using PdfSharp.Pdf.Annotations;
 using QRCoder;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -15,13 +10,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Windows.Forms;
-using System.Windows.Markup.Localizer;
 using View.ButtonGenerator;
-using View.UserControls;
+using View.PDFGenerator;
 
 namespace View.Controller
 {
@@ -302,79 +293,28 @@ namespace View.Controller
 
         private void stampanjeRacuna(Racun r, List<StavkaPorudzbine> pzr)
         {
-            //string[] podaciZaDnevni;
-
-            string tekstZaRacun = $"Racun br. {r.RacunID}\n";
-            tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\n" +
-                $"Naziv proizvoda                 Jedinicna cena                       Kolicina                     Cena\n";
-
-            for (int i = 0; i < pzr.Count; i++)
+            try
             {
-                for (int y = 0; y < proizvodiLista.Count; y++)
-                {
-                    if (pzr[i].Proizvod.ProizvodID == proizvodiLista[y].ProizvodID)
-                    {
-                        //tekstZaRacun += $"{proizvodiLista[y].NazivProizvoda}                            {proizvodiLista[y].ProdajnaCena}                                   {pzr[i].Kolicina}                                     {pzr[i].Cena} \n"; break;
+                string solutionFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                string putanja = Path.Combine(solutionFolder, "Racuni", $"Racun_br.{r.RacunID}.pdf");
+                GeneratePDF pdf = new GeneratePDF(putanja, true);
 
+                pdf.addText($"Racun id. {r.RacunID}", new DPoint(0, 0.45), 20);
+                pdf.addText("___________________________________________________________________", new DPoint(0, 1.0), 12);
+                pdf.DrawTable(0, 2.0, 15.7, 15, null, pzr, proizvodiLista);
+                double visinaTabele = pdf.getTableHight() + 3.0;
+                pdf.addText("___________________________________________________________________", new DPoint(0, visinaTabele), 12);
+                visinaTabele += 1.0;
+                pdf.addText($"Ukupno za naplatu: {r.CenaRacuna} ", new DPoint(0, visinaTabele), 12);
+                visinaTabele += 0.5;
+                pdf.addQRCode($"Platili ste račun u vrednosti od {r.CenaRacuna} u prodajnom mestu Kafe bar Čitaonica 'Braća Bluz' na adresi Beogradska 10 u Ugrinovcima(Zemun) postanski broj: 11277.\nIznos PDV: {r.CenaRacuna*0.2}", 5,visinaTabele);
 
-                        tekstZaRacun += string.Format("{0,25}{1,25}{2,25}{3,25}\n", proizvodiLista[y].NazivProizvoda, proizvodiLista[y].ProdajnaCena, pzr[i].Kolicina, pzr[i].Cena); break;
-                        //tekstZaRacun += $"{proizvodiLista[y].NazivProizvoda}                            {proizvodiLista[y].ProdajnaCena}                                   {pzr[i].Kolicina}                                     {pzr[i].Cena} \n"; break;
-                    }
-                }
+                pdf.saveAndShow();
             }
-
-            tekstZaRacun += $"---------------------------------------------------------------------------------------------------------------------------------------\nUkupno za naplatu: {r.CenaRacuna} \n";
-            Bitmap QRKodSlika = generisiQRCode(tekstZaRacun);
-            stampajUPDF(tekstZaRacun, r, QRKodSlika);
-            System.Windows.Forms.MessageBox.Show($"Racun br. {r.RacunID} je uspesno istampan");
-        }
-
-        private Bitmap generisiQRCode(string tekstZaRacun)
-        {
-            string textZaQRkod = "Fiskalni racun je validan i prosao je kroz proces fiskalizacije.\n Platili ste sledece stavke:\n\n" + tekstZaRacun;
-            QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(textZaQRkod, QRCodeGenerator.ECCLevel.Q);
-            QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrcodeimage = qrCode.GetGraphic(20);
-            Bitmap QRCodeResize = new Bitmap(qrcodeimage, new Size(400, 400));
-            return QRCodeResize;
-        }
-
-        private void stampajUPDF(string tekstZaRacun, Racun r, Bitmap qRKodSlika)
-        {
-            PdfDocument stampaRacuna = new PdfDocument();
-            PdfPage page = stampaRacuna.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(page);
-            XFont font = new XFont("Arial", 12);
-
-
-
-            string[] linije = tekstZaRacun.Split('\n');
-            int y = 50;
-
-            foreach (string linija in linije)
+            catch (Exception)
             {
-                gfx.DrawString(linija, font, XBrushes.Black, new XPoint(50, y));
-                y += 20;
+                MessageBox.Show("Greska prilikom stampanja racuna");
             }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                qRKodSlika.Save(ms, ImageFormat.Png);
-                ms.Seek(0, SeekOrigin.Begin);
-
-                XImage qrImage = XImage.FromStream(ms);
-                gfx.DrawImage(qrImage, new XRect(50, y + 20, qRKodSlika.Width, qRKodSlika.Height));
-            }
-
-
-
-            string solutionFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string putanja = Path.Combine(solutionFolder, "Racuni", $"Racun_br.{r.RacunID}.pdf");
-            stampaRacuna.Save(putanja);
-            stampaRacuna.Close();
-            Process.Start(putanja);
         }
-
-        
     }
 }
