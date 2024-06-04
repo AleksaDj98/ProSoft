@@ -38,111 +38,111 @@ namespace Controller
         public object Login(Zaposleni requestObject)
         {
             prijavaRadnika pr = new prijavaRadnika();
-            pr.executeTemplate(requestObject);
+            pr.ExecuteTemplate(requestObject);
             return pr.zap;
         }
 
         public object ExistingEmp(Zaposleni requestObject)
         {
             PronadjiZaposlenog pz = new PronadjiZaposlenog();
-            pz.executeTemplate(requestObject);
+            pz.ExecuteTemplate(requestObject);
             return pz.zap;
         }
 
         public void SaveEmploye(Zaposleni requestObject)
         {
             KreirajRadnika kr = new KreirajRadnika();
-            kr.executeTemplate(requestObject);
+            kr.ExecuteTemplate(requestObject);
         }
 
         public object GetAllPDV()
         {
             VratiSvePDV vspdv = new VratiSvePDV();
-            vspdv.executeTemplate(new PDV());
+            vspdv.ExecuteTemplate(new PDV());
             return vspdv.pdv;
         }
 
         public object GetAllProductVersion()
         {
             VratiSveVrsteProizvoda vs = new VratiSveVrsteProizvoda();
-            vs.executeTemplate(new VrstaProizvoda());
+            vs.ExecuteTemplate(new VrstaProizvoda());
             return vs.vp;
         }
 
         public void SaveProduct(Proizvod requestObject)
         {
             SacuvajNoviProizvod np = new SacuvajNoviProizvod();
-            np.executeTemplate(requestObject);
+            np.ExecuteTemplate(requestObject);
         }
 
         public void DeleteEmploye(Zaposleni requestObject)
         {
             PromeniStatusZaposlenog or = new PromeniStatusZaposlenog();
-            or.executeTemplate(requestObject);
+            or.ExecuteTemplate(requestObject);
         }
 
         public object ExistingArticle(Proizvod requestObject)
         {
             ProveriProizvod pp = new ProveriProizvod();
-            pp.executeTemplate(requestObject);
+            pp.ExecuteTemplate(requestObject);
             return pp.pro;
         }
 
         public object GetAllArticles()
         {
             ProveriProizvod pp = new ProveriProizvod();
-            pp.executeTemplate(new Proizvod());
+            pp.ExecuteTemplate(new Proizvod());
             return pp.pro;
         }
 
         public object GetOrderID()
         {
             VratiIDPorudzbine idp = new VratiIDPorudzbine();
-            idp.executeTemplate(new Porudzbina());
+            idp.ExecuteTemplate(new Porudzbina());
             return idp.p.PorudzbinaID;
         }
         public void SaveOrder(Porudzbina requestObject)
         {
             SacuvajPorudzbinu p = new SacuvajPorudzbinu();
-            p.executeTemplate(requestObject);   
+            p.ExecuteTemplate(requestObject);   
         }
         public object GetInvoicID()
         {
             VratiIDRacuna idr = new VratiIDRacuna();
-            idr.executeTemplate(new Racun());
+            idr.ExecuteTemplate(new Racun());
             return idr.r.RacunID;
         }
 
         public void DeleteArticle(Proizvod requestObject)
         {
             PromeniStatusProizvoda a = new PromeniStatusProizvoda();
-            a.executeTemplate(requestObject);
+            a.ExecuteTemplate(requestObject);
         }
 
         public object GetAllOrders()
         {
             VratiSvePorudzbine sp = new VratiSvePorudzbine();
-            sp.executeTemplate(new Porudzbina());
+            sp.ExecuteTemplate(new Porudzbina());
             return sp.poruzbina;
         }
 
         public void UpdateInvoice(Racun requestObject)
         {
             SacuvajRacun sr = new SacuvajRacun();
-            sr.executeTemplate(requestObject);
+            sr.ExecuteTemplate(requestObject);
         }
 
         public object GetAllInvoices()
         {
             VratiSveRacune sr = new VratiSveRacune();
-            sr.executeTemplate(new Racun());
+            sr.ExecuteTemplate(new Racun());
             return sr.racun;
         }
 
         public void UpdateStorage(Proizvod requestObject)
         {
             PromeniStanjeLagera psl = new PromeniStanjeLagera();
-            psl.executeTemplate(requestObject);
+            psl.ExecuteTemplate(requestObject);
         }
     }
 }
