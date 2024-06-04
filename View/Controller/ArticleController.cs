@@ -108,7 +108,7 @@ namespace View.Controller
             cbPDV.DataSource =  Communication.Communication.Instance.GetAllPDVVersion();
         }
 
-        internal void proveriDaLiJeSelektovanoIObrisi(DataGridView dgvProizvodi, TextBox txtNazivProizvoda)
+        internal void ProveriDaLiJeSelektovanoIObrisi(DataGridView dgvProizvodi, TextBox txtNazivProizvoda)
         {
             if (dgvProizvodi.SelectedRows.Count == 0)
             {
@@ -125,7 +125,7 @@ namespace View.Controller
                     Communication.Communication.Instance.DeleteArtile(P);
                     MessageBox.Show($"Proizvodu {P.NazivProizvoda} je uspesno promenjen status");
                     txtNazivProizvoda.Text = "";
-                    setDGV(dgvProizvodi);
+                    SetDGV(dgvProizvodi);
                 }
             }
             catch (Exception)
@@ -135,7 +135,7 @@ namespace View.Controller
 
         }
 
-        internal void proveriPoiljeIPretrazi(TextBox txtNazivProizvoda, DataGridView dgvProizvodi)
+        internal void ProveriPoiljeIPretrazi(TextBox txtNazivProizvoda, DataGridView dgvProizvodi)
         {
             if (string.IsNullOrEmpty(txtNazivProizvoda.Text))
             {
@@ -181,7 +181,7 @@ namespace View.Controller
             }
         }
 
-        internal void setDGV(DataGridView dgvProizvodi)
+        internal void SetDGV(DataGridView dgvProizvodi)
         {
             if(dgvProizvodi.ColumnCount == 0)
             {

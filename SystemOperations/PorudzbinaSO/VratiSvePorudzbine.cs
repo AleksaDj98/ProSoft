@@ -10,7 +10,7 @@ namespace SystemOperations.PorudzbinaSO
     public class VratiSvePorudzbine : SystemOperationsBase
     {
         public  List<Porudzbina> poruzbina;
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             poruzbina = repository.GetAll(new Porudzbina()).Cast<Porudzbina>().ToList();
         }

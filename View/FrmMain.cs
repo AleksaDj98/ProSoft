@@ -38,23 +38,23 @@ namespace View
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            controller.proveriKorisnika(cenovnikToolStripMenuItem,ZaposleniToolStripMenuItem,instance,this);
-            controller.otvoriUCUnosPorudzbine(this);
+            controller.ProveriKorisnika(cenovnikToolStripMenuItem,ZaposleniToolStripMenuItem,instance,this);
+            controller.OtvoriUCUnosPorudzbine(this);
         }
 
         private void unosNovogZaposlenogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.otvoriFormuUnosZaposlenog();
+            controller.OtvoriFormuUnosZaposlenog();
         }
 
         private void unosNovogArtiklaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.otvoriFormuUnosArtikla();
+            controller.OtvoriFormuUnosArtikla();
         }
 
         private void brisanjeZaposlenogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.otvoriFormuBrisanjeRadnika();
+            controller.OtvoriFormuBrisanjeRadnika();
         }
 
         private void FrmMain_Load_1(object sender, EventArgs e)
@@ -64,22 +64,22 @@ namespace View
 
         internal void RasporedStolova(OrderControler orderControler)
         {
-            controller.otvoriUCRasporedStolova(this,orderControler);
+            controller.OtvoriUCRasporedStolova(this,orderControler);
         }
 
         internal void OtvoriUnosPorudzbine()
         {
-            controller.otvoriUCUnosPorudzbine(this);
+            controller.OtvoriUCUnosPorudzbine(this);
         }
 
         private void pregledArtiklaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.otvoriFrmBrisanjeArtikla();
+            controller.OtvoriFrmBrisanjeArtikla();
         }
 
         private void dnevniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.otvoriDnevniIzvestaj();
+            controller.OtvoriDnevniIzvestaj();
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -89,7 +89,7 @@ namespace View
 
         private void lagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MainController.otvoriFrmLager();
+            MainController.OtvoriFrmLager();
         }
     }
 }

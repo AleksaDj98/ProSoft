@@ -27,7 +27,7 @@ namespace View.Forms
 
         private void btnPretraga_Click(object sender, EventArgs e)
         {
-            controller.proveriSifru(txtSifra,txtIme,txtPrivilegije);
+            controller.ProveriSifru(txtSifra,txtIme,txtPrivilegije);
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)

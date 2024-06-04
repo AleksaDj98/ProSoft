@@ -10,7 +10,7 @@ namespace SystemOperations.ProizvodiSO
 {
     public class SacuvajNoviProizvod : SystemOperationsBase
     {
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             repository.Save(entity);
         }

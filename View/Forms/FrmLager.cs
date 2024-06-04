@@ -19,7 +19,7 @@ namespace View.Forms
         {
             InitializeComponent();
             lagerCotnroller = new LagerController();
-            lagerCotnroller.setDGV(dgvProizvodi);
+            lagerCotnroller.SetDGV(dgvProizvodi);
             dgvProizvodi.ClearSelection();
         }
 
@@ -28,7 +28,6 @@ namespace View.Forms
         }
         private void rbNabavka_CheckedChanged(object sender, EventArgs e)
         {
-
         }
         private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
@@ -45,13 +44,16 @@ namespace View.Forms
 
         private void btnPromenaStanja_Click(object sender, EventArgs e)
         {
-            if (lagerCotnroller.proveriPolja(dgvProizvodi, rbNabavka, rbRashod, txtKolicina))
+            if (lagerCotnroller.ProveriPolja(dgvProizvodi, rbNabavka, rbRashod, txtKolicina))
             {
                 lagerCotnroller.PromeniStanjeLagera(dgvProizvodi, rbNabavka, rbRashod, txtKolicina);
             }
 
         }
 
+        private void FrmLager_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

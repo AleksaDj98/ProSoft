@@ -10,7 +10,7 @@ namespace SystemOperations.PorudzbinaSO
     public class SacuvajPorudzbinu : SystemOperationsBase
     {
         List<StavkaPorudzbine> zaCuvanje = new List<StavkaPorudzbine>();
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             repository.Save(entity);
             Porudzbina p = entity as Porudzbina;

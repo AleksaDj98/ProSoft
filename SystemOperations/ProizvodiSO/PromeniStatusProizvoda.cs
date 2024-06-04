@@ -9,7 +9,7 @@ namespace SystemOperations.ProizvodiSO
 {
     public class PromeniStatusProizvoda : SystemOperationsBase
     {
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             Proizvod p = entity as Proizvod;
             p.Uslov = $"set Aktivan = CASE WHEN Aktivan = 1 THEN 0 WHEN Aktivan = 0 THEN 1 END";

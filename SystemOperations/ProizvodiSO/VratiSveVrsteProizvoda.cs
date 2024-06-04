@@ -10,7 +10,7 @@ namespace SystemOperations.ProizvodiSO
     public class VratiSveVrsteProizvoda : SystemOperationsBase
     {
         public List<VrstaProizvoda> vp;
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             vp = repository.GetAll(new VrstaProizvoda()).Cast<VrstaProizvoda>().ToList();
         }

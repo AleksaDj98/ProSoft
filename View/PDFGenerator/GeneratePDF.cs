@@ -36,7 +36,7 @@ namespace View.PDFGenerator
             this.page = document.AddPage();
             this.page.Size = PdfSharp.PageSize.Letter;
 
-            this.cm = new Interpolation().linearInterpolation(0, 0, 27.9, page.Height, 1);
+            this.cm = new Interpolation().LinearInterpolation(0, 0, 27.9, page.Height, 1);
             Console.WriteLine("1 cm: " + cm);
 
             this.gfx = XGraphics.FromPdfPage(page);
@@ -111,19 +111,19 @@ namespace View.PDFGenerator
         {
             return this.tableHight;
         }
-        public void addText(string text, DPoint xyStartingPosition, int size = 12)
+        public void AddText(string text, DPoint xyStartingPosition, int size = 12)
         {
             this.gfx.DrawString(text, this.font, XBrushes.Black, leftMargin + (xyStartingPosition.x * cm), topMargin + (xyStartingPosition.y * cm));
         }
-        public void drawSquare(DPoint xyStartingPosition, double width, double height, XBrush xbrush)
+        public void DrawSquare(DPoint xyStartingPosition, double width, double height, XBrush xbrush)
         {
             this.gfx.DrawRectangle(xbrush, new XRect(leftMargin + (xyStartingPosition.x * cm), topMargin + (xyStartingPosition.y * cm), (width * cm), (height * cm)));
         }
-        public void drawLine(DPoint fromXyPosition, DPoint toXyPosition)
+        public void DrawLine(DPoint fromXyPosition, DPoint toXyPosition)
         {
             this.gfx.DrawLine(this.pen, leftMargin + (fromXyPosition.x * cm), topMargin + (fromXyPosition.y * cm), leftMargin + (toXyPosition.x * cm), topMargin + (toXyPosition.y * cm));
         }
-        public void saveAndShow(bool argShowAfterSaving = true)
+        public void SaveAndShow(bool argShowAfterSaving = true)
         {
             document.Save(this.outputPath);
 
@@ -132,7 +132,7 @@ namespace View.PDFGenerator
                 System.Diagnostics.Process.Start(this.outputPath);
             }
         }
-        public void addQRCode(string text, double sizeInCm, double v)
+        public void AddQRCode(string text, double sizeInCm, double v)
         {
             XImage qrCodeImage = CreateQRCode(text);
 
@@ -163,7 +163,7 @@ namespace View.PDFGenerator
     }
     public class Interpolation
     {
-        public double linearInterpolation(double x0, double y0, double x1, double y1, double xd)
+        public double LinearInterpolation(double x0, double y0, double x1, double y1, double xd)
         {
             return (y0 + ((y1 - y0) * ((xd - x0) / (x1 - x0))));
         }

@@ -10,7 +10,7 @@ namespace SystemOperations.PorudzbinaSO
     public  class VratiIDPorudzbine : SystemOperationsBase
     {
         public  Porudzbina p = new Porudzbina();
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             p.PorudzbinaID = repository.GetNewID(entity);
         }

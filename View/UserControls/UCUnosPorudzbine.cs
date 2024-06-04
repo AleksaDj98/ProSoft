@@ -17,8 +17,8 @@ namespace View.UserControls
         {
             this.orderControler = orderControler;
             InitializeComponent();
-            orderControler.postaviTabove(flp1,flp2,flp3,flp4,flp4,flp5,flp6,labelUkupnaCena);
-            orderControler.setDGV(dgwPorudzbina);
+            orderControler.PostaviTabove(flp1,flp2,flp3,flp4,flp4,flp5,flp6,labelUkupnaCena);
+            orderControler.SetDGV(dgwPorudzbina);
         }
 
         private void UCUnosPorudzbine_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace View.UserControls
         {
             if (dgwPorudzbina.Rows.Count != 0)
             {
-                orderControler.ponistiPorudzbin(labelUkupnaCena);
+                orderControler.PonistiPorudzbinu(labelUkupnaCena);
             }
         }
 
@@ -37,7 +37,7 @@ namespace View.UserControls
         {
             if(dgwPorudzbina.Rows.Count != 0)
             {
-                orderControler.obrisiArtikalIzPorudzbine(dgwPorudzbina,labelUkupnaCena);
+                orderControler.ObrisiArtikalIzPorudzbine(dgwPorudzbina,labelUkupnaCena);
             }
         }
 

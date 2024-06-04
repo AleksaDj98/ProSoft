@@ -9,7 +9,7 @@ namespace SystemOperations.LagerSO
 {
     public class PromeniStanjeLagera : SystemOperationsBase
     {
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             repository.Update(entity);
         }

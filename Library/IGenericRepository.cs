@@ -12,11 +12,11 @@ namespace Storage
         void Save(IEntity entity);
         List<IEntity> GetAll(IEntity e);
 
-        void openConnection();
-        void closeConnection();
-        void beginTransation();
-        void commitTransation();
-        void rollbackTransation();
+        void OpenConnection();
+        void CloseConnection();
+        void BeginTransation();
+        void CommitTransation();
+        void RollbackTransation();
 
 
     }

@@ -10,7 +10,7 @@ namespace SystemOperations.LoginSO
     public class prijavaRadnika : SystemOperationsBase
     {
         public Zaposleni zap;
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
                 zap  = repository.GetOne(entity) as Zaposleni;
         }

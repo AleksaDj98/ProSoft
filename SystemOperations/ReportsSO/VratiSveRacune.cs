@@ -10,7 +10,7 @@ namespace SystemOperations.ReportsSO
     public class VratiSveRacune : SystemOperationsBase
     {
         public List<Racun> racun;
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
            racun = repository.GetAll(new Racun()).Cast<Racun>().ToList();
         }

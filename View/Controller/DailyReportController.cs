@@ -14,45 +14,7 @@ namespace View.Controller
 {
     public class DailyReportController
     {
-        internal void CheckDateAndGenerateDailyReport(System.Windows.Forms.DateTimePicker dtpDnevniIzvestaj)
-        {
-            try
-            {
-                DateTime now = DateTime.Now;
-
-                if (dtpDnevniIzvestaj.Value.Date > now.Date)
-                {
-                    System.Windows.Forms.MessageBox.Show("Ne mozete da izvucete dnevni izvestaj za datum u buducnosti!");
-                    return;
-                }
-                List<Racun> r = Communication.Communication.Instance.GetAllInvoices();
-                List<Racun> racuniZaDnevni = new List<Racun>();
-                int pazar = 0;
-
-                string tekstZaDnevni = $"Dnevni izvestaj na dan {dtpDnevniIzvestaj.Value.ToString("dd.MM.yyyy.")}\n\n\n";
-
-                for (int i = 0; i < r.Count; i++)
-                {
-                    if (r[i].VremeIzdavanja.Date == dtpDnevniIzvestaj.Value.Date && r[i].CenaRacuna > 0)
-                    {
-                        racuniZaDnevni.Add(r[i]);
-                        tekstZaDnevni += $"Racun: {r[i].RacunID}, Vreme izdavanja racuna: {r[i].VremeIzdavanja}, Iznos racuna: {r[i].CenaRacuna}\n";
-                        pazar = pazar + r[i].CenaRacuna;
-                    }
-                }
-
-                tekstZaDnevni += $"---------------------------------------------------------------------------------------------------------------------------------------\nPazar: {pazar} ";
-
-                stampajUPDF(tekstZaDnevni);
-                System.Windows.Forms.MessageBox.Show("Dnevni izvestaj je uspesno istampan");
-            }
-            catch (Exception)
-            {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da istampa dnevni izvestaj, proverite da li imate dovoljno trake u kasi");
-            }
-        }
-
-        private void stampajUPDF(string tekstZaDnevni)
+        private void StampajUPDF(string tekstZaDnevni)
         {
             PdfDocument dnevniIZvestaj = new PdfDocument();
             PdfPage page = dnevniIZvestaj.AddPage();
@@ -71,7 +33,7 @@ namespace View.Controller
             dnevniIZvestaj.Close();
         }
 
-        internal void CheckDateAndGenerateDailyReport2(System.Windows.Forms.DateTimePicker dtpDnevniIzvestaj)
+        internal void CheckDateAndGenerateDailyReport(System.Windows.Forms.DateTimePicker dtpDnevniIzvestaj)
         {
             try
             {
@@ -91,23 +53,23 @@ namespace View.Controller
                 string putanja = Path.Combine(solutionFolder, "Dnevni izvestaji", $"Dnevni_izestaj_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.pdf");
                 GeneratePDF pdf = new GeneratePDF(putanja, true);
 
-                pdf.addText($"Dnevni izvestaj na dan {dtpDnevniIzvestaj.Value.ToString("dd.MM.yyyy.")}", new DPoint(0, 0.45), 20);
-                pdf.addText("___________________________________________________________________", new DPoint(0, 1.0), 12);
+                pdf.AddText($"Dnevni izvestaj na dan {dtpDnevniIzvestaj.Value.ToString("dd.MM.yyyy.")}", new DPoint(0, 0.45), 20);
+                pdf.AddText("___________________________________________________________________", new DPoint(0, 1.0), 12);
                 for (int i = 0; i < r.Count; i++)
                 {
                     if (r[i].VremeIzdavanja.Date == dtpDnevniIzvestaj.Value.Date)
                     {
                         //racuniZaDnevni.Add(r[i]);
-                        pdf.addText($"Racun: {r[i].RacunID}, Vreme izdavanja racuna: {r[i].VremeIzdavanja}, Iznos racuna: {r[i].CenaRacuna}", new DPoint(0, pozicija), 12);
+                        pdf.AddText($"Racun: {r[i].RacunID}, Vreme izdavanja racuna: {r[i].VremeIzdavanja}, Iznos racuna: {r[i].CenaRacuna}", new DPoint(0, pozicija), 12);
                         pozicija += 1.0;
                         pazar = pazar + r[i].CenaRacuna;
                     }
                 }
-                pdf.addText("___________________________________________________________________", new DPoint(0, pozicija), 12);
+                pdf.AddText("___________________________________________________________________", new DPoint(0, pozicija), 12);
                 pozicija += 1.0;
-                pdf.addText($"Pazar: {pazar}", new DPoint(0, pozicija+0.5), 12);
+                pdf.AddText($"Pazar: {pazar}", new DPoint(0, pozicija+0.5), 12);
 
-                pdf.saveAndShow();
+                pdf.SaveAndShow();
             }
             catch (Exception)
             {

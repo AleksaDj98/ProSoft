@@ -9,7 +9,7 @@ namespace SystemOperations.ZaposlenogSO
 {
     public class PromeniStatusZaposlenog : SystemOperationsBase
     {
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             repository.Update(entity);
         }

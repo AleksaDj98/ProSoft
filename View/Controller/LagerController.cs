@@ -33,7 +33,7 @@ namespace View.Controller
             return sviProizvodi.Where(p => p.NazivProizvoda.IndexOf(txtPretraga.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
         }
 
-        internal void setDGV(DataGridView dgvProizvodi)
+        internal void SetDGV(DataGridView dgvProizvodi)
         {
             if(dgvProizvodi.ColumnCount == 0)
             {
@@ -72,14 +72,14 @@ namespace View.Controller
                     p.Uslov = $"set stanjeLagera = stanjeLagera +{kolicina}";
                     Communication.Communication.Instance.ChangeLager(p);
                     MessageBox.Show($"Uspesno ste uneli nabavku od {kolicina} komada za proizvod: {p.NazivProizvoda}\n\nTrenutno stanje lagera: {p.StanjeLagera+kolicina}");
-                    setDGV(dgvProizvodi);
+                    SetDGV(dgvProizvodi);
                 }
                 else
                 {
                     p.Uslov = $"set stanjeLagera = stanjeLagera - {kolicina}";
                     Communication.Communication.Instance.ChangeLager(p);
                     MessageBox.Show($"Uspesno ste rashodovali kolicunu od {kolicina} komada za proizvod: {p.NazivProizvoda}\n\nTrenutno stanje lagera: {p.StanjeLagera - kolicina}");
-                    setDGV(dgvProizvodi);
+                    SetDGV(dgvProizvodi);
                 }
             }
             catch (Exception)
@@ -88,7 +88,7 @@ namespace View.Controller
             }
         }
 
-        internal bool proveriPolja(DataGridView dgvProizvodi, RadioButton rbNabavka, RadioButton rbRashod, TextBox txtKolicina)
+        internal bool ProveriPolja(DataGridView dgvProizvodi, RadioButton rbNabavka, RadioButton rbRashod, TextBox txtKolicina)
         {
             if (dgvProizvodi.SelectedRows.Count == 0)
             {

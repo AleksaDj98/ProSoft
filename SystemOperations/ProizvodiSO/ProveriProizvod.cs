@@ -10,7 +10,7 @@ namespace SystemOperations.ProizvodiSO
     public  class ProveriProizvod : SystemOperationsBase
     {
         public List<Proizvod> pro;
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             pro = repository.GetAll(entity).Cast<Proizvod>().ToList();
         }

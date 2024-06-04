@@ -40,7 +40,7 @@ namespace View.Controller
         }
 
 
-        internal void  proveriSifru(TextBox txtSifra, TextBox txtIme, TextBox txtPrivilegije)
+        internal void  ProveriSifru(TextBox txtSifra, TextBox txtIme, TextBox txtPrivilegije)
         {
             if (string.IsNullOrEmpty(txtSifra.Text))
             {
@@ -74,7 +74,7 @@ namespace View.Controller
             MessageBox.Show("Zaposleni je uspesno pronadjen.");
         }
 
-        internal void sacuvajZaposlenog(TextBox textIme, TextBox textSifra, CheckBox chbAdmin)
+        internal void SacuvajZaposlenog(TextBox textIme, TextBox textSifra, CheckBox chbAdmin)
         {
             if (string.IsNullOrEmpty(textIme.Text))
             {

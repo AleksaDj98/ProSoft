@@ -19,8 +19,6 @@ namespace Server
         public FrmServer()
         {
             InitializeComponent();
-            
-
         }
 
         private void FrmServer_Load(object sender, EventArgs e)

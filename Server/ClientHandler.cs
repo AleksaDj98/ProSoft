@@ -35,7 +35,7 @@ namespace Server
                     Response response;
                     try
                     {
-                        response = processRequest(request);
+                        response = ProcessRequest(request);
                     }
                     catch (Exception ex)
                     {
@@ -56,7 +56,7 @@ namespace Server
             }
         }
 
-        private Response processRequest(Request request)
+        private Response ProcessRequest(Request request)
         {
             Response response = new Response();
             response.isSuccessful = true;

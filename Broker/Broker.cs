@@ -64,7 +64,7 @@ namespace DatabaseBroker
             }
         }
 
-        public IEntity getOne(IEntity entity)
+        public IEntity GetOne(IEntity entity)
         {
             IEntity rezultat;
             SqlCommand command = new SqlCommand("", connection, transaction);
@@ -75,7 +75,7 @@ namespace DatabaseBroker
             return rezultat;
         }
 
-        public List<IEntity> getAll(IEntity entity)
+        public List<IEntity> GetAll(IEntity entity)
         {
             List<IEntity> rezultat;
             SqlCommand command = new SqlCommand("", connection, transaction);

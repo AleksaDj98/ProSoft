@@ -31,7 +31,7 @@ namespace View.Controller
         {
             this.frmMain = frmMain;
         }
-        internal void postaviTabove(FlowLayoutPanel flp1, FlowLayoutPanel flp2, FlowLayoutPanel flp3, FlowLayoutPanel flp4, FlowLayoutPanel flp41, FlowLayoutPanel flp5, FlowLayoutPanel flp6, Label lblUC)
+        internal void PostaviTabove(FlowLayoutPanel flp1, FlowLayoutPanel flp2, FlowLayoutPanel flp3, FlowLayoutPanel flp4, FlowLayoutPanel flp41, FlowLayoutPanel flp5, FlowLayoutPanel flp6, Label lblUC)
         {
             lokalnilabel = lblUC;
             foreach (Proizvod p in proizvodiLista)
@@ -40,19 +40,19 @@ namespace View.Controller
                 {
                     switch (p.VrstaProizvoda.VrstaProizvodaID)
                     {
-                        case 1: generisiDugmeZaProizvod(p, flp1); break;
-                        case 2: generisiDugmeZaProizvod(p, flp2); break;
-                        case 3: generisiDugmeZaProizvod(p, flp3); break;
-                        case 4: generisiDugmeZaProizvod(p, flp4); break;
-                        case 5: generisiDugmeZaProizvod(p, flp5); break;
-                        case 6: generisiDugmeZaProizvod(p, flp6); break;
+                        case 1: GenerisiDugmeZaProizvod(p, flp1); break;
+                        case 2: GenerisiDugmeZaProizvod(p, flp2); break;
+                        case 3: GenerisiDugmeZaProizvod(p, flp3); break;
+                        case 4: GenerisiDugmeZaProizvod(p, flp4); break;
+                        case 5: GenerisiDugmeZaProizvod(p, flp5); break;
+                        case 6: GenerisiDugmeZaProizvod(p, flp6); break;
                         default: break;
                     }
                 }
             }
         }
 
-        private void generisiDugmeZaProizvod(Proizvod p, FlowLayoutPanel flp)
+        private void GenerisiDugmeZaProizvod(Proizvod p, FlowLayoutPanel flp)
         {
             var button = new CustomButton();
             button.Width = 230;
@@ -98,13 +98,13 @@ namespace View.Controller
             labelUkupnaCena.Text = ukupnaCena.ToString();
         }
 
-        internal void ponistiPorudzbin(Label labelUkupnaCena)
+        internal void PonistiPorudzbinu(Label labelUkupnaCena)
         {
             proizvodi.Clear();
             labelUkupnaCena.Text = "0";
         }
 
-        internal void setDGV(DataGridView dataGridView1)
+        internal void SetDGV(DataGridView dataGridView1)
         {
             dataGridView1.DataSource = proizvodi;
         }
@@ -125,7 +125,7 @@ namespace View.Controller
 
         internal void OtvoriUCUnosPorudzbine() => frmMain.OtvoriUnosPorudzbine();
 
-        internal bool proveriListu()
+        internal bool ProveriListu()
         {
             if (proizvodi.Count > 0)
             {
@@ -133,7 +133,7 @@ namespace View.Controller
             }
             return false;
         }
-        internal BindingList<StavkaPorudzbine> postaviPorudzbinu(BindingList<StavkaPorudzbine> sto, Sto Sto)
+        internal BindingList<StavkaPorudzbine> PostaviPorudzbinu(BindingList<StavkaPorudzbine> sto, Sto Sto)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace View.Controller
                 throw;
             }
         }
-        internal void setDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Label label1)
+        internal void SetDGVInRasporedStolova(BindingList<StavkaPorudzbine> sto, DataGridView dgvPregledPorudzbina, Button btnStampaj, Label label1)
         {
             if (sto.Count > 0)
             {
@@ -187,7 +187,7 @@ namespace View.Controller
             label1.Text = $"Ukupno: {ukupnoNaStolu}";
             dgvPregledPorudzbina.DataSource = sto;
         }
-        internal void obrisiArtikalIzPorudzbine(DataGridView dgwPorudzbina, Label labelUkupnaCena)
+        internal void ObrisiArtikalIzPorudzbine(DataGridView dgwPorudzbina, Label labelUkupnaCena)
         {
             //int smanjenaCena;
             int cenaNaLabelu;
@@ -198,14 +198,14 @@ namespace View.Controller
             
             proizvodi.Remove(sp);
         }
-        internal void stamampajRacun(DataGridView dgvPregledPorudzbina, Label label1)
+        internal void StamampajRacun(DataGridView dgvPregledPorudzbina, Label label1)
         {
             List<Porudzbina> zaIzmenu = new List<Porudzbina>();
             foreach (DataGridViewRow dgv in dgvPregledPorudzbina.Rows)
             {
                 StavkaPorudzbine s = dgv.DataBoundItem as StavkaPorudzbine;
-                dodajUlistu(s, proizvodiZaRacun);
-                listaPorudzbina(s, zaIzmenu);
+                DodajUlistu(s, proizvodiZaRacun);
+                ListaPorudzbina(s, zaIzmenu);
             }
 
             Racun r  = new Racun();
@@ -222,7 +222,7 @@ namespace View.Controller
             try
             {
                 Communication.Communication.Instance.SaveInvoice(r);
-                stampanjeRacuna(r, proizvodiZaRacun);
+                StampanjeRacuna(r, proizvodiZaRacun);
                 MessageBox.Show($"Ukupan racun za naplatu je: {r.CenaRacuna}");
                 label1.Text = "Ukupno: ";
                 ukupnoNaStolu = 0;
@@ -236,7 +236,7 @@ namespace View.Controller
             }
         }
 
-        private void listaPorudzbina(StavkaPorudzbine s, List<Porudzbina> zaIzmenu)
+        private void ListaPorudzbina(StavkaPorudzbine s, List<Porudzbina> zaIzmenu)
         {
             if (zaIzmenu.Count == 0)
             {
@@ -260,12 +260,11 @@ namespace View.Controller
             {
                 Porudzbina p = new Porudzbina();
                 p.PorudzbinaID = s.Porudzbina.PorudzbinaID;
-                //p.StavkaPorudzbine.Add(s);
                 zaIzmenu.Add(p);
             }
         }
 
-        private void dodajUlistu(StavkaPorudzbine s, List<StavkaPorudzbine> proizvodiZaRacun)
+        private void DodajUlistu(StavkaPorudzbine s, List<StavkaPorudzbine> proizvodiZaRacun)
         {
 
             if (proizvodiZaRacun.Count == 0)
@@ -291,7 +290,7 @@ namespace View.Controller
             }
         }
 
-        private void stampanjeRacuna(Racun r, List<StavkaPorudzbine> pzr)
+        private void StampanjeRacuna(Racun r, List<StavkaPorudzbine> pzr)
         {
             try
             {
@@ -299,17 +298,17 @@ namespace View.Controller
                 string putanja = Path.Combine(solutionFolder, "Racuni", $"Racun_br.{r.RacunID}.pdf");
                 GeneratePDF pdf = new GeneratePDF(putanja, true);
 
-                pdf.addText($"Racun id. {r.RacunID}", new DPoint(0, 0.45), 20);
-                pdf.addText("___________________________________________________________________", new DPoint(0, 1.0), 12);
+                pdf.AddText($"Racun id. {r.RacunID}", new DPoint(0, 0.45), 20);
+                pdf.AddText("___________________________________________________________________", new DPoint(0, 1.0), 12);
                 pdf.DrawTable(0, 2.0, 15.7, 15, null, pzr, proizvodiLista);
                 double visinaTabele = pdf.getTableHight() + 3.0;
-                pdf.addText("___________________________________________________________________", new DPoint(0, visinaTabele), 12);
+                pdf.AddText("___________________________________________________________________", new DPoint(0, visinaTabele), 12);
                 visinaTabele += 1.0;
-                pdf.addText($"Ukupno za naplatu: {r.CenaRacuna} ", new DPoint(0, visinaTabele), 12);
+                pdf.AddText($"Ukupno za naplatu: {r.CenaRacuna} ", new DPoint(0, visinaTabele), 12);
                 visinaTabele += 0.5;
-                pdf.addQRCode($"Platili ste račun u vrednosti od {r.CenaRacuna} u prodajnom mestu Kafe bar Čitaonica 'Braća Bluz' na adresi Beogradska 10 u Ugrinovcima(Zemun) postanski broj: 11277.\nIznos PDV: {r.CenaRacuna*0.2}", 5,visinaTabele);
+                pdf.AddQRCode($"Platili ste račun u vrednosti od {r.CenaRacuna} u prodajnom mestu Kafe bar Čitaonica 'Braća Bluz' na adresi Beogradska 10 u Ugrinovcima(Zemun) postanski broj: 11277.\nIznos PDV: {r.CenaRacuna*0.2}", 5,visinaTabele);
 
-                pdf.saveAndShow();
+                pdf.SaveAndShow();
             }
             catch (Exception)
             {

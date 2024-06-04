@@ -53,13 +53,13 @@ namespace View.UserControls
                     BrojStola = 3,
                 };
             }
-                if (controller.proveriListu())
+                if (controller.ProveriListu())
                 {
-                    sto3 = controller.postaviPorudzbinu(sto3,Sto3);
+                    sto3 = controller.PostaviPorudzbinu(sto3,Sto3);
                 }
                 else
                 {
-                    controller.setDGVInRasporedStolova(sto3, dgvPregledPorudzbina, btnStampaj, label1);
+                    controller.SetDGVInRasporedStolova(sto3, dgvPregledPorudzbina, btnStampaj, label1);
                 }
         }
 
@@ -73,13 +73,13 @@ namespace View.UserControls
                     BrojStola = 1,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto1 = controller.postaviPorudzbinu(sto1, Sto1);
+                sto1 = controller.PostaviPorudzbinu(sto1, Sto1);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto1, dgvPregledPorudzbina, btnStampaj,label1);
+                controller.SetDGVInRasporedStolova(sto1, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -93,13 +93,13 @@ namespace View.UserControls
                     BrojStola = 2,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto2 = controller.postaviPorudzbinu(sto2, Sto2);
+                sto2 = controller.PostaviPorudzbinu(sto2, Sto2);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto2, dgvPregledPorudzbina, btnStampaj, label1);
+                controller.SetDGVInRasporedStolova(sto2, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -113,13 +113,13 @@ namespace View.UserControls
                     BrojStola = 4,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto4 = controller.postaviPorudzbinu(sto4, Sto4);
+                sto4 = controller.PostaviPorudzbinu(sto4, Sto4);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto4, dgvPregledPorudzbina, btnStampaj, label1);
+                controller.SetDGVInRasporedStolova(sto4, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -133,13 +133,13 @@ namespace View.UserControls
                     BrojStola = 5,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto5 = controller.postaviPorudzbinu(sto5, Sto5);
+                sto5 = controller.PostaviPorudzbinu(sto5, Sto5);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto5, dgvPregledPorudzbina, btnStampaj, label1);
+                controller.SetDGVInRasporedStolova(sto5, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -153,13 +153,13 @@ namespace View.UserControls
                     BrojStola = 6,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto6 = controller.postaviPorudzbinu(sto6, Sto6);
+                sto6 = controller.PostaviPorudzbinu(sto6, Sto6);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto6, dgvPregledPorudzbina, btnStampaj, label1);
+                controller.SetDGVInRasporedStolova(sto6, dgvPregledPorudzbina, btnStampaj, label1);
             }
         }
 
@@ -173,13 +173,13 @@ namespace View.UserControls
                     BrojStola = 7,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto7 = controller.postaviPorudzbinu(sto7, Sto7);
+                sto7 = controller.PostaviPorudzbinu(sto7, Sto7);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto7, dgvPregledPorudzbina, btnStampaj,label1);
+                controller.SetDGVInRasporedStolova(sto7, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -193,13 +193,13 @@ namespace View.UserControls
                     BrojStola = 8,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto8 = controller.postaviPorudzbinu(sto8, Sto8);
+                sto8 = controller.PostaviPorudzbinu(sto8, Sto8);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto8, dgvPregledPorudzbina, btnStampaj,label1);
+                controller.SetDGVInRasporedStolova(sto8, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -213,13 +213,13 @@ namespace View.UserControls
                     BrojStola = 9,
                 };
             }
-            if (controller.proveriListu())
+            if (controller.ProveriListu())
             {
-                sto9 = controller.postaviPorudzbinu(sto9, Sto9);
+                sto9 = controller.PostaviPorudzbinu(sto9, Sto9);
             }
             else
             {
-                controller.setDGVInRasporedStolova(sto9, dgvPregledPorudzbina, btnStampaj,label1);
+                controller.SetDGVInRasporedStolova(sto9, dgvPregledPorudzbina, btnStampaj,label1);
             }
         }
 
@@ -235,7 +235,7 @@ namespace View.UserControls
 
         private void btnStampaj_Click(object sender, EventArgs e)
         {
-            controller.stamampajRacun(dgvPregledPorudzbina,label1);
+            controller.StamampajRacun(dgvPregledPorudzbina,label1);
         }
     }
 }

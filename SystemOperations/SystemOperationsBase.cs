@@ -18,25 +18,25 @@ namespace SystemOperations
             repository = new GenericRepository();
         }
 
-        public void executeTemplate(IEntity entity)
+        public void ExecuteTemplate(IEntity entity)
         {
             try
             {
-                repository.openConnection();
-                repository.beginTransation();
-                executeOperation(entity);
-                repository.commitTransation();
+                repository.OpenConnection();
+                repository.BeginTransation();
+                ExecuteOperation(entity);
+                repository.CommitTransation();
             }
             catch (Exception)
             {
-                repository.rollbackTransation();
+                repository.RollbackTransation();
                 throw;
             }finally 
             {
-                repository.closeConnection();
+                repository.CloseConnection();
             }
         }
 
-        protected abstract void executeOperation(IEntity entity);
+        protected abstract void ExecuteOperation(IEntity entity);
     }
 }

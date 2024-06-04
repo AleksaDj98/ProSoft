@@ -11,7 +11,7 @@ namespace SystemOperations.PorudzbinaSO
     public class VratiIDRacuna : SystemOperationsBase
     {
         public Racun r = new Racun();
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             r.RacunID = repository.GetNewID(entity);
         }

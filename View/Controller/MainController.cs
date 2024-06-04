@@ -15,7 +15,7 @@ namespace View.Controller
         USRasporedStolova RasporedStolova;
 
 
-        internal void otvoriUCUnosPorudzbine(FrmMain frmMain)
+        internal void OtvoriUCUnosPorudzbine(FrmMain frmMain)
         {
             if(UnosPorudzbine == null)
             {
@@ -28,13 +28,13 @@ namespace View.Controller
             }
         }
 
-        internal void otvoriFormuUnosZaposlenog()
+        internal void OtvoriFormuUnosZaposlenog()
         {
             FrmUnosNovogZaposlenog zaposleni = new FrmUnosNovogZaposlenog();
             zaposleni.ShowDialog();
         }
 
-        internal void proveriKorisnika(ToolStripMenuItem cenovnikToolStripMenuItem, ToolStripMenuItem zaposleniToolStripMenuItem, MainCoordinator instance, FrmMain frmMain)
+        internal void ProveriKorisnika(ToolStripMenuItem cenovnikToolStripMenuItem, ToolStripMenuItem zaposleniToolStripMenuItem, MainCoordinator instance, FrmMain frmMain)
         {
             if(instance.zaposleni.Tip.TipID != 1)
             {
@@ -50,19 +50,19 @@ namespace View.Controller
             }
         }
 
-        internal void otvoriFormuUnosArtikla()
+        internal void OtvoriFormuUnosArtikla()
         {
             FrmUnosArtikla artikal = new FrmUnosArtikla(new ArticleController());
             artikal.ShowDialog();
         }
 
-        internal void otvoriFormuBrisanjeRadnika()
+        internal void OtvoriFormuBrisanjeRadnika()
         {
             FrmPromenaStatusaRadnika radnik = new FrmPromenaStatusaRadnika(new EmployeController());
             radnik.ShowDialog();
         }
 
-        internal void otvoriUCRasporedStolova(FrmMain frmMain,OrderControler orderController)
+        internal void OtvoriUCRasporedStolova(FrmMain frmMain,OrderControler orderController)
         {
             if(RasporedStolova == null)
             {
@@ -75,13 +75,13 @@ namespace View.Controller
             }
         }
 
-        internal void otvoriFrmBrisanjeArtikla()
+        internal void OtvoriFrmBrisanjeArtikla()
         {
             FrmBrisanjeArtikla ba = new FrmBrisanjeArtikla();
             ba.ShowDialog();
         }
 
-        internal void otvoriDnevniIzvestaj()
+        internal void OtvoriDnevniIzvestaj()
         {
             FrmDnevniIzvestaj di = new FrmDnevniIzvestaj();
             di.ShowDialog();
@@ -94,7 +94,7 @@ namespace View.Controller
             MainCoordinator.Instance.OpenLoginForm();
         }
 
-        internal static void otvoriFrmLager()
+        internal static void OtvoriFrmLager()
         {
             FrmLager fl = new FrmLager();
             fl.ShowDialog();

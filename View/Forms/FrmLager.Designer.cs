@@ -133,6 +133,7 @@
             this.Controls.Add(this.btnPromenaStanja);
             this.Name = "FrmLager";
             this.Text = "Lager";
+            this.Load += new System.EventHandler(this.FrmLager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProizvodi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

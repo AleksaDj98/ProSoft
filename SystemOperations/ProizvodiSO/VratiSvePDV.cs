@@ -10,7 +10,7 @@ namespace SystemOperations.ProizvodiSO
     public class VratiSvePDV : SystemOperationsBase
     {
         public List<PDV> pdv;
-        protected override void executeOperation(IEntity entity)
+        protected override void ExecuteOperation(IEntity entity)
         {
             pdv = repository.GetAll(new PDV()).Cast<PDV>().ToList();
         }

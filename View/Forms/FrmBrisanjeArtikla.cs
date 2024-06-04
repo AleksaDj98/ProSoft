@@ -20,16 +20,16 @@ namespace View.Forms
         }
         private void FrmBrisanjeArtikla_Load(object sender, EventArgs e)
         {
-            controller.setDGV(dgvProizvodi);
+            controller.SetDGV(dgvProizvodi);
         }
         private void btnObrisi_Click(object sender, EventArgs e)
         {
-            controller.proveriDaLiJeSelektovanoIObrisi(dgvProizvodi,txtNazivProizvoda);
+            controller.ProveriDaLiJeSelektovanoIObrisi(dgvProizvodi,txtNazivProizvoda);
         }
 
         private void txtNazivProizvoda_TextChanged(object sender, EventArgs e)
         {
-            controller.proveriPoiljeIPretrazi(txtNazivProizvoda,dgvProizvodi);
+            controller.ProveriPoiljeIPretrazi(txtNazivProizvoda,dgvProizvodi);
         }
     }
 }

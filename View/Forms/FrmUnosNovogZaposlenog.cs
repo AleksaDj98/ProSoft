@@ -26,7 +26,7 @@ namespace View.Forms
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             sacuvajZaposlenog = new EmployeController();
-            sacuvajZaposlenog.sacuvajZaposlenog(TextIme, TextSifra,ChbAdmin);
+            sacuvajZaposlenog.SacuvajZaposlenog(TextIme, TextSifra,ChbAdmin);
         }
 
         private void FrmUnosNovogZaposlenog_Load(object sender, EventArgs e)
