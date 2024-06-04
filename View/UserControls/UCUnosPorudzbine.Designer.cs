@@ -37,16 +37,16 @@
             this.labelUkupnaCena = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTopliNapici = new System.Windows.Forms.TabPage();
-            this.tabSokovi = new System.Windows.Forms.TabPage();
-            this.tabVode = new System.Windows.Forms.TabPage();
-            this.tabPivo = new System.Windows.Forms.TabPage();
-            this.tabVino = new System.Windows.Forms.TabPage();
-            this.tabZestina = new System.Windows.Forms.TabPage();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabSokovi = new System.Windows.Forms.TabPage();
             this.flp2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabVode = new System.Windows.Forms.TabPage();
             this.flp3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPivo = new System.Windows.Forms.TabPage();
             this.flp4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabVino = new System.Windows.Forms.TabPage();
             this.flp5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabZestina = new System.Windows.Forms.TabPage();
             this.flp6 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPorudzbina)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -160,10 +160,17 @@
             this.tabTopliNapici.Location = new System.Drawing.Point(4, 34);
             this.tabTopliNapici.Name = "tabTopliNapici";
             this.tabTopliNapici.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopliNapici.Size = new System.Drawing.Size(1258, 653);
+            this.tabTopliNapici.Size = new System.Drawing.Size(1264, 653);
             this.tabTopliNapici.TabIndex = 0;
             this.tabTopliNapici.Text = "Topli napici";
             this.tabTopliNapici.UseVisualStyleBackColor = true;
+            // 
+            // flp1
+            // 
+            this.flp1.Location = new System.Drawing.Point(2, 1);
+            this.flp1.Name = "flp1";
+            this.flp1.Size = new System.Drawing.Size(1259, 655);
+            this.flp1.TabIndex = 0;
             // 
             // tabSokovi
             // 
@@ -176,6 +183,13 @@
             this.tabSokovi.Text = "Sokovi";
             this.tabSokovi.UseVisualStyleBackColor = true;
             // 
+            // flp2
+            // 
+            this.flp2.Location = new System.Drawing.Point(3, 1);
+            this.flp2.Name = "flp2";
+            this.flp2.Size = new System.Drawing.Size(1265, 655);
+            this.flp2.TabIndex = 0;
+            // 
             // tabVode
             // 
             this.tabVode.Controls.Add(this.flp3);
@@ -186,6 +200,13 @@
             this.tabVode.TabIndex = 2;
             this.tabVode.Text = "Vode";
             this.tabVode.UseVisualStyleBackColor = true;
+            // 
+            // flp3
+            // 
+            this.flp3.Location = new System.Drawing.Point(4, 0);
+            this.flp3.Name = "flp3";
+            this.flp3.Size = new System.Drawing.Size(1264, 652);
+            this.flp3.TabIndex = 0;
             // 
             // tabPivo
             // 
@@ -198,55 +219,23 @@
             this.tabPivo.Text = "Pivo";
             this.tabPivo.UseVisualStyleBackColor = true;
             // 
-            // tabVino
-            // 
-            this.tabVino.Controls.Add(this.flp5);
-            this.tabVino.Location = new System.Drawing.Point(4, 34);
-            this.tabVino.Name = "tabVino";
-            this.tabVino.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVino.Size = new System.Drawing.Size(1258, 653);
-            this.tabVino.TabIndex = 4;
-            this.tabVino.Text = "Vino";
-            this.tabVino.UseVisualStyleBackColor = true;
-            // 
-            // tabZestina
-            // 
-            this.tabZestina.Controls.Add(this.flp6);
-            this.tabZestina.Location = new System.Drawing.Point(4, 34);
-            this.tabZestina.Name = "tabZestina";
-            this.tabZestina.Padding = new System.Windows.Forms.Padding(3);
-            this.tabZestina.Size = new System.Drawing.Size(1258, 653);
-            this.tabZestina.TabIndex = 5;
-            this.tabZestina.Text = "Zestina";
-            this.tabZestina.UseVisualStyleBackColor = true;
-            // 
-            // flp1
-            // 
-            this.flp1.Location = new System.Drawing.Point(2, 1);
-            this.flp1.Name = "flp1";
-            this.flp1.Size = new System.Drawing.Size(1259, 655);
-            this.flp1.TabIndex = 0;
-            // 
-            // flp2
-            // 
-            this.flp2.Location = new System.Drawing.Point(3, 1);
-            this.flp2.Name = "flp2";
-            this.flp2.Size = new System.Drawing.Size(1265, 655);
-            this.flp2.TabIndex = 0;
-            // 
-            // flp3
-            // 
-            this.flp3.Location = new System.Drawing.Point(4, 0);
-            this.flp3.Name = "flp3";
-            this.flp3.Size = new System.Drawing.Size(1264, 652);
-            this.flp3.TabIndex = 0;
-            // 
             // flp4
             // 
             this.flp4.Location = new System.Drawing.Point(1, 1);
             this.flp4.Name = "flp4";
             this.flp4.Size = new System.Drawing.Size(1267, 651);
             this.flp4.TabIndex = 0;
+            // 
+            // tabVino
+            // 
+            this.tabVino.Controls.Add(this.flp5);
+            this.tabVino.Location = new System.Drawing.Point(4, 34);
+            this.tabVino.Name = "tabVino";
+            this.tabVino.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVino.Size = new System.Drawing.Size(1264, 653);
+            this.tabVino.TabIndex = 4;
+            this.tabVino.Text = "Vino";
+            this.tabVino.UseVisualStyleBackColor = true;
             // 
             // flp5
             // 
@@ -255,11 +244,22 @@
             this.flp5.Size = new System.Drawing.Size(1257, 652);
             this.flp5.TabIndex = 0;
             // 
+            // tabZestina
+            // 
+            this.tabZestina.Controls.Add(this.flp6);
+            this.tabZestina.Location = new System.Drawing.Point(4, 34);
+            this.tabZestina.Name = "tabZestina";
+            this.tabZestina.Padding = new System.Windows.Forms.Padding(3);
+            this.tabZestina.Size = new System.Drawing.Size(1264, 653);
+            this.tabZestina.TabIndex = 5;
+            this.tabZestina.Text = "Zestina";
+            this.tabZestina.UseVisualStyleBackColor = true;
+            // 
             // flp6
             // 
             this.flp6.Location = new System.Drawing.Point(3, 2);
             this.flp6.Name = "flp6";
-            this.flp6.Size = new System.Drawing.Size(1254, 650);
+            this.flp6.Size = new System.Drawing.Size(1261, 650);
             this.flp6.TabIndex = 0;
             // 
             // UCUnosPorudzbine
