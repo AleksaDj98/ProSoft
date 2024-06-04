@@ -170,6 +170,7 @@ namespace View.Controller
                 vp = cbVrstaProizvoda.SelectedItem as VrstaProizvoda;
                 p.VrstaProizvoda = vp;
                 p.Aktivan = true;
+                p.StanjeLagera = int.Parse(txtLager.Text);
 
 
                 Communication.Communication.Instance.SaveProduct(p);
